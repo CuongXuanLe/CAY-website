@@ -1,4 +1,5 @@
-import Home from './page/Home/HomePage';
+import React from 'react';
+import { Home } from './page';
 
 
 function App() {
