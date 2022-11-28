@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Mallanna&display=swap');
+
 :root {
   /* import font and color of the webpage here using: */    
-  --font-base: ;
+  --font-base: 'Mallanna', sans-serif;
   --color-black: #000000;
   
 }
