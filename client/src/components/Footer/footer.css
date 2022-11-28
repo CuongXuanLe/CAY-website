@@ -1,0 +1,37 @@
+.footer {
+    border-top: 1px solid #eee;
+    margin-top: 2.5rem;
+}
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    padding-top: .3rem;
+    margin-left: 3%;
+}
+
+.footer .box-container .box {
+    padding-top: 1.5rem;
+}
+
+.footer .box-container .box h3 {
+    padding: .5rem 0;
+    font-weight: bolder;
+    padding-bottom: 2.5rem;
+    font-size: 1.3rem;
+}
+.footer .box-container .box p {
+    font-size: .9rem;
+}
+
+.footer .box-container .box .social_links .icons {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin: 0 .5rem;
+}
+
+@media only screen and (max-width: 400px) {
+    .footer .box-container .box p {
+        font-size: 1.5rem;
+    }
+}
