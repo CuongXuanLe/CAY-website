@@ -1,4 +1,4 @@
 import AdminNav from "./AdminNav";
+import DropDownSettings from "./DropDownSettings";
 
-
-export { AdminNav };
+export { AdminNav, DropDownSettings };
