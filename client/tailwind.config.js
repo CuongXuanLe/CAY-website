@@ -11,9 +11,6 @@ module.exports = {
       'xl':'1280px',
       '2xl': '1546px'
     },
-    colors: {
-      'navybrown':'#A7705C',
-    }
   },
   plugins: [],
 }
