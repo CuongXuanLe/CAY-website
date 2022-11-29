@@ -20,7 +20,7 @@ const Navbar = () => {
     window.addEventListener('scroll', changeColor);
 
     return(
-        <div className={`fixed md:flex justify-between w-full h-24 md:pt-5 md:px-9 sm:pt-5 sm:px-5 ${color ? 'bg-white' : 'bg-transparent'} transition-all ease-in duration-300`}>
+        <div className={`fixed md:flex justify-between w-full h-24 md:pt-5 md:px-9 sm:pt-5 sm:px-5 z-50 ${color ? 'bg-white' : 'bg-transparent'} transition-all ease-in duration-300 shadow-sm`}>
 
             <div className="flex h-full">
                 <div className="md:w-18 md:h-18 border border-black sm:w-16 sm:h-16">
@@ -36,7 +36,7 @@ const Navbar = () => {
             </div>
 
             <div className="h-full">
-                <ul className={`md:flex font-normal h-3/4 tracking-[.2em] absolute md:static transition-all duration-500 ease-in ${open ? '' : 'top-[-490px]'}`}>
+                <ul className={`md:flex font-normal h-3/4 tracking-[.2em] absolute md:static transition-all duration-500 ease-in sm:hidden `}>
                     <li className="lg:mx-6 lg:text-base md:mx-2 md:my-auto md:text-sm sm:my-5"><NavLink to="/home" ><span className="pl-1 hover:border-b-2 hover:border-[#B1816F]">HOME</span></NavLink></li>
                     <li className="lg:mx-6 lg:text-base md:mx-2 md:my-auto md:text-sm sm:my-5"><NavLink to="/guide"><span className="pl-1 hover:border-b-2 hover:border-[#B1816F]">GUIDE</span></NavLink></li>
                     <li className="lg:mx-6 lg:text-base md:mx-2 md:my-auto md:text-sm sm:my-5"><NavLink to="/schedule"><span className="pl-1 hover:border-b-2 hover:border-[#B1816F]">SCHEDULE</span></NavLink></li>
