@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'login' : "url('https://images.unsplash.com/photo-1617463874381-85b513b3e991')",
+      },
+      colors: {
+        'blur': 'rgba(20,20,20, 0.4)',
+        'transparent': 'rgba(255,255,255, 0)',
+      }
     },
     screens: {
       'sm':'320px',

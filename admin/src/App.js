@@ -5,7 +5,7 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { AdminHome } from './page';
+import { AdminHome, AdminGuide, AdminFooter, ChangePassword, Login } from './page';
 
 const App = () => {
   function ScrollToTop() {
@@ -24,7 +24,11 @@ const App = () => {
     <Router>
       <ScrollToTop/>
       <Routes>
-        <Route path="/" element={<AdminHome/>}/>      
+        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<AdminHome/>}/>
+        <Route path="/adminGuide" element={<AdminGuide/>}/>
+        <Route path="/adminFooter" element={<AdminFooter/>}/>
+        <Route path="/changePassword" element={<ChangePassword/>} />
       </Routes>
     </Router>
   );

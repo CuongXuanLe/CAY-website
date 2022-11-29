@@ -23,3 +23,10 @@ code {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.hover__primary:hover{
+  background-color: #a7705c;
+  border-color: #a7705c;
+  color: white;
+  cursor: pointer;
+}
