@@ -3,7 +3,7 @@ import React from "react";
 const Home = () => {
 
     return(
-        <div className="">
+        <div className="bg-slate-500 h-[1000px]">
             
         </div>
     )
