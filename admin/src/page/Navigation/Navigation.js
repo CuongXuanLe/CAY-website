@@ -1,17 +1,17 @@
-import {AdminNav, HomeHeader} from './../../components';
+import {AdminNav, NavContent} from './../../components';
 
-const AdminHome = () => {
+const Navigation = () => {
     return(
         <div className="flex flex-row">
             <AdminNav />
             <div className="container p-10 ml-96">
-                <strong className="text-3xl">Home page</strong>
+                <strong className="text-3xl">Navigation</strong>
                 <div className="px-5 pt-10 space-y-10">
-                    <HomeHeader />
+                    <NavContent />
                 </div>
             </div>
         </div>
     )
 }
 
-export default AdminHome
+export default Navigation

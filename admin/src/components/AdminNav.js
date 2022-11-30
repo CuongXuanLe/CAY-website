@@ -20,7 +20,7 @@ const AdminNav = () => {
     }
 
     return(
-        <div className="h-screen w-1/3 border-r-2 border-black">
+        <div className="fixed h-screen w-1/4 2xl:w-1/5 xl:w-1/4 border-r-2 border-black">
             <div className="container h-screen pt-6 text-lg tracking-widest Nav__content">
                 <div className="flex items-end px-6">
                     <img className="w-24 h-full border border-black" src={Logo} alt="Logo"/>
@@ -51,7 +51,7 @@ const AdminNav = () => {
                             <p>Portfolio</p>
                         </li>
                     </NavLink>
-                    <NavLink to="/">
+                    <NavLink to="/Navigation">
                         <li className="flex items-center h-10 space-x-5 hover:border-b-2 border-[#a7705c] transition ease-in-out delay-50 hover:translate-x-2 hover:scale-110 duration-300 cursor-pointer">
                             <BsList />
                             <p>Navigation</p>

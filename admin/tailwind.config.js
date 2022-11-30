@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      margin: {
+        '105rem': '105rem',
+      },
       backgroundImage: {
         'login' : "url('https://images.unsplash.com/photo-1617463874381-85b513b3e991')",
       },
