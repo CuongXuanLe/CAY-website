@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 /* import font */
-@import url('https://fonts.googleapis.com/css2?family=Mallanna&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Playfair+Display:wght@400;500&display=swap");
 
 :root {
-  /* import font and color of the webpage here using: */    
+  /* import font and color of the webpage here using: */
 }
 
 * {
