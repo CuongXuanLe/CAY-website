@@ -8,7 +8,7 @@ const Blog = () => {
       <div className="h-full w-full px-3 py-5 text-slate-100">
         {dataBlog.map((title, index) => (
           <div className="">
-            <h3 key={index} className="my-1.5 cursor-pointer">
+            <h3 key={index} className="my-1.5 cursor-pointer font-light">
               {title.title}
             </h3>
             <div className="h-px bg-slate-100"></div>
