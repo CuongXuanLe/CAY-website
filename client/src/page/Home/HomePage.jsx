@@ -1,11 +1,11 @@
 import React from "react";
-import { Slider, Blog, Footer } from "../../components";
+import { Slider, Blog, Footer, Sidebar } from "../../components";
 
 const Home = () => {
   return (
     <div>
       {/* StartSection1 */}
-      <div className="h-screen">
+      <div className="h-screen w-full">
         <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1574025876844-6c9ba8602866')] bg-cover"></div>
         <div className="absolute bottom-7 left-7">
           <h1 className="text-3xl font-thin">
@@ -85,6 +85,8 @@ const Home = () => {
         </div>
       </div>
       {/* EndSection3 */}
+
+      <Sidebar />
     </div>
   );
 };

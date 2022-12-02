@@ -20,6 +20,7 @@ module.exports = {
       },
       colors: {
         'blur': 'rgba(20,20,20, 0.4)',
+        'blurwhite': 'rgba(255,255,255,0.9)',
       },
       fontFamily: {
         'lato': 'Lato, sans-serif',
