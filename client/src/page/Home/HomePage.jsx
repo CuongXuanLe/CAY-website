@@ -1,5 +1,5 @@
 import React from "react";
-import { Slider, Blog } from "../../components";
+import { Slider, Blog, Footer } from "../../components";
 
 const Home = () => {
   return (
@@ -54,6 +54,37 @@ const Home = () => {
         </div>
       </div>
       {/* EndSection2 */}
+
+      {/* StartSection3 */}
+      <div className="h-[calc(100vh-6rem)] w-full bg-white">
+        <div className="grid h-3/4 grid-cols-2">
+          <div className="w-full">
+            <img
+              className="h-96 w-full object-cover"
+              src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/299293823_5165269870269149_1477286828971396005_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=g6-D7yHEQ6UAX8mTnIX&_nc_ht=scontent.fdad1-3.fna&oh=00_AfC9jyCCygvaRykzF0YzpqxCV7Whq656Jrrv6AS0dRuTpQ&oe=638D8B72"
+              alt=""
+            ></img>
+          </div>
+          <div className="flex h-96 w-full flex-col items-center justify-center text-center">
+            <h2 className=" mb-5 text-xl font-semibold tracking-[0.2em]">
+              ABOUT US
+            </h2>
+            <p className="px-10 font-lato">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full">
+          <Footer />
+        </div>
+      </div>
+      {/* EndSection3 */}
     </div>
   );
 };
