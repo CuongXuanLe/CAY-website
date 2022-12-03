@@ -10,8 +10,6 @@ const Sidebar = () => {
   const hideSidebar = () => {
     if (window.scrollY >= 1200) {
       setOpenSidebar(false);
-    } else {
-      setOpenSidebar(true);
     }
   };
 

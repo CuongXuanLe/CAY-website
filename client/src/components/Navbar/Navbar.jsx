@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useScrollPosotion } from "../../hooks";
 import images from "../../contants/images";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -8,22 +9,14 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   //change nav color when scrolling
-  const [color, setColor] = useState(false);
-  const changeColor = () => {
-    if (window.scrollY >= 96) {
-      setColor(true);
-    } else {
-      setColor(false);
-    }
-  };
-
-  window.addEventListener("scroll", changeColor);
+  const changeColorNav = useScrollPosotion();
 
   return (
     <div
-      className={`fixed z-50 h-24 w-full justify-between sm:px-5 sm:pt-5 md:flex md:px-9 md:pt-5 ${
-        color ? "bg-white" : "bg-transparent"
-      } shadow-sm transition-all duration-300 ease-in`}
+      className={`fixed z-50 h-24 w-full justify-between shadow-sm transition-all duration-300 ease-in sm:px-5
+       sm:pt-5 md:flex md:px-9 md:pt-5 ${
+         changeColorNav > 0 ? "bg-white" : "bg-transparent"
+       }`}
     >
       <Link to="/home">
         <div className="flex h-full cursor-pointer">
