@@ -12,6 +12,10 @@ const HomeContent = () => {
     const [subtitle, setSubtitle] = useState()
     const [description, setDescription] = useState()
     const [aboutUs, setAboutUs] = useState()
+
+    useEffect(() =>{
+        document.title = "Home Admin"
+    })
     
     const handlePreviewImage = (e) => {
         const file = e.target.files[0]

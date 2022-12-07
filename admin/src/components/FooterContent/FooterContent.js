@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BiCheck } from "react-icons/bi";
 import { BsPencil } from "react-icons/bs";
 import axios from 'axios';
@@ -9,6 +9,10 @@ const FooterContent = () => {
     const [address, setAddress] = useState();
     const [phone, setPhone] = useState();
     const [addressEmail, setAddressEmail] = useState();
+
+    useEffect(() => {
+        document.title = "Footer"
+    })
 
     const handleApi = async (e) => {
         e.preventDefault();
