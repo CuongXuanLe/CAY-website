@@ -6,10 +6,13 @@ import { ListItems, AddItem } from "../../components"
 
 const GuideContent = () => {
     const [addItem, setAddItem] = useState(false);
+    useEffect(() =>{
+        document.title = "Guide Page"
+    })
+
     const handleAddItem = () => {
         setAddItem(!addItem);
     }
-
 
     const [imageQR, setImageQR] = useState()
     
