@@ -1,6 +1,7 @@
 import React from "react";
 import { Slider, Blog, Footer, Sidebar } from "../../components";
 
+
 const Home = () => {
   return (
     <div className="snap-y snap-mandatory overflow-auto">
@@ -85,7 +86,6 @@ const Home = () => {
         </div>
       </div>
       {/* EndSection3 */}
-
       <Sidebar />
     </div>
   );
