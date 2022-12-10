@@ -9,6 +9,7 @@ const HomeContent = () => {
     const [imageBody, setImageBody] = useState()
     const [imageAboutUs, setImageAboutUs] = useState()
     const [title, setTitle] = useState()
+    const [title2, setTitle2] = useState()
     const [subtitle, setSubtitle] = useState()
     const [description, setDescription] = useState()
     const [aboutUs, setAboutUs] = useState()
@@ -69,6 +70,7 @@ const HomeContent = () => {
             "imageBody" : imageBody,
             "imageAboutUs" : imageAboutUs,
             "title" : title,
+            "title2" : title2,
             "subtitle" : subtitle,
             "description" : description,
             "aboutUs" : aboutUs,
@@ -138,6 +140,13 @@ const HomeContent = () => {
                         <button className="relative flex items-center border-2 border-black rounded w-32 px-3 py-1 mt-2 overflow-hidden hover:bg-black hover:text-white">
                             <BiUpload className="mr-3"/> Upload
                             <input type="file" className="absolute bottom-0 left-0 opacity-0 -z-1" onChange={handlePreviewImageBody}/>
+                        </button>
+                    </div>
+                    <p className="mb-3">Title: </p>
+                    <div className="flex flex-row items-center justify-between border-2 border-black w-full my-2 px-2 py-1 rounded">
+                        <input className="h-auto py-1 outline-none" value={title2} onChange={(event) => {setTitle2(event.target.value)}} placeholder="Title" type="text" maxLength={200}/>
+                        <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+                            <BsPencil/>
                         </button>
                     </div>
                 </div>
