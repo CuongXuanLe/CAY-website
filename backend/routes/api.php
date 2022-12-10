@@ -6,7 +6,9 @@ use Spatie\FlareClient\Api;
 use App\Http\Controllers\Api\FooterController;
 use App\Http\Controllers\Api\HeaderController;
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\HomeController;
 use App\Models\Admin;
+use App\Models\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,6 @@ Route::get('/test', function () {
 
 
 //------------------------------CRUD Footer-----------------------------------
-// Route::get('/get-footer', [FooterController::class, 'index']);
 Route::get('/get-footer', [FooterController::class, 'show']);
 Route::post('/post-footer', [FooterController::class, 'store']);
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
@@ -44,3 +45,8 @@ Route::patch('/patch-header', [HeaderController::class, 'update']);
 Route::get('/get-admin', [AdminController::class, 'index']);
 Route::put('/post-admin/{id}', [AdminController::class, 'update']);
 Route::post('/change-password/{id}', [AdminController::class], 'changePassword');
+Route::patch('/change-password/{id}', [AdminController::class], 'changePassword');
+
+//------------------------------CRUD Home-----------------------------------
+Route::get('/get-home', [HomeController::class, 'index']);
+Route::post('/post-home', [HomeController::class, 'store']);

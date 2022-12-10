@@ -1,6 +1,12 @@
 import { BiCheck } from "react-icons/bi";
+import React, { useEffect } from 'react';
 
 const ChangePwd = () => {
+    useEffect(() => {
+        document.title = "Change Password";
+    })
+    
+
     return(
         <div className="text-xl">
             <p>Change password: </p>

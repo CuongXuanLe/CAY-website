@@ -1,11 +1,12 @@
 import React from "react";
-import { Slider, Blog, Footer } from "../../components";
+import { Slider, Blog, Footer, Sidebar } from "../../components";
+
 
 const Home = () => {
   return (
-    <div>
+    <div className="snap-y snap-mandatory overflow-auto">
       {/* StartSection1 */}
-      <div className="h-screen">
+      <div className="relative h-screen w-full snap-end">
         <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1574025876844-6c9ba8602866')] bg-cover"></div>
         <div className="absolute bottom-7 left-7">
           <h1 className="text-3xl font-thin">
@@ -25,7 +26,7 @@ const Home = () => {
       {/* EndSection1 */}
 
       {/* StartSection2 */}
-      <div className="relative h-[calc(100vh-6rem)] w-full">
+      <div className="relative h-[calc(100vh-6rem)] w-full snap-end">
         <div className="absolute top-0 left-0 -z-20 h-full w-full bg-[url('https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b')] bg-cover"></div>
         <div className="absolute top-0 left-0 -z-10 h-full w-full backdrop-blur-[5px]"></div>
         <div className="flex h-full flex-col items-center justify-center">
@@ -56,7 +57,7 @@ const Home = () => {
       {/* EndSection2 */}
 
       {/* StartSection3 */}
-      <div className="h-[calc(100vh-6rem)] w-full bg-white">
+      <div className="h-[calc(100vh-6rem)] w-full snap-end bg-white">
         <div className="grid h-3/4 grid-cols-2">
           <div className="w-full">
             <img
@@ -85,6 +86,7 @@ const Home = () => {
         </div>
       </div>
       {/* EndSection3 */}
+      <Sidebar />
     </div>
   );
 };

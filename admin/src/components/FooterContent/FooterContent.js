@@ -15,6 +15,7 @@ const FooterContent = () => {
   const [phone, setPhone] = useState();
   const [addressEmail, setAddressEmail] = useState();
 
+
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("http://127.0.0.1:8000/api/get-footer"); // id set cứng nha mọi người vì chỉ có 1 footer

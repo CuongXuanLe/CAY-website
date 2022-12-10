@@ -12,6 +12,9 @@ const NavContent = () => {
 
         setImageLogo(file)
     }
+    useEffect(() => {
+        document.title = "Navigation"
+    })
 
     useEffect(() => {
         return () => {
