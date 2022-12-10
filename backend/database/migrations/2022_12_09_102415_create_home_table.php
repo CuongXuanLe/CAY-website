@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('background1');
             $table->string('description2');
             $table->string('background2');
+            $table->string('imgAbout');
+            $table->string('descriptionAbout');
             $table->timestamps();
         });
     }

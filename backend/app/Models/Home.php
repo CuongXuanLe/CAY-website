@@ -17,6 +17,8 @@ class Home extends Model
         'background1',
         'subtitle1',
         'description2',
-        'background2'
+        'background2',
+        'imgAbout',
+        'descriptionAbout'
     ];
 }
