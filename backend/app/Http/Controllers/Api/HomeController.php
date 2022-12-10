@@ -49,7 +49,9 @@ class HomeController extends Controller
             'subtitle1' => ['string'],
             'background1' => ['string'],
             'description2' => ['string'],
-            'background2' => ['string']
+            'background2' => ['string'],
+            'imgAbout' => ['string'],
+            'descriptionAbout' => ['string'] 
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
@@ -61,6 +63,8 @@ class HomeController extends Controller
                 'background1' => $request->background1,
                 'description2' => $request->description2,
                 'background2' => $request->background2,
+                'imgAbout' => $request->imgAbout,
+                'descriptionAbout' => $request->descriptionAbout  
             ];
             DB::beginTransaction(); 
             try {
@@ -80,7 +84,8 @@ class HomeController extends Controller
                     'background1' => $request->background1,
                     'description2' => $request->description2,
                     'background2' => $request->background2,
-                ]
+                    'imgAbout' => $request->imgAbout,
+                    'descriptionAbout' => $request->descriptionAbout              ]
             ]);
         }
     }
@@ -123,7 +128,9 @@ class HomeController extends Controller
                 'subtitle1' => ['string'],
                 'background1' => ['string'],
                 'description2' => ['string'],
-                'background2' => ['string']
+                'background2' => ['string'],
+                'imgAbout' => ['string'],
+                'descriptionAbout' => ['string'] 
             ]
         );
 

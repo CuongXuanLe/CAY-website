@@ -22,7 +22,9 @@ class vp_home extends Seeder
                 'subtitle1' => "home",
                 'background1' => "home",
                 'description2' => "home",
-                'background2' => "home"
+                'background2' => "home",
+                'imgAbout' => "home",
+                'descriptionAbout' => "home"
             ],
         ]);
     }
