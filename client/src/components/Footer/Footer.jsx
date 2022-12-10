@@ -1,26 +1,35 @@
-import React from "react";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { SiInstagram } from "react-icons/si";
 import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
+  const [footercontents,setFootercontents] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8000/api/get-footer`).then(res => {
+      setFootercontents(res.data.data)
+    })
+  },[])
+
   return (
+    <>
+    {footercontents.map((footercontent) => (
     <div className="mt-4 border-t-[2px] border-[#E0E0E0]">
       <div className="grid h-24 grid-cols-4 items-center">
         <div>
-          <h2 className="ml-2 font-lato font-semibold">CAY studio</h2>
+          <h2 className="ml-2 font-lato font-semibold">{footercontent.name}</h2>
         </div>
         <div>
-          <p className="text-sm font-normal">
-            46/10A Dung Si Thanh Khe St.
-            <br />
-            Thanh Khe Tay, Da Nang 550000
+          <p className="text-sm font-normal w-[16rem]">
+            {footercontent.address}
           </p>
         </div>
         <div>
           <p className="text-sm font-normal">
-            +84 (0) 7 6666 0952 <br />
-            caystudio.contact@gmail.com
+            {footercontent.phone_number} <br />
+            {footercontent.email}
           </p>
         </div>
         <div className="flex ">
@@ -45,6 +54,8 @@ const Footer = () => {
         </p>
       </div>
     </div>
+    ))}
+    </>
   );
 };
 
