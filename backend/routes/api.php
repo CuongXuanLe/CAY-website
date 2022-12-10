@@ -28,10 +28,9 @@ Route::get('/test', function () {
 
 
 //------------------------------CRUD Footer-----------------------------------
-Route::get('/get-footer', [FooterController::class, 'index']);
+// Route::get('/get-footer', [FooterController::class, 'index']);
+Route::get('/get-footer', [FooterController::class, 'show']);
 Route::post('/post-footer', [FooterController::class, 'store']);
-Route::delete('/delete-footer/{id}', [FooterController::class, 'destroy']);
-// Route::put('/put-footer/{id}',[FooterController::class, 'update']);
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 
 
@@ -39,9 +38,9 @@ Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 Route::get('/get-header', [HeaderController::class, 'index']);
 Route::post('/post-header', [HeaderController::class, 'store']);
 Route::delete('/delete-header/{id}', [HeaderController::class, 'destroy']);
-Route::patch('/patch-header/{id}', [HeaderController::class, 'update']);
+Route::patch('/patch-header', [HeaderController::class, 'update']);
 
 
 Route::get('/get-admin', [AdminController::class, 'index']);
 Route::put('/post-admin/{id}', [AdminController::class, 'update']);
-Route::patch('/change-password/{id}', [AdminController::class], 'changePassword');
+Route::post('/change-password/{id}', [AdminController::class], 'changePassword');
