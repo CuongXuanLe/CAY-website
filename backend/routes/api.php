@@ -51,3 +51,5 @@ Route::patch('/change-password/{id}', [AdminController::class], 'changePassword'
 //------------------------------CRUD Home-----------------------------------
 Route::get('/get-home', [HomeController::class, 'index']);
 Route::post('/post-home', [HomeController::class, 'store']);
+Route::delete('/delete-home/{id}', [HomeController::class, 'destroy']);
+Route::patch('/patch-home/{id}', [HomeController::class, 'update']);
