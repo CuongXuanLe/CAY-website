@@ -31,7 +31,7 @@ Route::get('/test', function () {
 
 //------------------------------CRUD Footer-----------------------------------
 Route::get('/get-footer', [FooterController::class, 'show']);
-Route::post('/post-footer', [FooterController::class, 'store']);
+Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần 
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 
 
@@ -50,3 +50,5 @@ Route::patch('/change-password/{id}', [AdminController::class], 'changePassword'
 //------------------------------CRUD Home-----------------------------------
 Route::get('/get-home', [HomeController::class, 'index']);
 Route::post('/post-home', [HomeController::class, 'store']);
+Route::delete('/delete-home/{id}', [HomeController::class, 'destroy']);
+Route::patch('/patch-home/{id}', [HomeController::class, 'update']);
