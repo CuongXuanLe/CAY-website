@@ -74,8 +74,6 @@ class FooterController extends Controller
         }
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -97,8 +95,7 @@ class FooterController extends Controller
      */
     public function edit($id)
     {
-        $footer = Footer::find($id);
-        return $footer;
+        //
     }
 
     /**

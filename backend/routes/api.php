@@ -28,9 +28,8 @@ Route::get('/test', function () {
 
 
 //------------------------------CRUD Footer-----------------------------------
-// Route::get('/get-footer', [FooterController::class, 'index']);
 Route::get('/get-footer', [FooterController::class, 'show']);
-Route::post('/post-footer', [FooterController::class, 'store']);
+Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần 
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 
 
