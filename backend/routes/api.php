@@ -6,7 +6,9 @@ use Spatie\FlareClient\Api;
 use App\Http\Controllers\Api\FooterController;
 use App\Http\Controllers\Api\HeaderController;
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\HomeController;
 use App\Models\Admin;
+use App\Models\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +45,10 @@ Route::patch('/patch-header', [HeaderController::class, 'update']);
 Route::get('/get-admin', [AdminController::class, 'index']);
 Route::put('/post-admin/{id}', [AdminController::class, 'update']);
 Route::post('/change-password/{id}', [AdminController::class], 'changePassword');
+Route::patch('/change-password/{id}', [AdminController::class], 'changePassword');
+
+//------------------------------CRUD Home-----------------------------------
+Route::get('/get-home', [HomeController::class, 'index']);
+Route::post('/post-home', [HomeController::class, 'store']);
+Route::delete('/delete-home/{id}', [HomeController::class, 'destroy']);
+Route::patch('/patch-home/{id}', [HomeController::class, 'update']);

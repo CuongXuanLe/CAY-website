@@ -1,32 +1,41 @@
-import React from "react";
-import { Slider, Blog, Footer } from "../../components";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Slider, Blog, Footer, Sidebar } from "../../components";
+
 
 const Home = () => {
+  const [contents,setContents] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8000/api/get-home`).then(res => {
+      setContents(res.data.data)
+    })
+  },[]);
+
   return (
-    <div>
-      {/* StartSection1 */}
-      <div className="h-screen">
-        <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1574025876844-6c9ba8602866')] bg-cover"></div>
+    <>
+    {contents.map((content) => (
+    <div className="snap-y snap-mandatory"> 
+      <div className="relative h-screen w-full snap-end">
+        <img src={content.background1} alt="background1" className="h-full w-full z-0 object-cover"></img>
         <div className="absolute bottom-7 left-7">
           <h1 className="text-3xl font-thin">
-            <span className="font-semibold">CREATE</span> FORM IN OUR{" "}
-            <span className="font-semibold">DESIGN</span>
+            <span className="font-semibold">{content.title1}</span>
             <br />
             <h2 className="text-[18px] font-normal tracking-wider">
-              CAY STUDIO
+              {content.subtitle1}
             </h2>
           </h1>
           <p className="w-[55%]">
-            Our agents are engaged and experienced in the Miami real estate
-            market and well informed about the communities they services.
+            {content.description1}
           </p>
         </div>
       </div>
       {/* EndSection1 */}
 
       {/* StartSection2 */}
-      <div className="relative h-[calc(100vh-6rem)] w-full">
-        <div className="absolute top-0 left-0 -z-20 h-full w-full bg-[url('https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b')] bg-cover"></div>
+      <div className="relative h-[calc(100vh-6rem)] w-full snap-end">
+        <img src={content.background2} alt="background2" className="absolute top-0 left-0 -z-20 h-full w-full object-cover"></img>
         <div className="absolute top-0 left-0 -z-10 h-full w-full backdrop-blur-[5px]"></div>
         <div className="flex h-full flex-col items-center justify-center">
           <div className="flex h-72 w-232">
@@ -48,20 +57,19 @@ const Home = () => {
             </div>
           </div>
           <h2 className="mt-12 w-[50rem] text-center font-playfair text-2xl">
-            A news article discusses current or recent news of either general
-            interest or of a specific toppic
+            {content.description2}
           </h2>
         </div>
       </div>
       {/* EndSection2 */}
 
       {/* StartSection3 */}
-      <div className="h-[calc(100vh-6rem)] w-full bg-white">
+      <div className="h-[calc(100vh-6rem)] w-full snap-end bg-white">
         <div className="grid h-3/4 grid-cols-2">
           <div className="w-full">
             <img
               className="h-96 w-full object-cover"
-              src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/299293823_5165269870269149_1477286828971396005_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=g6-D7yHEQ6UAX8mTnIX&_nc_ht=scontent.fdad1-3.fna&oh=00_AfC9jyCCygvaRykzF0YzpqxCV7Whq656Jrrv6AS0dRuTpQ&oe=638D8B72"
+              src={content.imgAbout}
               alt=""
             ></img>
           </div>
@@ -70,12 +78,7 @@ const Home = () => {
               ABOUT US
             </h2>
             <p className="px-10 font-lato">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
+              {content.descriptionAbout}
             </p>
           </div>
         </div>
@@ -85,7 +88,10 @@ const Home = () => {
         </div>
       </div>
       {/* EndSection3 */}
+      <Sidebar />
     </div>
+    ))}
+    </>
   );
 };
 
