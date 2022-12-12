@@ -25,7 +25,6 @@ const FooterContent = () => {
     getPost();
   }, []);
 
-
   const handleApi = async (e) => {
     e.preventDefault();
 
