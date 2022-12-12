@@ -45,13 +45,13 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title1' => ['string'],
-            'description1' => ['string'],
+            'description1' => ['text'],
             'subtitle1' => ['string'],
             'background1' => ['string'],
-            'description2' => ['string'],
+            'description2' => ['text'],
             'background2' => ['string'],
             'imgAbout' => ['string'],
-            'descriptionAbout' => ['string'] 
+            'descriptionAbout' => ['text'] 
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
@@ -124,13 +124,13 @@ class HomeController extends Controller
         $validator = $request->validate(
             [
                 'title1' => ['string'],
-                'description1' => ['string'],
+                'description1' => ['text'],
                 'subtitle1' => ['string'],
                 'background1' => ['string'],
-                'description2' => ['string'],
+                'description2' => ['text'],
                 'background2' => ['string'],
                 'imgAbout' => ['string'],
-                'descriptionAbout' => ['string'] 
+                'descriptionAbout' => ['text'] 
             ]
         );
 
