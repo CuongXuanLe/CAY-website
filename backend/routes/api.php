@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\FooterController;
 use App\Http\Controllers\Api\HeaderController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\GuideController;
+use App\Http\Controllers\Api\GuideListController;
 use App\Models\Admin;
 use App\Models\Home;
 
@@ -51,3 +53,16 @@ Route::patch('/change-password/{id}', [AdminController::class], 'changePassword'
 //------------------------------CRUD Home-----------------------------------
 Route::get('/get-home', [HomeController::class, 'index']);
 Route::post('/post-home', [HomeController::class, 'store']);
+
+
+//------------------------------CRUD Guide page--------------------------------
+Route::get('/get-guide', [GuideController::class, 'index']);
+Route::post('/post-guide', [GuideController::class, 'store']);
+Route::patch('/patch-guide/{id}', [GuideController::class, 'update']);
+
+//-----------------------------CRUD List of guide page-------------------
+Route::get('/get-items', [GuideListController::class, 'index']);
+Route::get('/get-items/{id}', [GuideListController::class, 'show']);
+Route::post('/post-items', [GuideListController::class, 'store']);
+Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
+Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);

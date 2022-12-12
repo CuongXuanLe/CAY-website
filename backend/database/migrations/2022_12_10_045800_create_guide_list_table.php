@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('guide_list', function (Blueprint $table) {
             $table->id();
-            $table->string('item')->nullable();
+            $table->string('item');
             $table->timestamps();
         });
     }
