@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { BiUpload, BiCheck } from "react-icons/bi";
+import {  BiCheck } from "react-icons/bi";
 import { BsPencil } from "react-icons/bs";
 
 import axios from "axios";
 
 const HomeContent = () => {
-  const [imageBackground, setImageBackground] = useState();
-  const [imageBody, setImageBody] = useState();
-  const [imageAboutUs, setImageAboutUs] = useState();
+  const [background1, setBackground1] = useState();
+  const [background2, setBackground2] = useState();
+  const [imgAbout, setImgAbout] = useState();
   const [title1, setTitle1] = useState();
   const [description2, setDescription2] = useState();
   const [subtitle1, setSubtitle1] = useState();
@@ -18,47 +18,47 @@ const HomeContent = () => {
     document.title = "Home Admin";
   });
 
-  const handlePreviewImage = (e) => {
-    const file = e.target.files[0];
+ 
+  // useEffect(() => {
+  //   return () => {
+  //     imageBackground && URL.revokeObjectURL(imageBackground.preview);
+  //   };
+  // }, [imageBackground]);
 
-    file.preview = URL.createObjectURL(file);
+  // const handlePreviewImageBody = (e) => {
+  //   const file = e.target.files[0];
 
-    setImageBackground(file);
-  };
+  //   file.preview = URL.createObjectURL(file);
 
-  useEffect(() => {
-    return () => {
-      imageBackground && URL.revokeObjectURL(imageBackground.preview);
-    };
-  }, [imageBackground]);
+  //   setImageBody(file);
+  // };
 
-  const handlePreviewImageBody = (e) => {
-    const file = e.target.files[0];
+  // useEffect(() => { const handlePreviewImage = (e) => {
+  //   const file = e.target.files[0];
 
-    file.preview = URL.createObjectURL(file);
+  //   file.preview = URL.createObjectURL(file);
 
-    setImageBody(file);
-  };
+  //   setImageBackground(file);
+  // };
 
-  useEffect(() => {
-    return () => {
-      imageBody && URL.revokeObjectURL(imageBody.preview);
-    };
-  }, [imageBody]);
+  //   return () => {
+  //     imageBody && URL.revokeObjectURL(imageBody.preview);
+  //   };
+  // }, [imageBody]);
 
-  const handlePreviewImageAboutUs = (e) => {
-    const file = e.target.files[0];
+  // const handlePreviewImageAboutUs = (e) => {
+  //   const file = e.target.files[0];
 
-    file.preview = URL.createObjectURL(file);
+  //   file.preview = URL.createObjectURL(file);
 
-    setImageAboutUs(file);
-  };
+  //   setImageAboutUs(file);
+  // };
 
-  useEffect(() => {
-    return () => {
-      imageAboutUs && URL.revokeObjectURL(imageAboutUs.preview);
-    };
-  }, [imageAboutUs]);
+  // useEffect(() => {
+  //   return () => {
+  //     imageAboutUs && URL.revokeObjectURL(imageAboutUs.preview);
+  //   };
+  // }, [imageAboutUs]);
 
   const handleApi = async (e) => {
     e.preventDefault();
@@ -69,14 +69,14 @@ const HomeContent = () => {
       title1: title1,
       description1: description1,
       subtitle1: subtitle1,
-      background1: "https://images.unsplash.com/photo-1574025876844-6c9ba8602866",
+      background1: background1,
       description2: description2,
-      background2: "https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b",
-      imgAbout: "https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b",
+      background2: background2,
+      imgAbout: imgAbout,
       descriptionAbout: descriptionAbout, 
     };
     console.log(formData);
-    axios
+    await axios
       .patch(url, formData)
       .then((res) => {
         console.log(res.data);
@@ -88,13 +88,25 @@ const HomeContent = () => {
       });
   };
 
+  //getAPI
+  const [homedatas,setHomedatas] = useState([]);
+  const homeAPI="http://127.0.0.1:8000/api/get-home";
+  useEffect(() => {
+    async function getHomeData() {
+      const res = await axios.get(homeAPI);
+      setHomedatas(res.data.data);
+      // console.log(res.data.data)
+    }
+    getHomeData();
+  },[])
+
   return (
     <div className="text-xl">
       <p>Home header section: </p>
       <div className="mt-2 px-10">
         <div className="mb-2">
           <p className="mb-3">Background Image:</p>
-          <div className="h-auto w-full rounded border-2 border-black p-5">
+          {/* <div className="h-auto w-full rounded border-2 border-black p-5">
             {imageBackground && (
               <img
                 src={imageBackground.preview}
@@ -112,6 +124,24 @@ const HomeContent = () => {
                 onChange={handlePreviewImage}
               />
             </button>
+          </div> */}
+          <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+          {homedatas.map((homedata) => (
+            <input
+            key={homedata.id}
+              className="h-auto py-1 outline-none w-full"
+              value={background1}
+              onChange={(event) => {
+                setBackground1(event.target.value);
+              }}
+              placeholder={homedata.background1}
+              type="text"
+              maxLength={200}
+            />
+          ))}
+            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
+              <BsPencil />
+            </button>
           </div>
         </div>
 
@@ -119,25 +149,31 @@ const HomeContent = () => {
           <p className="mb-3">Title: </p>
           <div className="flex items-center justify-between">
             <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+              {homedatas.map((homedata) => (
+
               <input
+                key={homedata.id}
                 className="h-auto w-full py-1 outline-none"
                 value={title1}
                 onChange={(event) => {
                   setTitle1(event.target.value);
                 }}
-                placeholder="Title"
+                placeholder={homedata.title1}
                 type="text"
                 maxLength={200}
               />
+              ))}
               <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
                 <BsPencil />
               </button>
             </div>
             <div className="w-10 border-b-2 border-black"></div>
             <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+            {homedatas.map((homedata) => (
               <input
+              key={homedata.id}
                 className="h-auto w-full py-1 outline-none"
-                placeholder="Subtitle"
+                placeholder={homedata.subtitle1}
                 value={subtitle1}
                 onChange={(event) => {
                   setSubtitle1(event.target.value);
@@ -145,6 +181,8 @@ const HomeContent = () => {
                 type="text"
                 maxLength={100}
               />
+            ))}
+              
               <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
                 <BsPencil />
               </button>
@@ -154,24 +192,27 @@ const HomeContent = () => {
 
         <div className="mb-2">
           <p className="mb-3">Description: </p>
-          <textarea
-            rows="4"
-            cols="50"
-            placeholder="Description"
-            value={description1}
-            onChange={(event) => {
-              setDescription1(event.target.value);
-            }}
-            className="w-full rounded border-2 border-black p-2"
-          ></textarea>
+          {homedatas.map((homedata) => (
+            <textarea
+            key={homedata.id}
+              rows="4"
+              cols="50"
+              placeholder={homedata.description1}
+              value={description1}
+              onChange={(event) => {
+                setDescription1(event.target.value);
+              }}
+              className="w-full rounded border-2 border-black p-2"
+            ></textarea>
+          ))}
         </div>
       </div>
 
       <p>Portfolio & Blog section: </p>
       <div className="mt-2 px-10">
         <div className="mb-2">
-          <p className="mb-3">Background Image:</p>
-          <div className="h-auto w-full rounded border-2 border-black p-5">
+          <p className="mb-3">Background Image 2:</p>
+          {/* <div className="h-auto w-full rounded border-2 border-black p-5">
             {imageBody && (
               <img src={imageBody.preview} alt={imageBody.name} width="50%" />
             )}
@@ -185,22 +226,44 @@ const HomeContent = () => {
                 onChange={handlePreviewImageBody}
               />
             </button>
-          </div>
-          <p className="mb-3">Title: </p>
+          </div> */}
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+          {homedatas.map((homedata) => (
+
             <input
-              className="h-auto py-1 outline-none"
+            key={homedata.id}
+              className="h-auto py-1 outline-none w-full"
+              value={background2}
+              onChange={(event) => {
+                setBackground2(event.target.value);
+              }}
+              placeholder={homedata.background2}
+              type="text"
+              maxLength={200}
+            />
+          ))}
+            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
+              <BsPencil />
+            </button>
+          </div>
+          <p className="mb-3">Description2 </p>
+          <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+          {homedatas.map((homedata) => (
+
+            <textarea
+            key={homedata.id}
+              className="h-auto py-1 outline-none w-full"
               value={description2}
               onChange={(event) => {
                 setDescription2(event.target.value);
               }}
-              placeholder="Title"
+              placeholder={homedata.description2}
               type="text"
               maxLength={200}
+              rows="4"
+              cols="50"
             />
-            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
-              <BsPencil />
-            </button>
+          ))}
           </div>
         </div>
       </div>
@@ -208,8 +271,8 @@ const HomeContent = () => {
       <p className="capitalize">About us section: </p>
       <div className="mt-2 px-10">
         <div className="mb-2">
-          <p className="mb-3">Background Image:</p>
-          <div className="h-auto w-full rounded border-2 border-black p-5">
+          <p className="mb-3">Background Image :</p>
+          {/* <div className="h-auto w-full rounded border-2 border-black p-5">
             {imageAboutUs && (
               <img
                 src={imageAboutUs.preview}
@@ -227,20 +290,43 @@ const HomeContent = () => {
                 onChange={handlePreviewImageAboutUs}
               />
             </button>
+          </div> */}
+          <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+            {homedatas.map((homedata) => (
+
+            <input
+            key={homedata.id}
+              className="h-auto py-1 outline-none w-full"
+              value={imgAbout}
+              onChange={(event) => {
+                setImgAbout(event.target.value);
+              }}
+              placeholder={homedata.imgAbout}
+              type="text"
+              maxLength={200}
+            />
+            ))}
+            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
+              <BsPencil />
+            </button>
           </div>
         </div>
         <div className="mb-2">
           <p className="mb-3">About us: </p>
+          {homedatas.map((homedata) => (
+
           <textarea
+          key={homedata.id}
             rows="4"
             cols="50"
-            placeholder="About us"
+            placeholder={homedata.descriptionAbout}
             value={descriptionAbout}
             onChange={(event) => {
               setDescriptionAbout(event.target.value);
             }}
             className="w-full rounded border-2 border-black p-2"
           ></textarea>
+          ))}
         </div>
         <div className="mt-10 flex flex-row justify-end">
           <button className="flex h-10 w-48 items-center justify-center rounded border-black bg-gray-300 hover:border-2 hover:bg-black hover:text-white ">
