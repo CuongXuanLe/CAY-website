@@ -45,13 +45,13 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title1' => ['string'],
-            'description1' => ['text'],
+            'description1' => ['string'],
             'subtitle1' => ['string'],
             'background1' => ['string'],
-            'description2' => ['text'],
+            'description2' => ['string'],
             'background2' => ['string'],
             'imgAbout' => ['string'],
-            'descriptionAbout' => ['text'] 
+            'descriptionAbout' => ['string'] 
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
@@ -124,13 +124,13 @@ class HomeController extends Controller
         $validator = $request->validate(
             [
                 'title1' => ['string'],
-                'description1' => ['text'],
+                'description1' => ['string'],
                 'subtitle1' => ['string'],
                 'background1' => ['string'],
-                'description2' => ['text'],
+                'description2' => ['string'],
                 'background2' => ['string'],
                 'imgAbout' => ['string'],
-                'descriptionAbout' => ['text'] 
+                'descriptionAbout' => ['string'] 
             ]
         );
 
@@ -146,7 +146,7 @@ class HomeController extends Controller
             ]);
         } else {
             return response()->json([
-                'status' => true,
+                'status' => false,
                 'message' => 'Home not found.',
                 'data' => null,
             ], 404);
