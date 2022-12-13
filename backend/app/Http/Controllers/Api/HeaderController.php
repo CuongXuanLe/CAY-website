@@ -18,11 +18,7 @@ class HeaderController extends Controller
     public function index()
     {
         $header = Header::all();
-        return response()->json([
-            'status' => true,
-            'message' => 'Header retrieved',
-            'data' => $header,
-        ]);
+        return response()->json($header);
     }
 
     /**
@@ -45,14 +41,12 @@ class HeaderController extends Controller
     {
         $vadidator = Validator::make($request->all(), [
             'logo_img' => ['string'],
-            'logo_name' => ['string'],
         ]);
         if ($vadidator->fails()) {
             return response()->json($vadidator->messages(), 400);
         } else {
             $data = [
                 'logo_img' => $request->logo_img,
-                'logo_name' => $request->logo_name
             ];
             DB::beginTransaction();
             try {
@@ -76,9 +70,10 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $header = Header::all();
+        return response()->json($header);
     }
 
     /**
@@ -99,15 +94,14 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $header = Header::first();
         $vadidator = $request->validate(
             [
                 'logo_img' => ['string'],
-                'logo_name' => ['string']
             ]
         );
-        $header = Header::find($id);
 
         if ($header) {
             $header->update($vadidator);
@@ -119,7 +113,7 @@ class HeaderController extends Controller
             ]);
         } else {
             return response()->json([
-                'status' => true,
+                'status' => false,
                 'message' => 'Header not found.',
                 'data' => null,
             ], 404);
@@ -134,12 +128,6 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        $header = Header::findOrFail($id);
-        $header->delete();
-        return response()->json([
-            'status' => true,
-            'message' => 'Deleted',
-            'data' => [],
-        ]);
+        //
     }
 }
