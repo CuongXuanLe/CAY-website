@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  BiCheck } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
 import { BsPencil } from "react-icons/bs";
 
 import axios from "axios";
@@ -18,7 +18,6 @@ const HomeContent = () => {
     document.title = "Home Admin";
   });
 
- 
   // useEffect(() => {
   //   return () => {
   //     imageBackground && URL.revokeObjectURL(imageBackground.preview);
@@ -73,7 +72,7 @@ const HomeContent = () => {
       description2: description2,
       background2: background2,
       imgAbout: imgAbout,
-      descriptionAbout: descriptionAbout, 
+      descriptionAbout: descriptionAbout,
     };
     console.log(formData);
     await axios
@@ -89,8 +88,8 @@ const HomeContent = () => {
   };
 
   //getAPI
-  const [homedatas,setHomedatas] = useState([]);
-  const homeAPI="http://127.0.0.1:8000/api/get-home";
+  const [homedatas, setHomedatas] = useState([]);
+  const homeAPI = "http://127.0.0.1:8000/api/get-home";
   useEffect(() => {
     async function getHomeData() {
       const res = await axios.get(homeAPI);
@@ -98,7 +97,7 @@ const HomeContent = () => {
       // console.log(res.data.data)
     }
     getHomeData();
-  },[])
+  }, []);
 
   return (
     <div className="text-xl">
@@ -126,19 +125,19 @@ const HomeContent = () => {
             </button>
           </div> */}
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-          {homedatas.map((homedata) => (
-            <input
-            key={homedata.id}
-              className="h-auto py-1 outline-none w-full"
-              value={background1}
-              onChange={(event) => {
-                setBackground1(event.target.value);
-              }}
-              placeholder={homedata.background1}
-              type="text"
-              maxLength={200}
-            />
-          ))}
+            {homedatas.map((homedata) => (
+              <input
+                key={homedata.id}
+                className="h-auto w-full py-1 outline-none"
+                value={background1}
+                onChange={(event) => {
+                  setBackground1(event.target.value);
+                }}
+                placeholder={homedata.background1}
+                type="text"
+                maxLength={200}
+              />
+            ))}
             <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
               <BsPencil />
             </button>
@@ -150,18 +149,17 @@ const HomeContent = () => {
           <div className="flex items-center justify-between">
             <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
               {homedatas.map((homedata) => (
-
-              <input
-                key={homedata.id}
-                className="h-auto w-full py-1 outline-none"
-                value={title1}
-                onChange={(event) => {
-                  setTitle1(event.target.value);
-                }}
-                placeholder={homedata.title1}
-                type="text"
-                maxLength={200}
-              />
+                <input
+                  key={homedata.id}
+                  className="h-auto w-full py-1 outline-none"
+                  value={title1}
+                  onChange={(event) => {
+                    setTitle1(event.target.value);
+                  }}
+                  placeholder={homedata.title1}
+                  type="text"
+                  maxLength={200}
+                />
               ))}
               <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
                 <BsPencil />
@@ -169,20 +167,20 @@ const HomeContent = () => {
             </div>
             <div className="w-10 border-b-2 border-black"></div>
             <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-            {homedatas.map((homedata) => (
-              <input
-              key={homedata.id}
-                className="h-auto w-full py-1 outline-none"
-                placeholder={homedata.subtitle1}
-                value={subtitle1}
-                onChange={(event) => {
-                  setSubtitle1(event.target.value);
-                }}
-                type="text"
-                maxLength={100}
-              />
-            ))}
-              
+              {homedatas.map((homedata) => (
+                <input
+                  key={homedata.id}
+                  className="h-auto w-full py-1 outline-none"
+                  placeholder={homedata.subtitle1}
+                  value={subtitle1}
+                  onChange={(event) => {
+                    setSubtitle1(event.target.value);
+                  }}
+                  type="text"
+                  maxLength={100}
+                />
+              ))}
+
               <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
                 <BsPencil />
               </button>
@@ -194,7 +192,7 @@ const HomeContent = () => {
           <p className="mb-3">Description: </p>
           {homedatas.map((homedata) => (
             <textarea
-            key={homedata.id}
+              key={homedata.id}
               rows="4"
               cols="50"
               placeholder={homedata.description1}
@@ -228,42 +226,40 @@ const HomeContent = () => {
             </button>
           </div> */}
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-          {homedatas.map((homedata) => (
-
-            <input
-            key={homedata.id}
-              className="h-auto py-1 outline-none w-full"
-              value={background2}
-              onChange={(event) => {
-                setBackground2(event.target.value);
-              }}
-              placeholder={homedata.background2}
-              type="text"
-              maxLength={200}
-            />
-          ))}
+            {homedatas.map((homedata) => (
+              <input
+                key={homedata.id}
+                className="h-auto w-full py-1 outline-none"
+                value={background2}
+                onChange={(event) => {
+                  setBackground2(event.target.value);
+                }}
+                placeholder={homedata.background2}
+                type="text"
+                maxLength={200}
+              />
+            ))}
             <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
               <BsPencil />
             </button>
           </div>
           <p className="mb-3">Description2 </p>
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-          {homedatas.map((homedata) => (
-
-            <textarea
-            key={homedata.id}
-              className="h-auto py-1 outline-none w-full"
-              value={description2}
-              onChange={(event) => {
-                setDescription2(event.target.value);
-              }}
-              placeholder={homedata.description2}
-              type="text"
-              maxLength={200}
-              rows="4"
-              cols="50"
-            />
-          ))}
+            {homedatas.map((homedata) => (
+              <textarea
+                key={homedata.id}
+                className="h-auto w-full py-1 outline-none"
+                value={description2}
+                onChange={(event) => {
+                  setDescription2(event.target.value);
+                }}
+                placeholder={homedata.description2}
+                type="text"
+                maxLength={200}
+                rows="4"
+                cols="50"
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -293,18 +289,17 @@ const HomeContent = () => {
           </div> */}
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             {homedatas.map((homedata) => (
-
-            <input
-            key={homedata.id}
-              className="h-auto py-1 outline-none w-full"
-              value={imgAbout}
-              onChange={(event) => {
-                setImgAbout(event.target.value);
-              }}
-              placeholder={homedata.imgAbout}
-              type="text"
-              maxLength={200}
-            />
+              <input
+                key={homedata.id}
+                className="h-auto w-full py-1 outline-none"
+                value={imgAbout}
+                onChange={(event) => {
+                  setImgAbout(event.target.value);
+                }}
+                placeholder={homedata.imgAbout}
+                type="text"
+                maxLength={200}
+              />
             ))}
             <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
               <BsPencil />
@@ -314,18 +309,17 @@ const HomeContent = () => {
         <div className="mb-2">
           <p className="mb-3">About us: </p>
           {homedatas.map((homedata) => (
-
-          <textarea
-          key={homedata.id}
-            rows="4"
-            cols="50"
-            placeholder={homedata.descriptionAbout}
-            value={descriptionAbout}
-            onChange={(event) => {
-              setDescriptionAbout(event.target.value);
-            }}
-            className="w-full rounded border-2 border-black p-2"
-          ></textarea>
+            <textarea
+              key={homedata.id}
+              rows="4"
+              cols="50"
+              placeholder={homedata.descriptionAbout}
+              value={descriptionAbout}
+              onChange={(event) => {
+                setDescriptionAbout(event.target.value);
+              }}
+              className="w-full rounded border-2 border-black p-2"
+            ></textarea>
           ))}
         </div>
         <div className="mt-10 flex flex-row justify-end">
