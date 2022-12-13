@@ -5,12 +5,16 @@ import { SiInstagram } from "react-icons/si";
 import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
-  const [footercontents, setFootercontents] = useState([]);
 
+  //getAPI
+  const [footercontents, setFootercontents] = useState([]);
+  const apiFooter = "http://127.0.0.1:8000/api/get-footer";
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/get-footer`).then((res) => {
-      setFootercontents(res.data.data);
-    });
+    async function getFooterData() {
+      const res = await axios.get(apiFooter);
+      setFootercontents(res.data.data)
+    }
+    getFooterData();
   }, []);
 
   return (
