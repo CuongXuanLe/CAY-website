@@ -1,13 +1,25 @@
-// import { Link } from "react-router-dom"
+import { NavLink  } from "react-router-dom"
 const GuideNav = () => {
+    const activeLink = 'bg-red-800 text-white' 
+    const normalLink = 'bg-white text-red-800'
     return(
         <>
-            <ul className="uppercase flex text-red-900 justify-center cursor-pointer">
-                <li className="py-2 px-6 text-lg font-bold border border-red-800 hover:bg-red-800 hover:text-white">
-                    rental
-                </li>
-                <li className="py-2 px-6 text-lg font-bold border-y border-red-800 hover:bg-red-800 hover:text-white">option</li>
-                <li className="py-2 px-6 text-lg font-bold border border-red-800 hover:bg-red-800 hover:text-white">facility</li>
+            <ul className="uppercase flex text-red-900 justify-center cursor-pointer text-lg font-bold mb-16">
+                <NavLink to="/guide/" className={({isActive}) => (isActive ? activeLink : normalLink)}>
+                    <li className="py-2 px-6 border border-red-800 ">
+                        Rental
+                    </li>
+                </NavLink>
+                <NavLink to="/guide/option" className={({isActive}) => (isActive ? activeLink : normalLink)}>
+                    <li className="py-2 px-6 border-y border-red-800 ">
+                        option
+                    </li>
+                </NavLink>
+                <NavLink to="/guide/facility" className={({isActive}) => (isActive ? activeLink : normalLink)}>
+                    <li className="py-2 px-6 border border-red-800 ">
+                        facility
+                    </li>
+                </NavLink>
             </ul>
         </>
     )
