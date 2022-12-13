@@ -96,9 +96,12 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        {
+            $home = Home::first();
+            return response()->json($home);
+        }
     }
 
     /**
@@ -121,6 +124,7 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $home = Home::first();
         $validator = $request->validate(
             [
                 'title1' => ['string'],
@@ -134,11 +138,10 @@ class HomeController extends Controller
             ]
         );
 
-        $home = Home::find($id);
 
         if ($home) {
             $home->update($validator);
-
+            $home->save();
             return response()->json([
                 'status' => true,
                 'message' => 'Home found.',
@@ -146,7 +149,7 @@ class HomeController extends Controller
             ]);
         } else {
             return response()->json([
-                'status' => true,
+                'status' => false,
                 'message' => 'Home not found.',
                 'data' => null,
             ], 404);

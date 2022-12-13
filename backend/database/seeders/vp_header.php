@@ -15,6 +15,11 @@ class vp_header extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('header')->insert([
+            [
+                "logo_img"=>"http://thietkelogosaigon.com/wp-content/uploads/2020/01/attachment_91976356-e1539290932445.png",
+                "logo_name"=>"CAYYY STUDIO"
+            ],
+        ]);
     }
 }

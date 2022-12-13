@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('home', function (Blueprint $table) {
             $table->id();
             $table->string('title1');
-            $table->string('description1');
+            $table->text('description1');
             $table->string('subtitle1');
             $table->string('background1');
-            $table->string('description2');
+            $table->text('description2');
             $table->string('background2');
             $table->string('imgAbout');
-            $table->string('descriptionAbout');
+            $table->text('descriptionAbout');
             $table->timestamps();
         });
     }
