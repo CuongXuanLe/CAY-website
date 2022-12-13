@@ -8,11 +8,11 @@ const HomeContent = () => {
   const [imageBackground, setImageBackground] = useState();
   const [imageBody, setImageBody] = useState();
   const [imageAboutUs, setImageAboutUs] = useState();
-  const [title, setTitle] = useState();
-  const [title2, setTitle2] = useState();
-  const [subtitle, setSubtitle] = useState();
-  const [description, setDescription] = useState();
-  const [aboutUs, setAboutUs] = useState();
+  const [title1, setTitle1] = useState();
+  const [description2, setDescription2] = useState();
+  const [subtitle1, setSubtitle1] = useState();
+  const [description1, setDescription1] = useState();
+  const [descriptionAbout, setDescriptionAbout] = useState();
 
   useEffect(() => {
     document.title = "Home Admin";
@@ -66,16 +66,14 @@ const HomeContent = () => {
     //call api
     const url = "http://127.0.0.1:8000/api/patch-home/2";
     const formData = {
-      imageBackground:
-        "https://images.unsplash.com/photo-1574025876844-6c9ba8602866",
-      imageBody: "https://images.unsplash.com/photo-1574025876844-6c9ba8602866",
-      imageAboutUs:
-        "https://images.unsplash.com/photo-1574025876844-6c9ba8602866",
-      title: title,
-      title2: title2,
-      subtitle: subtitle,
-      description: description,
-      aboutUs: aboutUs,
+      title1: title1,
+      description1: description1,
+      subtitle1: subtitle1,
+      background1: "https://images.unsplash.com/photo-1574025876844-6c9ba8602866",
+      description2: description2,
+      background2: "https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b",
+      imgAbout: "https://images.unsplash.com/photo-1608324777753-5d2f6e547b1b",
+      descriptionAbout: descriptionAbout, 
     };
     console.log(formData);
     axios
@@ -123,9 +121,9 @@ const HomeContent = () => {
             <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
               <input
                 className="h-auto w-full py-1 outline-none"
-                value={title}
+                value={title1}
                 onChange={(event) => {
-                  setTitle(event.target.value);
+                  setTitle1(event.target.value);
                 }}
                 placeholder="Title"
                 type="text"
@@ -140,9 +138,9 @@ const HomeContent = () => {
               <input
                 className="h-auto w-full py-1 outline-none"
                 placeholder="Subtitle"
-                value={subtitle}
+                value={subtitle1}
                 onChange={(event) => {
-                  setSubtitle(event.target.value);
+                  setSubtitle1(event.target.value);
                 }}
                 type="text"
                 maxLength={100}
@@ -160,9 +158,9 @@ const HomeContent = () => {
             rows="4"
             cols="50"
             placeholder="Description"
-            value={description}
+            value={description1}
             onChange={(event) => {
-              setDescription(event.target.value);
+              setDescription1(event.target.value);
             }}
             className="w-full rounded border-2 border-black p-2"
           ></textarea>
@@ -192,9 +190,9 @@ const HomeContent = () => {
           <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
               className="h-auto py-1 outline-none"
-              value={title2}
+              value={description2}
               onChange={(event) => {
-                setTitle2(event.target.value);
+                setDescription2(event.target.value);
               }}
               placeholder="Title"
               type="text"
@@ -237,9 +235,9 @@ const HomeContent = () => {
             rows="4"
             cols="50"
             placeholder="About us"
-            value={aboutUs}
+            value={descriptionAbout}
             onChange={(event) => {
-              setAboutUs(event.target.value);
+              setDescriptionAbout(event.target.value);
             }}
             className="w-full rounded border-2 border-black p-2"
           ></textarea>
