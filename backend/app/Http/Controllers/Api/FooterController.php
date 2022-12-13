@@ -86,10 +86,9 @@ class FooterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    { {
-            $footer = Footer::first();
-            return response()->json($footer);
-        }
+    { 
+        $footer = Footer::first();
+        return response()->json($footer);
     }
 
     /**
