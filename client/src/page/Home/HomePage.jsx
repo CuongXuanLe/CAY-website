@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Slider, Blog, Footer, Sidebar } from "../../components";
 
 const Home = () => {
-  const [contents, setContents] = useState([]);
 
+  //getAPI
+  const [contents, setContents] = useState([]);
+  const apiHome = "http://127.0.0.1:8000/api/get-home";
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/get-home`).then((res) => {
+    async function getDataHome() {
+      const res = await axios.get(apiHome);
       setContents(res.data.data);
-    });
+    }
+    getDataHome();
   }, []);
 
   return (
