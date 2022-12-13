@@ -29,6 +29,7 @@ const GuideRental = () => {
                 <hr className="my-8"/>
                 <p className="font-bold mb-3">[Thông tin đặt cọc]</p>
                 <p>07 772 552 752 TP Bank - Nguyễn Minh Đức</p>
+                <img className="w-56 h-56" src="https://i.pinimg.com/originals/60/c1/4a/60c14a43fb4745795b3b358868517e79.png" alt="QR_Img"/>
                 <hr className="my-8"/>
                 <p className="font-bold mb-3">[Thời gian đặt lịch]</p>
                 <ul className="list-disc px-5">
