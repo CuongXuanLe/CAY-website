@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\FooterController;
 use App\Http\Controllers\Api\HeaderController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\GuideController;
+use App\Http\Controllers\Api\GuideListController;
 use App\Models\Admin;
 use App\Models\Home;
 
@@ -31,7 +33,7 @@ Route::get('/test', function () {
 
 //------------------------------CRUD Footer-----------------------------------
 Route::get('/get-footer', [FooterController::class, 'show']);
-Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần 
+Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 
 
@@ -52,3 +54,15 @@ Route::get('/get-home', [HomeController::class, 'index']);
 Route::post('/post-home', [HomeController::class, 'store']);
 Route::delete('/delete-home/{id}', [HomeController::class, 'destroy']);
 Route::patch('/patch-home/{id}', [HomeController::class, 'update']);
+
+//-----------------------------Guide page-------------------------------------
+Route::get('/get-guide', [GuideController::class, 'index']);
+Route::post('/post-guide', [GuideController::class, 'store']);
+Route::patch('/patch-guide/{id}', [GuideController::class, 'update']);
+
+//-----------------------------List of guide page------------------------------
+Route::get('/get-items', [GuideListController::class, 'index']);
+Route::get('/get-items/{id}', [GuideListController::class, 'show']);
+Route::post('/post-items', [GuideListController::class, 'store']);
+Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
+Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
