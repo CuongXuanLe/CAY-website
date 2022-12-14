@@ -69,11 +69,11 @@ const GuideContent = () => {
         const url ="http://127.0.0.1:8000/api/patch-guide/1";
         const formData = {
             rent_cost: rentCost, 
-            depositCost: depositCost, 
-            depositInfo: depositInfo, 
-            imgQR: imgQR, 
-            link: link_fb, 
-            stuImg: stuImg, 
+            deposit_cost: depositCost, 
+            deposit_information: depositInfo, 
+            qr_image: imgQR, 
+            link_fb: link_fb, 
+            img_studio: stuImg, 
         };
         console.log(formData);
         await axios
@@ -86,6 +86,7 @@ const GuideContent = () => {
                 console.log(err);
                 alert("service error");
             });
+            window.location.reload(false);
     }
     
     
@@ -104,8 +105,8 @@ const GuideContent = () => {
                                 className="h-auto py-1 w-full outline-none" 
                                 placeholder={guideDetail.rent_cost} 
                                 type="text"
-                                value={depositCost}
-                                onChange={(event) => getDepositCost(event.target.value)} 
+                                value={rentCost}
+                                onChange={(event) => getRentCost(event.target.value)} 
                                 maxLength={200}/>
                             <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
                                 <BsPencil/>
@@ -117,8 +118,8 @@ const GuideContent = () => {
                         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
                             <input 
                                 className="h-auto py-1 w-full outline-none"
-                                value={rentCost}
-                                onChange={(event) => getRentCost(event.target.value)}  
+                                value={depositCost}
+                                onChange={(event) => getDepositCost(event.target.value)}  
                                 placeholder={guideDetail.deposit_cost} 
                                 type="text" maxLength={200}/>
                             <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
