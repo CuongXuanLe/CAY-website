@@ -1,6 +1,6 @@
 import React from "react";
-import { Navbar } from "./components";
-import { Home } from "./page";
+import { Navbar, GuideRental, Footer, Sidebar } from "./components";
+import { Home, Guide } from "./page";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,10 +8,12 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
+          <Route path="/guide/*" element={<Guide />} />
         </Routes>
+        <Footer />
+        <Sidebar />
       </Router>
     </div>
   );

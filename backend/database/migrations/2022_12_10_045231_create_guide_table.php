@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('home', function (Blueprint $table) {
+        Schema::create('guide', function (Blueprint $table) {
             $table->id();
-            $table->string('title1');
-            $table->text('description1');
-            $table->string('subtitle1');
-            $table->string('background1');
-            $table->text('description2');
-            $table->string('background2');
-            $table->string('imgAbout');
-            $table->text('descriptionAbout');
+            $table->string('rent_cost')->nullable();
+            $table->string('deposit_cost')->nullable();
+            $table->string('deposit_information')->nullable();
+            $table->string('qr_image')->nullable();
+            $table->string('link_fb')->nullable();
+            $table->string('img_studio')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home');
+        Schema::dropIfExists('guide');
     }
 };

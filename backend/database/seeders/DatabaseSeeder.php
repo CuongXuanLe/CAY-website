@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(vp_admin::class);
+        $this->call([
+            vp_admin::class,
+            vp_header::class,
+            vp_footer::class,
+            vp_home::class,
+            vp_contact::class
+        ]);
     }
 }

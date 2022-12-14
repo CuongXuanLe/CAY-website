@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Home;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $home = Home::all();
+        $contact = Contact::all();
         return response()->json([
             'status' => true,
-            'message' => 'Get home duoc roi hehe',
-            'data' => $home,
+            'message' => 'Get contact duoc roi hehe',
+            'data' => $contact,
         ]);
     }
 
@@ -44,31 +44,25 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title1' => ['string'],
-            'description1' => ['string'],
-            'subtitle1' => ['string'],
-            'background1' => ['string'],
-            'description2' => ['string'],
-            'background2' => ['string'],
-            'imgAbout' => ['string'],
-            'descriptionAbout' => ['string'] 
+            'phone_number' => ['string'],
+            'email' => ['string'],
+            'facebook' => ['string'],
+            'instagram' => ['string'],
+            'address' => ['string'],
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
             $data = [
-                'title1' => $request->title1,
-                'description1' => $request->description1,
-                'subtitle1' => $request->subtitle1,
-                'background1' => $request->background1,
-                'description2' => $request->description2,
-                'background2' => $request->background2,
-                'imgAbout' => $request->imgAbout,
-                'descriptionAbout' => $request->descriptionAbout  
+                'phone_number' => $request->phone_number,  
+                'email' => $request->email,  
+                'facebook' => $request->facebook,  
+                'instagram' => $request->instagram,  
+                'address' => $request->address,  
             ];
             DB::beginTransaction(); 
             try {
-                Home::create($data);
+                Contact::create($data);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -78,14 +72,12 @@ class HomeController extends Controller
                 'status' => true,
                 'message' => 'Successed',
                 'data' => [
-                    'title1' => $request->title1,
-                    'description1' => $request->description1,
-                    'subtitle1' => $request->subtitle1,
-                    'background1' => $request->background1,
-                    'description2' => $request->description2,
-                    'background2' => $request->background2,
-                    'imgAbout' => $request->imgAbout,
-                    'descriptionAbout' => $request->descriptionAbout              ]
+                    'phone_number' => $request->phone_number,  
+                    'email' => $request->email,  
+                    'facebook' => $request->facebook,  
+                    'instagram' => $request->instagram,  
+                    'address' => $request->address,      
+                ]
             ]);
         }
     }
@@ -99,8 +91,8 @@ class HomeController extends Controller
     public function show()
     {
         {
-            $home = Home::first();
-            return response()->json($home);
+            $contact = Contact::first();
+            return response()->json($contact);
         }
     }
 
@@ -124,33 +116,30 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $home = Home::first();
+        $contact = Contact::first();
         $validator = $request->validate(
             [
-                'title1' => ['string'],
-                'description1' => ['string'],
-                'subtitle1' => ['string'],
-                'background1' => ['string'],
-                'description2' => ['string'],
-                'background2' => ['string'],
-                'imgAbout' => ['string'],
-                'descriptionAbout' => ['string'] 
+                'phone_number' => ['string'],
+                'email' => ['string'],
+                'facebook' => ['string'],
+                'instagram' => ['string'],
+                'address' => ['string'],
             ]
         );
 
 
-        if ($home) {
-            $home->update($validator);
-            $home->save();
+        if ($contact) {
+            $contact->update($validator);
+            $contact->save();
             return response()->json([
                 'status' => true,
-                'message' => 'Home found.',
-                'data' => $home,
+                'message' => 'Contact found.',
+                'data' => $contact,
             ]);
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Home not found.',
+                'message' => 'Contact not found.',
                 'data' => null,
             ], 404);
         }
@@ -164,8 +153,8 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        $home = Home::findOrFail($id);
-        $home->delete();
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
         $arr = [
             'status' => true,
             'message' => 'Deleted',
