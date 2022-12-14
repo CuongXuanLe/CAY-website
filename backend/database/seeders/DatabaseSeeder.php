@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
             vp_header::class,
             vp_footer::class,
             vp_home::class,
-            vp_contact::class
+            vp_contact::class,
+            vp_guide::class,
+            vp_guideList::class
         ]);
     }
 }
