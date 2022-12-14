@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\FooterController;
 use App\Http\Controllers\Api\HeaderController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\ContactController;
 use App\Models\Admin;
 use App\Models\Home;
 
@@ -52,3 +53,9 @@ Route::get('/get-home', [HomeController::class, 'index']);
 Route::post('/post-home', [HomeController::class, 'store']);
 Route::delete('/delete-home/{id}', [HomeController::class, 'destroy']);
 Route::patch('/patch-home/{id}', [HomeController::class, 'update']);
+
+//------------------------------CRUD Contact-----------------------------------
+Route::get('/get-contact', [ContactController::class, 'index']);
+Route::post('/post-contact', [ContactController::class, 'store']);
+Route::delete('/delete-contact/{id}', [ContactController::class, 'destroy']);
+Route::patch('/patch-contact/{id}', [ContactController::class, 'update']);
