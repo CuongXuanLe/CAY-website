@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class vp_home extends Seeder
+class vp_guideList extends Seeder
 {
     /**
      * Run the database seeds.
