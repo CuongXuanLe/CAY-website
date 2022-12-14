@@ -27,8 +27,7 @@ const GuideRental = ({
                         <a className="text-yellow-500" href={link} alt="facebook"> fanpage </a> hoặc xem lịch trống và đặt lịch tại 
                         <a className="text-yellow-500" href="/"> website </a>, điền thông tin và gửi yêu cầu đặt lịch.
                     </li>
-                    <li>Sau khi gửi yêu cầu, quý bạn vui lòng 
-                    <strong>đặt cọc {deposit}</strong>, 
+                    <li>Sau khi gửi yêu cầu, quý bạn vui lòng <strong>đặt cọc {deposit}</strong>, 
                         sau khi được nhân viên xác nhận lịch sẽ được đặt trên cả 
                         <a className="text-yellow-500" href={link} alt="facebook"> fanpage </a>và
                         <a className="text-yellow-500" href="/"> website</a>, 
