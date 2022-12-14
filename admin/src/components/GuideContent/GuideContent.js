@@ -32,7 +32,7 @@ const GuideContent = () => {
     const [depositCost, getDepositCost] = useState();
     const [depositInfo, getDepositInfo] = useState();
     const [imgQR, getImgQR] = useState();
-    const [link_fb, getLink] = useState();
+    const [link, getLink] = useState();
     const [stuImg, getStuImg] = useState();
 
     useEffect(() =>{
@@ -46,12 +46,13 @@ const GuideContent = () => {
     const guideUrl = "http://127.0.0.1:8000/api/get-guide";
 
     useEffect(() => {
-        async function getHomeData() {
+        async function getGuideData() {
           const res = await axios.get(guideUrl);
           getGuideDetails(res.data.data);
           // console.log(res.data.data)
         }
-        getHomeData();
+        getGuideData();
+        getListTools();
       }, []);
 
     // const getGuideData = async () => {
@@ -69,11 +70,11 @@ const GuideContent = () => {
         const url ="http://127.0.0.1:8000/api/patch-guide/1";
         const formData = {
             rent_cost: rentCost, 
-            depositCost: depositCost, 
-            depositInfo: depositInfo, 
-            imgQR: imgQR, 
-            link: link_fb, 
-            stuImg: stuImg, 
+            deposit_cost: depositCost, 
+            deposit_information: depositInfo, 
+            qr_image: imgQR, 
+            link_fb: link, 
+            img_studio: stuImg, 
         };
         console.log(formData);
         await axios
@@ -86,9 +87,18 @@ const GuideContent = () => {
                 console.log(err);
                 alert("service error");
             });
+        window.location.reload(false);
     }
     
-    
+    const [getItems, setGetItems] = useState([])
+    const url = "http://127.0.0.1:8000/api/get-items"
+    const getListTools = async () => {
+        const res = await axios.get(url)
+        .then(({data}) => {
+            setGetItems(data.data);
+            // console.log(data)
+        })
+    }
     
 
     return (
@@ -104,8 +114,8 @@ const GuideContent = () => {
                                 className="h-auto py-1 w-full outline-none" 
                                 placeholder={guideDetail.rent_cost} 
                                 type="text"
-                                value={depositCost}
-                                onChange={(event) => getDepositCost(event.target.value)} 
+                                value={rentCost || ''}
+                                onChange={(event) => getRentCost(event.target.value)} 
                                 maxLength={200}/>
                             <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
                                 <BsPencil/>
@@ -117,8 +127,8 @@ const GuideContent = () => {
                         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
                             <input 
                                 className="h-auto py-1 w-full outline-none"
-                                value={rentCost}
-                                onChange={(event) => getRentCost(event.target.value)}  
+                                value={depositCost || ''}
+                                onChange={(event) => getDepositCost(event.target.value)}  
                                 placeholder={guideDetail.deposit_cost} 
                                 type="text" maxLength={200}/>
                             <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
@@ -131,7 +141,7 @@ const GuideContent = () => {
                         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
                             <input 
                                 className="h-auto py-1 w-full outline-none" 
-                                value={depositInfo}
+                                value={depositInfo || ''}
                                 onChange={(event) => getDepositInfo(event.target.value)}  
                                 placeholder={guideDetail.deposit_information} 
                                 type="text" 
@@ -148,8 +158,8 @@ const GuideContent = () => {
                                 <img src={imageQR.preview} alt={imageQR.name} width="50%"/>
                                 )} */}
                                 <img 
-                                    // value={imgQR}
-                                    // onChange={(event) => getImgQR(event.target.value)} 
+                                    value={imgQR || ''}
+                                    onChange={(event) => getImgQR(event.target.value)} 
                                     src={guideDetail.qr_image} 
                                     alt="QR_img" 
                                     width="50%"/>
@@ -169,7 +179,7 @@ const GuideContent = () => {
                             <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
                                 <input 
                                     className="h-auto py-1 w-full outline-none" 
-                                    value={link_fb}
+                                    value={link || ''}
                                     onChange={(event) => getLink(event.target.value)}
                                     placeholder={guideDetail.link_fb} 
                                     maxLength={200}/>
@@ -182,7 +192,10 @@ const GuideContent = () => {
                 </div>
                 <p>Option: </p>
                 <div className="px-10 mt-2 mb-10">
-                    <ListItems />
+                    {getItems.length > 0 && getItems.map((getItem) => (
+                        <ListItems key={getItem.id} tools={getItem.item}/>
+                    ))}
+                    
                     <div className="float-right">
                         <button 
                             onClick={() => setAddItem(true)}
@@ -201,7 +214,7 @@ const GuideContent = () => {
                         <div className="h-auto p-5 w-full border-2 border-black rounded">
                             {/* {imageQR && ( <img src={imageQR.preview} alt={imageQR.name} width="50%"/>)} */}
                             <img 
-                                value={stuImg}
+                                value={stuImg || ''}
                                 onChange={(event) => getStuImg(event.target.value)}
                                 src={guideDetail.img_studio} 
                                 alt="studio_image"
