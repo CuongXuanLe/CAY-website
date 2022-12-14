@@ -2,6 +2,7 @@ import { BsPencil } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 
 
+
 const ListItems = () => {
     return(
         <div className="flex justify-between items-center border-2 border-black px-2 py-1 rounded mb-2">
