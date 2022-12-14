@@ -17,7 +17,12 @@ class FooterController extends Controller
      */
     public function index()
     {
-        //
+        $footer = Footer::all();
+        return response()->json([
+            'status' => true,
+            'message' => 'Get footer duoc roi hehe',
+            'data' => $footer,
+        ]);
     }
 
     /**

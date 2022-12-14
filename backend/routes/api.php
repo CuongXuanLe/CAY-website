@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ContactController;
 use App\Models\Admin;
+use App\Models\Footer;
 use App\Models\Home;
 
 /*
@@ -31,7 +32,8 @@ Route::get('/test', function () {
 
 
 //------------------------------CRUD Footer-----------------------------------
-Route::get('/get-footer', [FooterController::class, 'show']);
+Route::get('/get-footer', [FooterController::class, 'index']);
+Route::get('/show-footer', [FooterController::class, 'show']);
 Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần 
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 

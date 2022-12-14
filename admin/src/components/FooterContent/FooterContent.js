@@ -17,7 +17,7 @@ const FooterContent = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("http://127.0.0.1:8000/api/get-footer"); // id set cứng nha mọi người vì chỉ có 1 footer
+      const res = await axios.get("http://127.0.0.1:8000/api/show-footer"); // id set cứng nha mọi người vì chỉ có 1 footer
       setPosts(res.data);
       console.log(res.data);
     };
