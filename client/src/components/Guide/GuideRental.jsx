@@ -1,11 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 
-const GuideRental = () => {
+const GuideRental = ({
+    cost,
+    deposit,
+    depositInfo,
+    qrImg,
+    link}) => {
+
+    useEffect(() => {
+        document.title = "Rental";
+    },[]);
+    
     return(
         <>
             <p className="text-center text-2xl mb-16"><strong>Services Information at Cay Stu.</strong></p>
             <div>
-                <p className="font-bold mb-3">[Giá thuê studio] --- 150.000/giờ</p>
+                <p className="font-bold mb-3">[Giá thuê studio] --- {cost}/giờ</p>
                 <ul className="list-disc px-5">
                     <li>Cho thuê và sử dụng tính theo giờ và <strong>chưa bao gồm thuế VAT</strong>.</li>
                     <li>Thuê từ 2 tiếng trở lên sẽ được <strong>miễn phí 30 phút</strong> chuẩn bị.</li>
@@ -14,22 +24,23 @@ const GuideRental = () => {
                 <p className="font-bold mb-3">[Đặt lịch thuê]</p>
                 <ul className="list-decimal px-4">
                     <li>Nhắn tin trước tiếp qua
-                        <a className="text-yellow-500" href="https://www.facebook.com/CAYYYYYYYY.studio" alt="facebook"> fanpage </a> hoặc xem lịch trống và đặt lịch tại 
+                        <a className="text-yellow-500" href={link} alt="facebook"> fanpage </a> hoặc xem lịch trống và đặt lịch tại 
                         <a className="text-yellow-500" href="/"> website </a>, điền thông tin và gửi yêu cầu đặt lịch.
                     </li>
-                    <li>Sau khi gửi yêu cầu, quý bạn vui lòng <strong>đặt cọc 100.000</strong>, 
+                    <li>Sau khi gửi yêu cầu, quý bạn vui lòng 
+                    <strong>đặt cọc {deposit}</strong>, 
                         sau khi được nhân viên xác nhận lịch sẽ được đặt trên cả 
-                        <a className="text-yellow-500" href="https://www.facebook.com/CAYYYYYYYY.studio" alt="facebook"> fanpage </a>và
+                        <a className="text-yellow-500" href={link} alt="facebook"> fanpage </a>và
                         <a className="text-yellow-500" href="/"> website</a>, 
                         bạn đã hoàn thành đặt lịch thuê và có thể kiểm tra lịch đã đặt trong lịch studio
                     </li>
                     <li>Hoàn thành thanh toán phí thuê studio cuối buổi chụp.</li>
-                    <li>Để được tư vấn trước khi đặt lịch một cách kĩ càng và nhanh chóng, hãy nhắn tin trực tiếp tại <a className="text-yellow-500" href="https://www.facebook.com/CAYYYYYYYY.studio" alt="facebook">fanpage CAY studio</a></li>
+                    <li>Để được tư vấn trước khi đặt lịch một cách kĩ càng và nhanh chóng, hãy nhắn tin trực tiếp tại <a className="text-yellow-500" href={link} alt="facebook">fanpage CAY studio</a></li>
                 </ul>
                 <hr className="my-8"/>
                 <p className="font-bold mb-3">[Thông tin đặt cọc]</p>
-                <p>07 772 552 752 TP Bank - Nguyễn Minh Đức</p>
-                <img className="w-56 h-56" src="https://i.pinimg.com/originals/60/c1/4a/60c14a43fb4745795b3b358868517e79.png" alt="QR_Img"/>
+                <p>{depositInfo}</p>
+                <img className="w-36 h-36" src={qrImg} alt="QR_Img"/>
                 <hr className="my-8"/>
                 <p className="font-bold mb-3">[Thời gian đặt lịch]</p>
                 <ul className="list-disc px-5">

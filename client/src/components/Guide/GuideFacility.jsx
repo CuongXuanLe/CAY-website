@@ -1,9 +1,16 @@
-const GuideFacility = () => {
+import React, {useEffect} from 'react'
+
+const GuideFacility = ({stuImg}) => {
+    useEffect(() => {
+        document.title = "Facility";
+    });
+
+
     return (
         <>
             <p className="text-center text-2xl mb-16"><strong>Studio space map</strong></p>
             <div>
-                <img className="mx-auto" src="https://anlocgroup.com/wp-content/uploads/2020/09/thiet-ke-can-ho-30m2-voi-noi-that-thong-minh-1.jpg" alt="space studio"/>
+                <img className="mx-auto" src={stuImg} alt="space studio"/>
             </div>
             <hr className="my-8"/>
             <p className="font-bold mb-4">[Hướng dẫn]</p>
