@@ -37,8 +37,6 @@ const GuideContent = () => {
 
     useEffect(() =>{
         document.title = "Guide Page";
-        // getGuideData();
-        // updateGuide();
     }, []);
 
     //get data from api
@@ -55,17 +53,8 @@ const GuideContent = () => {
         getListTools();
       }, []);
 
-    // const getGuideData = async () => {
-    //     const res = await axios.get(guideUrl)
-    //     .then(({data}) => {
-    //         getGuideDetails(data.data)
-    //         console.log(data);
-    //     })
-    // }
-
     const updateGuide = async (e) => {
         e.preventDefault();
-
         //call api
         const url ="http://127.0.0.1:8000/api/patch-guide/1";
         const formData = {
@@ -89,7 +78,7 @@ const GuideContent = () => {
             });
         window.location.reload(false);
     }
-    
+
     const [getItems, setGetItems] = useState([])
     const url = "http://127.0.0.1:8000/api/get-items"
     const getListTools = async () => {
@@ -99,7 +88,6 @@ const GuideContent = () => {
             // console.log(data)
         })
     }
-    
 
     return (
         <>
