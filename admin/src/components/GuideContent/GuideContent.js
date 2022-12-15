@@ -193,7 +193,7 @@ const GuideContent = () => {
                 <p>Option: </p>
                 <div className="px-10 mt-2 mb-10">
                     {getItems.length > 0 && getItems.map((getItem) => (
-                        <ListItems key={getItem.id} tools={getItem.item}/>
+                        <ListItems key={getItem.id} tools={getItem.item} index={getItem.id}/>
                     ))}
                     
                     <div className="float-right">
