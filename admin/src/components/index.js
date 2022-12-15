@@ -19,5 +19,4 @@ import GuideContent from "./GuideContent/GuideContent";
 import ListItems from "./GuideContent/ListItems";
 import AddItem from "./GuideContent/AddItem";
 
-
-export { AdminNav, ToggleSettings, HomeHeader, ChangePwd, NavContent, FooterContent, GuideContent, ListItems, AddItem};
+export { AdminNav, ToggleSettings, HomeHeader, ChangePwd, NavContent, FooterContent, GuideContent, ListItems, AddItem };
