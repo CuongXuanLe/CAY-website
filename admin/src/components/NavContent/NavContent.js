@@ -5,6 +5,7 @@ import axios from "axios";
 const NavContent = () => {
   const [imageLogo, setImageLogo] = useState();
   const [nameLogo, setNameLogo] = useState();
+  
 
   const handlePreviewImageLogo = (e) => {
     const file = e.target.files[0];
@@ -27,14 +28,14 @@ const NavContent = () => {
   const handleApi = async (e) => {
     e.preventDefault();
     //call api
-    const url = "http://127.0.0.1:8000/api/patch-header/7";
+    const url = "http://127.0.0.1:8000/api/update-header/31";
     const formData = {
       logo_img: imageLogo,
       logo_name: nameLogo,
     };
     console.log(formData);
     axios
-      .patch(url, formData)
+      .post(url, formData)
       .then((res) => {
         console.log(res.data);
         alert("success");
