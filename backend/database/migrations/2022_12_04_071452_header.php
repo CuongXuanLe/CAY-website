@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('header', function (Blueprint $table) {
             $table->id();
+            $table->string('logo_name')->nullable();
             $table->string('logo_img')->nullable();
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Header;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -39,29 +40,56 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        $vadidator = Validator::make($request->all(), [
-            'logo_img' => ['string'],
+        $images = new Header();
+        $request->validate([
+            'logo_img' => 'required|max:1024',
+            'logo_name' => 'required'
         ]);
-        if ($vadidator->fails()) {
-            return response()->json($vadidator->messages(), 400);
+
+        $filename = "";
+        if ($request->hasFile('logo_img')) {
+            $filename = $request->file('logo_img')->store('posts', 'public');
         } else {
-            $data = [
-                'logo_img' => $request->logo_img,
-            ];
-            DB::beginTransaction();
-            try {
-                Header::create($data);
-                DB::commit();
-            } catch (\Exception $e) {
-                DB::rollBack();
-                p($e->getMessage());
-            }
+            $filename = Null;
+        }
+
+        $images->logo_img = $filename;
+        $images->logo_name = $request->logo_name;
+        $result = $images->save();
+
+        if ($result) {
             return response()->json([
-                'status' => true,
-                'message' => 'Successed',
-                'data' => []
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false
             ]);
         }
+
+        // $vadidator = Validator::make($request->all(), [
+        //     'logo_img' => ['string'],
+        // ]);
+        // if ($vadidator->fails()) {
+        //     return response()->json($vadidator->messages(), 400);
+        // } else {
+        //     $data = [
+        //         'logo_img' => $request->logo_img,
+        //     ];
+        //     DB::beginTransaction();
+        //     try {
+        //         Header::create($data);
+        //         DB::commit();
+        //     } catch (\Exception $e) {
+        //         DB::rollBack();
+        //         p($e->getMessage());
+        //     }
+        //     return response()->json([
+        //         'status' => true,
+        //         'message' => 'Successed',
+        //         'data' => []
+        //     ]);
+        // }
     }
 
     /**
@@ -84,7 +112,8 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $images = Header::findOrFail($id);
+        return response()->json($images);
     }
 
     /**
@@ -94,29 +123,29 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $header = Header::first();
-        $vadidator = $request->validate(
-            [
-                'logo_img' => ['string'],
-            ]
-        );
+        $images = Header::findOrFail($id);
 
-        if ($header) {
-            $header->update($vadidator);
+        $destination = public_path("storage\\" . $images->logo_img);
+        $filename = "";
+        if ($request->hasFile('new_image')) {
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
 
-            return response()->json([
-                'status' => true,
-                'message' => 'Header found.',
-                'data' => $header,
-            ]);
+            $filename = $request->file('new_image')->store('posts', 'public');
         } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'Header not found.',
-                'data' => null,
-            ], 404);
+            $filename = $request->logo_img;
+        }
+
+        $images->logo_name = $request->logo_name;
+        $images->logo_img = $filename;
+        $result = $images->save();
+        if ($result) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
         }
     }
 
