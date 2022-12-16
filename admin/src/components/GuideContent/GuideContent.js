@@ -62,7 +62,7 @@ const GuideContent = () => {
             deposit_cost: depositCost, 
             deposit_information: depositInfo, 
             qr_image: imgQR, 
-            link_fb: link, 
+            link_fb: link,
             img_studio: stuImg, 
         };
         console.log(formData);
@@ -183,7 +183,6 @@ const GuideContent = () => {
                     {getItems.length > 0 && getItems.map((getItem) => (
                         <ListItems key={getItem.id} tools={getItem.item} index={getItem.id}/>
                     ))}
-                    
                     <div className="float-right">
                         <button 
                             onClick={() => setAddItem(true)}
