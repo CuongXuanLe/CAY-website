@@ -42,10 +42,10 @@ Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
 
 
 //------------------------------CRUD Header-----------------------------------
-Route::get('/get-header', [HeaderController::class, 'index']);
-Route::post('/post-header', [HeaderController::class, 'store']);
-Route::delete('/delete-header/{id}', [HeaderController::class, 'destroy']);
-Route::patch('/patch-header', [HeaderController::class, 'update']);
+Route::get('/get-header', [HeaderController::class, 'show']);
+Route::post('/post-header', [HeaderController::class, 'store']); // Tạo 1 lần 
+Route::patch('/edit-header/{id}', [HeaderController::class, 'edit']);
+Route::post('/update-header/{id}', [HeaderController::class, 'update']);
 
 //------------------------------CRUD Admin-----------------------------------
 Route::get('/get-admin', [AdminController::class, 'index']);
