@@ -23,7 +23,7 @@ const GuidePage = () => {
     }
     return(
         <>
-            <div className='pt-32 h-screen w-4/5 mx-auto'>
+            <div className='pt-32 w-4/5 mx-auto relative mb-20'>
                 <GuideNav/>
                 {guideData.length > 0 && guideData.map((guideDB, key) => (    
                     <div key={key}>
