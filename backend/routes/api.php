@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\GuideListController;
+use App\Http\Controllers\Api\AuthController;
 use App\Models\Admin;
 use App\Models\Footer;
 use App\Models\Home;
@@ -46,11 +47,11 @@ Route::post('/post-header', [HeaderController::class, 'store']);
 Route::delete('/delete-header/{id}', [HeaderController::class, 'destroy']);
 Route::patch('/patch-header', [HeaderController::class, 'update']);
 
-
+//------------------------------CRUD Admin-----------------------------------
 Route::get('/get-admin', [AdminController::class, 'index']);
-Route::put('/post-admin/{id}', [AdminController::class, 'update']);
-Route::post('/change-password/{id}', [AdminController::class], 'changePassword');
-Route::patch('/change-password/{id}', [AdminController::class], 'changePassword');
+Route::post('/change-password/{id}', [AdminController::class, 'update']);
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 //------------------------------CRUD Home-----------------------------------
 Route::get('/get-home', [HomeController::class, 'index']);
@@ -76,4 +77,3 @@ Route::get('/get-items/{id}', [GuideListController::class, 'show']);
 Route::post('/post-items', [GuideListController::class, 'store']);
 Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
 Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
-
