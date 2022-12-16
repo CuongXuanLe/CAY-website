@@ -49,7 +49,7 @@ const NavContent = () => {
   return (
     <div className="text-xl">
       <p>Navbar: </p>
-      <div className="px-10 mt-2">
+        <div className="px-10 mt-2">
         <div className="mb-2">
           <p className="mb-3">Logo Image:</p>
           <div className="h-auto p-5 w-full border-2 border-black rounded">
