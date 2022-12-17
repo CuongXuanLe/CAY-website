@@ -18,7 +18,7 @@ const Schedule = () => {
       </div>
 
       {/* Table of Calendar */}
-      <div className="w-[80%]">
+      <div className="w-full p-0">
         <Month month={currentMonth} />
       </div>
     </React.Fragment>
