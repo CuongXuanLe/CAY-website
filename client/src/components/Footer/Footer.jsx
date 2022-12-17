@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="mt-4 p-7 w-full border-t-[2px] border-[#E0E0E0]">
+      <div className="mt-4 w-full border-t-[2px] border-[#E0E0E0] p-7">
         <div className="grid h-24 grid-cols-4 items-center">
           <div className="mx-auto w-[60%]">
             {footercontents &&

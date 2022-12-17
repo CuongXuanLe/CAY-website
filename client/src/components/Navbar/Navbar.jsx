@@ -24,7 +24,7 @@ const Navbar = () => {
   });
 
   //activeLink
-  const activeLink = 'border-b-2 border-[#B1816F]';
+  const activeLink = "border-b-2 border-[#B1816F]";
 
   return (
     <>
@@ -65,35 +65,50 @@ const Navbar = () => {
             className={`absolute h-3/4 font-normal tracking-[.2em] transition-all duration-500 ease-in sm:hidden md:static md:flex `}
           >
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/home" className={({isActive}) => (isActive ? activeLink : "")}>
+              <NavLink
+                to="/home"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   HOME
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/guide" className={({isActive}) => (isActive ? activeLink : "")}> 
+              <NavLink
+                to="/guide"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   GUIDE
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/schedule" className={({isActive}) => (isActive ? activeLink : "")}>
+              <NavLink
+                to="/schedule"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   SCHEDULE
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/portfolio" className={({isActive}) => (isActive ? activeLink : "")}>
+              <NavLink
+                to="/portfolio"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   PORTFOLIO
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/contact" className={({isActive}) => (isActive ? activeLink : "")}>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   CONTACT
                 </span>
