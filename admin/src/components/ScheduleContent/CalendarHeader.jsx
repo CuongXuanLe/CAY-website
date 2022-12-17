@@ -16,7 +16,8 @@ const CalendarHeader = () => {
     setMonthIndex(monthIndex + 1);
   }
   return (
-    <header className="flex items-center py-1">
+    <header className="flex justify-between ">
+    <div className="flex items-center py-1">
       <div className="rounded-full bg-[#a7705c] p-2 text-xl text-white">
         <AiOutlineCalendar />
       </div>
@@ -39,6 +40,10 @@ const CalendarHeader = () => {
           <AiOutlineArrowRight />
         </button>
       </div>
+    </div>
+      <button className="w-15 bg-[#a7705c] py-3 px-5 h-12 rounded-3xl text-white font-bold hover:text-[#a7705c] hover:bg-white hover:border-[#a7705c] border-[1px] ease-in duration-300">
+        Booking now
+      </button>
     </header>
   );
 };
