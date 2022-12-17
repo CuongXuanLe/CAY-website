@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, GuideRental, Footer, Sidebar } from "./components";
+import { Navbar, Footer, Sidebar } from "./components";
 import { Home, Guide } from "./page";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
