@@ -30,7 +30,7 @@ const GuideOption = () => {
             <ul className="list-disc px-5">
                 <li>Nếu bạn muốn đến xem trước không gian studio, vui lòng kiểm tra lịch trống và liên hệ CAY</li>
                 <li>Khi xảy ra hư hỏng trong quá trình chụp, bạn vui lòng bồi thường 70% giá trị cho cơ sở vật chất, đạo cụ và máy móc bị thiệt hại đó.</li>
-                <li>Camera quan sát được lắp đặt trong studio để đảm bảo an toàn và chống trộm.</li>   
+                <li>Camera quan sát được lắp đặt trong studio để đảm bảo an toàn.</li>   
             </ul>
         </>
     )

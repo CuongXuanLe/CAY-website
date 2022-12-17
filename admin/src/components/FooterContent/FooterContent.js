@@ -28,7 +28,7 @@ const FooterContent = () => {
     e.preventDefault();
 
     //call api
-    const url = "http://127.0.0.1:8000/api/patch-footer/3"; // id set cứng nha mọi người vì chỉ có 1 footer
+    const url = "http://127.0.0.1:8000/api/patch-footer/1"; // id set cứng nha mọi người vì chỉ có 1 footer
     const formData = {
       name: nameStudio,
       address: address,
@@ -57,7 +57,7 @@ const FooterContent = () => {
           <input
             className="h-auto py-1 w-full outline-none"
             placeholder={posts.name}
-            value={nameStudio}
+            value={nameStudio || ''}
             onChange={(event) => {
               setNameStudio(event.target.value);
             }}
@@ -75,7 +75,7 @@ const FooterContent = () => {
           <input
             className="h-auto py-1 w-full outline-none"
             placeholder={posts.address}
-            value={address}
+            value={address || ''}
             onChange={(event) => {
               setAddress(event.target.value);
             }}
@@ -93,7 +93,7 @@ const FooterContent = () => {
           <input
             className="h-auto py-1 w-full outline-none"
             placeholder={posts.phone_number}
-            value={phone}
+            value={phone || ''}
             onChange={(event) => {
               setPhone(event.target.value);
             }}
@@ -111,7 +111,7 @@ const FooterContent = () => {
           <input
             className="h-auto py-1 w-full outline-none"
             placeholder={posts.email}
-            value={addressEmail}
+            value={addressEmail || ''}
             onChange={(event) => {
               setAddressEmail(event.target.value);
             }}

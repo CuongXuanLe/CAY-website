@@ -19,7 +19,11 @@ class HeaderController extends Controller
     public function index()
     {
         $header = Header::all();
-        return response()->json($header);
+        return response()->json([
+            'status' => true,
+            'message' => 'Get footer duoc roi hehe',
+            'data' => $header,
+        ]);
     }
 
     /**
