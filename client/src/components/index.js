@@ -10,4 +10,14 @@ import GuideRental from "./Guide/GuideRental";
 import GuideFacility from "./Guide/GuideFacility";
 import GuideOption from "./Guide/GuideOption";
 
-export { Navbar, Slider, Blog, Footer, Sidebar, GuideNav, GuideRental, GuideFacility, GuideOption };
+export {
+  Navbar,
+  Slider,
+  Blog,
+  Footer,
+  Sidebar,
+  GuideNav,
+  GuideRental,
+  GuideFacility,
+  GuideOption,
+};

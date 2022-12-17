@@ -66,7 +66,7 @@ const Sidebar = () => {
           className={`h-7 w-7 text-white ${
             openSidebar
               ? " duration-[600ms] ease-in-out"
-              : "duration-[600ms] ease-in-out -rotate-180"
+              : "-rotate-180 duration-[600ms] ease-in-out"
           }`}
         />
       </button>
