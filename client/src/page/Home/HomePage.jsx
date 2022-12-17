@@ -36,7 +36,7 @@ const Home = () => {
                     {content.title1}
                   </span>
                 ))}
-              <div className="mb-7"/>
+              <div className="mb-7" />
               {contents &&
                 contents.map((content) => (
                   <h2
@@ -47,10 +47,10 @@ const Home = () => {
                   </h2>
                 ))}
             </h1>
-            <div className="mb-7"/>
+            <div className="mb-7" />
             {contents &&
               contents.map((content) => (
-                <p key={content.id} className="w-[55%] font-normal text-lg">
+                <p key={content.id} className="w-[55%] text-lg font-normal">
                   {content.description1}
                 </p>
               ))}
