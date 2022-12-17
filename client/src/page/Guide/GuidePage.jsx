@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Sidebar, GuideNav, GuideRental, GuideOption, GuideFacility } from "../../components";
+import { GuideNav, GuideRental, GuideOption, GuideFacility } from "../../components";
 import {
     Routes,
     Route,
@@ -46,7 +46,6 @@ const GuidePage = () => {
                     </div>
                 ))}
             </div>
-            <Sidebar />
         </>
     )
 }
