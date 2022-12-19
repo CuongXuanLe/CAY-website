@@ -145,45 +145,50 @@ const HomeContent = () => {
         </div>
 
         <div className="mb-5">
-          <p className="mb-3">Title: </p>
           <div className="flex items-center justify-between">
-            <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-              {homedatas.map((homedata) => (
-                <input
-                  key={homedata.id}
-                  className="h-auto w-full py-1 outline-none"
-                  value={title1}
-                  onChange={(event) => {
-                    setTitle1(event.target.value);
-                  }}
-                  placeholder={homedata.title1}
-                  type="text"
-                  maxLength={200}
-                />
-              ))}
-              <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
-                <BsPencil />
-              </button>
+            <div className="w-5/12">
+              <p className="mb-3">Title: </p>
+              <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+                {homedatas.map((homedata) => (
+                  <input
+                    key={homedata.id}
+                    className="h-auto w-full py-1 outline-none"
+                    value={title1}
+                    onChange={(event) => {
+                      setTitle1(event.target.value);
+                    }}
+                    placeholder={homedata.title1}
+                    type="text"
+                    maxLength={200}
+                  />
+                ))}
+                <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
+                  <BsPencil />
+                </button>
+              </div>
             </div>
             <div className="w-10 border-b-2 border-black"></div>
-            <div className="flex w-5/12 flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-              {homedatas.map((homedata) => (
-                <input
-                  key={homedata.id}
-                  className="h-auto w-full py-1 outline-none"
-                  placeholder={homedata.subtitle1}
-                  value={subtitle1}
-                  onChange={(event) => {
-                    setSubtitle1(event.target.value);
-                  }}
-                  type="text"
-                  maxLength={100}
-                />
-              ))}
+            <div className="w-5/12 ">
+              <p className="mb-3">Subtitle</p>
+              <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+                {homedatas.map((homedata) => (
+                  <input
+                    key={homedata.id}
+                    className="h-auto w-full py-1 outline-none"
+                    placeholder={homedata.subtitle1}
+                    value={subtitle1}
+                    onChange={(event) => {
+                      setSubtitle1(event.target.value);
+                    }}
+                    type="text"
+                    maxLength={100}
+                  />
+                ))}
 
-              <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
-                <BsPencil />
-              </button>
+                <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
+                  <BsPencil />
+                </button>
+              </div>
             </div>
           </div>
         </div>
