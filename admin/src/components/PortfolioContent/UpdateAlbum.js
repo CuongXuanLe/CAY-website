@@ -2,9 +2,9 @@ import { BsPencil } from "react-icons/bs";
 import React, { useState, useEffect } from "react";
 import { BiUpload, BiCheck } from "react-icons/bi";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const CreateAlbum = () => {
+const UpdateAlbum = () => {
   const [thumbImg, setThumbImg] = useState();
   // const [nameThumb, setNameThumb] = useState();
   const [listImg, setListImg] = useState([]);
@@ -68,14 +68,14 @@ const CreateAlbum = () => {
   };
   return (
     <div className="text-xl">
-      <p>Create album: </p>
+      <p>Update album: </p>
       <div className="mt-2 px-10">
         <div className="mb-3">
           <p className="mb-3">Name album:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
               className="h-auto w-full py-1 outline-none"
-              placeholder="Name album"
+              placeholder="The first name of the album"
               type="text"
               // value={//state || ""}
               // onChange={(event) => setState(event.target.value)}
@@ -91,7 +91,7 @@ const CreateAlbum = () => {
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
               className="h-auto w-full py-1 outline-none"
-              placeholder="Category"
+              placeholder="Flower"
               type="text"
               // value={//state || ""}
               // onChange={(event) => setState(event.target.value)}
@@ -154,7 +154,7 @@ const CreateAlbum = () => {
               />
             </button>
           </div>
-            {/* <button onClick={handleApi} className="flex items-center float-right px-10 py-2 justify-center text-white bg-[#a7705c] mt-6 rounded hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Save </button> */}
+            {/* <button onClick={handleApi} className="flex items-center float-right px-10 py-2 justify-center text-white bg-[#a7705c] mt-6 rounded hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Update </button> */}
             <div className="mt-10 flex flex-row justify-end">
             <Link to="/AdminPortfolio">
               <button className="flex h-10 w-48 items-center justify-center rounded border-black bg-gray-300 hover:border-2 hover:bg-black hover:text-white ">
@@ -170,11 +170,11 @@ const CreateAlbum = () => {
                 <BiCheck className="mr-1 text-2xl" /> Save{" "}
               </button>
             </Link>
-            </div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default CreateAlbum
+export default UpdateAlbum

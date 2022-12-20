@@ -27,7 +27,9 @@ const PortfolioContent = () => {
                         <p>Date created: 20/11/2022</p>
                         <p>Category: Flower</p>
                         <div className="absolute bottom-2 right-2 text-md">
-                            <button className="py-1 px-5 border border-black hover:bg-black hover:text-white rounded">Update</button>
+                            <Link to="/adminPortfolio/updateAlbum">
+                                <button className="py-1 px-5 border border-black hover:bg-black hover:text-white rounded">Update</button>
+                            </Link>
                             <button onClick={() => setDelItem(true)} className="py-1 px-5 ml-2 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded">Delete</button>
                             <AlertDel onClose={handleDelItem} visible={delItem} />
                         </div>
