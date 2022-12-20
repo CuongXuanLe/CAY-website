@@ -17,10 +17,10 @@ class FooterController extends Controller
      */
     public function index()
     {
-        $footer = Footer::all();
+        $footer = Footer::first();
         return response()->json([
             'status' => true,
-            'message' => 'Get footer duoc roi hehe',
+            'message' => 'Get',
             'data' => $footer,
         ]);
     }
@@ -110,9 +110,9 @@ class FooterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $footer = Footer::first();
+        $footer = Footer::find($id);
         $validator = $request->validate(
             [
                 'name' => ['string'],

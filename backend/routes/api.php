@@ -11,9 +11,11 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\GuideListController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AdminPortfolioController;
 use App\Models\Admin;
 use App\Models\Footer;
 use App\Models\Home;
+use App\Models\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,6 @@ Route::get('/test', function () {
 
 
 //------------------------------CRUD Footer-----------------------------------
-Route::get('/get-footer', [FooterController::class, 'index']);
 Route::get('/show-footer', [FooterController::class, 'show']);
 Route::post('/post-footer', [FooterController::class, 'store']); // Tạo 1 lần
 Route::patch('/patch-footer/{id}', [FooterController::class, 'update']);
@@ -77,3 +78,8 @@ Route::get('/get-items/{id}', [GuideListController::class, 'show']);
 Route::post('/post-items', [GuideListController::class, 'store']);
 Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
 Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
+
+//-----------------------------Admin Portfolio------------------------------
+Route::get('/portfolio', [AdminPortfolioController::class, 'index']);
+Route::post('/add-portfolio', [AdminPortfolioController::class, 'store']);
+Route::get('/portfolio-images/{id}', [AdminPortfolioController::class, 'images']);
