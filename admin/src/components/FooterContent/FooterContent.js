@@ -11,6 +11,8 @@ const FooterContent = () => {
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [addressEmail, setAddressEmail] = useState();
+  const [facebook, setFacebook] = useState();
+  const [instagram, setInstagram] = useState();
 
   useEffect(() => {
     const getPost = async () => {
@@ -32,6 +34,8 @@ const FooterContent = () => {
       address: address,
       phone_number: phone,
       email: addressEmail,
+      facebook: facebook,
+      instagram: instagram,
     };
     console.log(formData);
     axios
@@ -123,8 +127,48 @@ const FooterContent = () => {
         </div>
       </div>
 
-      <div className="mt-10 flex flex-row justify-end">
-        <button className="flex h-10 w-48 items-center justify-center rounded border-black bg-gray-300 hover:border-2 hover:bg-black hover:text-white ">
+      <div className="mb-3">
+        <p className="mb-3">Facebook:</p>
+        <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
+          <input
+            className="h-auto py-1 w-full outline-none"
+            placeholder={posts.facebook}
+            value={facebook || ''}
+            onChange={(event) => {
+              setFacebook(event.target.value);
+            }}
+            type="text"
+            required
+            maxLength={100}
+          />
+          <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+            <BsPencil />
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-3">
+        <p className="mb-3">Instagram:</p>
+        <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
+          <input
+            className="h-auto py-1 w-full outline-none"
+            placeholder={posts.instagram}
+            value={instagram || ''}
+            onChange={(event) => {
+              setInstagram(event.target.value);
+            }}
+            type="text"
+            required
+            maxLength={100}
+          />
+          <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+            <BsPencil />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-row justify-end mt-10">
+        <button className="w-48 h-10 flex items-center justify-center bg-gray-300 rounded hover:bg-black hover:text-white hover:border-2 border-black ">
           {" "}
           Cancel{" "}
         </button>
