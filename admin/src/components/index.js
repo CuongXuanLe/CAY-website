@@ -19,4 +19,22 @@ import GuideContent from "./GuideContent/GuideContent";
 import ListItems from "./GuideContent/ListItems";
 import AddItem from "./GuideContent/AddItem";
 
-export { AdminNav, ToggleSettings, HomeHeader, ChangePwd, NavContent, FooterContent, GuideContent, ListItems, AddItem };
+//Portfolio
+import PortfolioContent from "./PortfolioContent/PortfolioContent";
+import AlertDel from "./PortfolioContent/AlertDelete";
+import CreateAlbum from "./PortfolioContent/CreateAlbum";
+
+export { 
+    AdminNav,
+    ToggleSettings,
+    HomeHeader,
+    ChangePwd,
+    NavContent,
+    FooterContent,
+    GuideContent,
+    ListItems,
+    AddItem,
+    PortfolioContent,
+    AlertDel,
+    CreateAlbum
+};
