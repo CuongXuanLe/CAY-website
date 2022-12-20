@@ -47,7 +47,9 @@ class FooterController extends Controller
             'name' => ['string'],
             'address' => ['string'],
             'phone_number' => ['string'],
-            'email' => ['email', 'string']
+            'email' => ['email', 'string'],
+            'facebook' => ['string'],
+            'instagram' => ['string']
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
@@ -56,7 +58,9 @@ class FooterController extends Controller
                 'name' => $request->name,
                 'address' => $request->address,
                 'phone_number' => $request->phone_number,
-                'email' => $request->email
+                'email' => $request->email,
+                'facebook' => $request->facebook,
+                'instagram' => $request->instagram
             ];
             DB::beginTransaction();
             try {
@@ -73,7 +77,9 @@ class FooterController extends Controller
                     'name' => $request->name,
                     'address' => $request->address,
                     'phone_number' => $request->phone_number,
-                    'email' => $request->email
+                    'email' => $request->email,
+                    'facebook' => $request->facebook,
+                    'instagram' => $request->instagram
                 ]
             ]);
         }
@@ -118,7 +124,9 @@ class FooterController extends Controller
                 'name' => ['string'],
                 'address' => ['string'],
                 'phone_number' => ['string'],
-                'email' => ['email', 'string']
+                'email' => ['email', 'string'],
+                'facebook' => ['string'],
+                'instagram' => ['string']
             ]
         );
 

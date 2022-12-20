@@ -16,5 +16,7 @@ class Footer extends Model
         'address',
         'phone_number',
         'email',
+        'facebook',
+        'instagram'
     ];
 }

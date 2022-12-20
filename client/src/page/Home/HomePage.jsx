@@ -104,13 +104,13 @@ const Home = () => {
 
         {/* StartSection3 */}
         <div className="h-[calc(100vh-14rem)] w-full snap-end bg-white">
-          <div className="grid h-3/4 grid-cols-2">
+          <div className="grid h-full grid-cols-2">
             <div className="w-full">
               {contents &&
                 contents.map((content) => (
                   <img
                     key={content.id}
-                    className="h-120 w-full object-cover"
+                    className="h-[70%] w-full object-cover"
                     src={content.imgAbout}
                     alt=""
                   ></img>
