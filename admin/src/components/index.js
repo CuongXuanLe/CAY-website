@@ -23,6 +23,7 @@ import AddItem from "./GuideContent/AddItem";
 import PortfolioContent from "./PortfolioContent/PortfolioContent";
 import AlertDel from "./PortfolioContent/AlertDelete";
 import CreateAlbum from "./PortfolioContent/CreateAlbum";
+import UpdateAlbum from "./PortfolioContent/UpdateAlbum";
 
 export { 
     AdminNav,
@@ -36,5 +37,6 @@ export {
     AddItem,
     PortfolioContent,
     AlertDel,
-    CreateAlbum
+    CreateAlbum,
+    UpdateAlbum
 };

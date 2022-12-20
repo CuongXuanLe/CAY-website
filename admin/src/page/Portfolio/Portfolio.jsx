@@ -1,4 +1,4 @@
-import {AdminNav, PortfolioContent, CreateAlbum} from '../../components';
+import {AdminNav, PortfolioContent, CreateAlbum, UpdateAlbum} from '../../components';
 import React, { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 
@@ -15,8 +15,9 @@ const Portfolio = () => {
                 <strong className="text-3xl">Portfolio</strong>
                 <div className="px-5 pt-10 space-y-10">
                     <Routes>
-                        <Route exact path="/" element={<PortfolioContent />} />
-                        <Route path="/createAlbum" element={<CreateAlbum />} />
+                        <Route exact path="/" element={<PortfolioContent/>} />
+                        <Route path="/createAlbum" element={<CreateAlbum/>} />
+                        <Route path="/updateAlbum" element={<UpdateAlbum/>} />
                     </Routes>
                 </div>
             </div>
