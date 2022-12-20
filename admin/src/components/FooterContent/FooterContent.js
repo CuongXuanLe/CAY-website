@@ -14,6 +14,8 @@ const FooterContent = () => {
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [addressEmail, setAddressEmail] = useState();
+  const [facebook, setFacebook] = useState();
+  const [instagram, setInstagram] = useState();
 
   useEffect(() => {
     const getPost = async () => {
@@ -34,6 +36,8 @@ const FooterContent = () => {
       address: address,
       phone_number: phone,
       email: addressEmail,
+      facebook: facebook,
+      instagram: instagram,
     };
     console.log(formData);
     axios
@@ -116,6 +120,46 @@ const FooterContent = () => {
               setAddressEmail(event.target.value);
             }}
             type="email"
+            required
+            maxLength={100}
+          />
+          <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+            <BsPencil />
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-3">
+        <p className="mb-3">Facebook:</p>
+        <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
+          <input
+            className="h-auto py-1 w-full outline-none"
+            placeholder={posts.facebook}
+            value={facebook || ''}
+            onChange={(event) => {
+              setFacebook(event.target.value);
+            }}
+            type="text"
+            required
+            maxLength={100}
+          />
+          <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+            <BsPencil />
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-3">
+        <p className="mb-3">Instagram:</p>
+        <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
+          <input
+            className="h-auto py-1 w-full outline-none"
+            placeholder={posts.instagram}
+            value={instagram || ''}
+            onChange={(event) => {
+              setInstagram(event.target.value);
+            }}
+            type="text"
             required
             maxLength={100}
           />
