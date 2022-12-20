@@ -19,12 +19,12 @@ const Footer = () => {
 
   return (
     <>
-      <div className="mt-4 w-full border-t-[2px] border-[#E0E0E0]">
+      <div className="mt-4 w-full border-t-[2px] border-[#E0E0E0] p-7">
         <div className="grid h-24 grid-cols-4 items-center">
           <div className="mx-auto w-[60%]">
             {footercontents &&
               footercontents.map((footercontent) => (
-                <h2 className="ml-2 font-lato font-semibold">
+                <h2 className="ml-2 font-lato font-bold">
                   {footercontent.name}
                 </h2>
               ))}
@@ -64,11 +64,6 @@ const Footer = () => {
               <SiGmail className="duration-500 ease-in-out group-hover:text-white" />
             </div>
           </div>
-        </div>
-        <div className="ml-2">
-          <p className="mx-auto w-[90%] font-lato text-sm">
-            2022 All rights reserved Development by CAY studio
-          </p>
         </div>
       </div>
     </>

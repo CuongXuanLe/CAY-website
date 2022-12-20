@@ -28,28 +28,29 @@ const Home = () => {
                 className="z-0 h-full w-full object-cover"
               ></img>
             ))}
-          <div className="absolute bottom-7 left-7">
-            <h1 className="text-3xl font-thin">
+          <div className="absolute bottom-7 left-7 ">
+            <h1 className="text-3xl">
               {contents &&
                 contents.map((content) => (
-                  <span key={content.id} className="font-semibold">
+                  <span key={content.id} className="font-semibold ">
                     {content.title1}
                   </span>
                 ))}
-              <br />
+              <div className="mb-7" />
               {contents &&
                 contents.map((content) => (
                   <h2
                     key={content.id}
-                    className="text-[18px] font-normal tracking-wider"
+                    className="text-[18px] font-light tracking-wider"
                   >
                     {content.subtitle1}
                   </h2>
                 ))}
             </h1>
+            <div className="mb-7" />
             {contents &&
               contents.map((content) => (
-                <p key={content.id} className="w-[55%]">
+                <p key={content.id} className="w-[55%] text-lg font-normal">
                   {content.description1}
                 </p>
               ))}
@@ -103,13 +104,13 @@ const Home = () => {
 
         {/* StartSection3 */}
         <div className="h-[calc(100vh-14rem)] w-full snap-end bg-white">
-          <div className="grid h-3/4 grid-cols-2">
+          <div className="grid h-full grid-cols-2">
             <div className="w-full">
               {contents &&
                 contents.map((content) => (
                   <img
                     key={content.id}
-                    className="h-96 w-full object-cover"
+                    className="h-[70%] w-full object-cover"
                     src={content.imgAbout}
                     alt=""
                   ></img>

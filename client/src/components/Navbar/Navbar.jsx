@@ -12,7 +12,7 @@ const Navbar = () => {
   const changeColorNav = useScrollPosotion();
 
   //getAPI
-  const [headercontents, setHeadercontents] = useState([]);
+  const [headerContents, setHeadercontents] = useState([]);
   const apiHeader = "http://127.0.0.1:8000/api/get-header";
   useState(() => {
     async function getNavbarData() {
@@ -22,6 +22,9 @@ const Navbar = () => {
     }
     getNavbarData();
   });
+
+  //activeLink
+  const activeLink = "border-b-2 border-[#B1816F]";
 
   return (
     <>
@@ -34,18 +37,18 @@ const Navbar = () => {
         <Link to="/home">
           <div className="flex h-full cursor-pointer">
             <div className="md:w-18 md:h-18 border border-black sm:h-16 sm:w-16">
-              {headercontents.map((headercontent) => (
+              {headerContents.map((headerContent) => (
                 <img
-                  key={headercontent.id}
-                  src={headercontent.logo_img}
+                  key={headerContent.id}
+                  src={headerContent.logo_img}
                   alt="logo"
                   className="h-full w-full"
                 />
               ))}
             </div>
             <div className="ml-2 h-[80%] w-[35%] font-medium tracking-[.2em] sm:mt-3 md:mt-5">
-              {headercontents.map((headercontent) => (
-                <span key={headercontent.id}>{headercontent.logo_name}</span>
+              {headerContents.map((headerContent) => (
+                <span key={headerContent.id}>{headerContent.logo_name}</span>
               ))}
             </div>
           </div>
@@ -62,35 +65,50 @@ const Navbar = () => {
             className={`absolute h-3/4 font-normal tracking-[.2em] transition-all duration-500 ease-in sm:hidden md:static md:flex `}
           >
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/home">
+              <NavLink
+                to="/home"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   HOME
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/guide">
+              <NavLink
+                to="/guide"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   GUIDE
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/schedule">
+              <NavLink
+                to="/schedule"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   SCHEDULE
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/portfolio">
+              <NavLink
+                to="/portfolio"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   PORTFOLIO
                 </span>
               </NavLink>
             </li>
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
-              <NavLink to="/contact">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? activeLink : "")}
+              >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">
                   CONTACT
                 </span>
