@@ -126,6 +126,25 @@ const FooterContent = () => {
           </button>
         </div>
       </div>
+      <div className="mb-3">
+        <p className="mb-3">Facebook:</p>
+        <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
+          <input
+            className="h-auto py-1 w-full outline-none"
+            placeholder={posts.facebook}
+            value={facebook || ''}
+            onChange={(event) => {
+              setFacebook(event.target.value);
+            }}
+            type="text"
+            required
+            maxLength={100}
+          />
+          <button className="hover:bg-[#a7705c] hover:text-white p-2 rounded">
+            <BsPencil />
+          </button>
+        </div>
+      </div>
 
       <div className="mb-3">
         <p className="mb-3">Facebook:</p>
