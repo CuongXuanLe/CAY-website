@@ -1,14 +1,14 @@
 const data_list = [
 	{
 		key:"1",
-		img:"https://images.unsplash.com/photo-1600172454284-934feca24ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+		img:"https://images.unsplash.com/photo-1579187707643-35646d22b596?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
 		tagline:"Anushka Love Kanha",
 		date:"2022-04-22",
 	},
 	{
 		key:"2",
 		img:"https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
-		tagline:"Top IOT Porjects",
+		tagline:"Top IOT Projects",
 		date:"2022-04-22",
 	},
 	{
@@ -20,7 +20,7 @@ const data_list = [
 	{
 		key:"4",
 		img:"https://images.unsplash.com/photo-1579187707643-35646d22b596?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-		tagline:"Top IOT Porjects",
+		tagline:"Top IOT Projects",
 		date:"2022-04-22",
 	},
 	{

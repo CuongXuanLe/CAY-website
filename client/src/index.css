@@ -37,3 +37,18 @@ a {
   display: block!important;
 }
 
+.Album__Details{
+  padding: 16px;
+ /* -moz-column-width: 18em; */
+  -webkit-column-width: 32em;
+}
+
+
+.Album__Details-photo{
+  position: relative;
+  padding: 0.5rem 0;
+  width: 100%; 
+  /* object-fit: cover; */
+ }
+
+
