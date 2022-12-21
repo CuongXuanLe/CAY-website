@@ -10,6 +10,9 @@ import GuideRental from "./Guide/GuideRental";
 import GuideFacility from "./Guide/GuideFacility";
 import GuideOption from "./Guide/GuideOption";
 
+//components of portfolio
+import PortfolioContent from "./Portfolio/PortfolioContent"
+
 export {
   Navbar,
   Slider,
@@ -20,4 +23,5 @@ export {
   GuideRental,
   GuideFacility,
   GuideOption,
+  PortfolioContent
 };
