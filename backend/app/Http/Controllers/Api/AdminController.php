@@ -44,40 +44,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        // try {
-        //     //Validated
-        //     $validator = Validator::make(
-        //         $request->all(),
-        //         [
-        //             'name' => 'required',
-        //             'password' => 'required'
-        //         ]
-        //     );
-
-        //     if ($validator->fails()) {
-        //         return response()->json([
-        //             'status' => false,
-        //             'message' => 'validation error',
-        //             'error'  => $validator->errors()
-        //         ], 401);
-        //     }
-
-        //     $admin = Admin::create([
-        //         'name' => $request->name,
-        //         'password' => Hash::make($request->password)
-        //     ]);
-
-        //     return response()->json([
-        //         'status' => true,
-        //         'message' => 'User Created Successfully',
-        //         'token'  => $admin->createToken("API TOKEN")->plainTextToken
-        //     ], 200);
-        // } catch (\Throwable $th) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => $th->getMessage(),
-        //     ], 500);
-        // }
+        //
     }
 
     /**
@@ -109,11 +76,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'old_password' => 'required',
-            'password' => 'required|min:6|max:100',
+            'password' => 'required',
             'confirm_password' => 'required|same:password'
         ]);
         if ($validator->fails()) {
@@ -123,7 +90,7 @@ class AdminController extends Controller
             ], 422);
         }
 
-        $admin = Admin::find($id);
+        $admin = Admin::first();
         if (Hash::check($request->old_password, $admin->password)) {
             $admin->update([
                 'password' => Hash::make($request->password)
