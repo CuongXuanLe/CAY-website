@@ -24,25 +24,16 @@ a {
 .main_page{
   padding:16px;
  -moz-column-width: 18em;
- -webkit-column-width:14em;
+ -webkit-column-width:13em;
 }
 
 .post_box{
- display: inline-block;
- padding:  .25rem;
- width:  100%; 
+ position: relative;
+ padding: 0.25rem;
+ width: 100%; 
 }
 
-.post_box>img{
-  border-radius: 25px;
+.post_box:hover > .appear__text{
+  display: block!important;
 }
 
-.post_box>h2{
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-}
-
-/*
-  Other effect you want to add
-*/
