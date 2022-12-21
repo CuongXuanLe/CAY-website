@@ -47,6 +47,7 @@ Route::post('/post-header', [HeaderController::class, 'store']); // Tạo 1 lầ
 Route::patch('/edit-header/{id}', [HeaderController::class, 'edit']);
 Route::post('/update-header/{id}', [HeaderController::class, 'update']);
 
+
 //------------------------------CRUD Admin-----------------------------------
 Route::get('/get-admin', [AdminController::class, 'index']);
 Route::post('/change-password/{id}', [AdminController::class, 'update']);
