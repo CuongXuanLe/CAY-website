@@ -7,9 +7,10 @@ import Navigation from "./Navigation/Navigation";
 import Schedule from "./Schedule/Schedule";
 import AppointmentDetails from "./Schedule/Appointment/AppointmentDetails";
 import AppointmentEdit from "./Schedule/Appointment/AppointmentEdit";
+import AppointmentCreate from "./Schedule/Appointment/AppointmentCreate";
 import Portfolio from "./Portfolio/Portfolio";
 
-export {Login, AdminHome, AdminGuide, AdminFooter, ChangePassword, Navigation, Schedule, AppointmentDetails, AppointmentEdit, Portfolio}
+export {Login, AdminHome, AdminGuide, AdminFooter, ChangePassword, Navigation, Schedule, AppointmentDetails, AppointmentEdit, AppointmentCreate, Portfolio}
 
 
 

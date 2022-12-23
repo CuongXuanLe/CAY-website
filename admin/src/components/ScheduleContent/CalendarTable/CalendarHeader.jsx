@@ -6,6 +6,7 @@ import {
   AiOutlineArrowLeft,
 } from "react-icons/ai";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 const CalendarHeader = () => {
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
@@ -41,9 +42,11 @@ const CalendarHeader = () => {
           </button>
         </div>
       </div>
-      <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
-        Booking now
-      </button>
+      <Link to="/appointmentcreate">
+        <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
+          Booking now
+        </button>
+      </Link>
     </header>
   );
 };
