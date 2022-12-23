@@ -1,7 +1,7 @@
 import React from "react";
-import { AdminNav, ScheduleDetails } from "../../../components";
+import { AdminNav, ScheduleBooking } from "../../../components";
 
-const AppointmentDetails = () => {
+const AppointmentCreate = () => {
   return (
     <React.Fragment>
       <div className="flex h-screen flex-row">
@@ -9,7 +9,7 @@ const AppointmentDetails = () => {
         <div className="container ml-96 p-10">
           <strong className="text-3xl">Schedule</strong>
           <div className="h-full px-5 pt-10">
-            <ScheduleDetails />
+            <ScheduleBooking />
           </div>
         </div>
       </div>
@@ -17,4 +17,4 @@ const AppointmentDetails = () => {
   );
 };
 
-export default AppointmentDetails;
+export default AppointmentCreate;

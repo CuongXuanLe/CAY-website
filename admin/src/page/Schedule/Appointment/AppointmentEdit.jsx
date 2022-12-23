@@ -2,19 +2,19 @@ import React from "react";
 import { AdminNav, ScheduleEdit } from "../../../components";
 
 const AppointmentDetails = () => {
-    return(
-        <React.Fragment>
-            <div className="flex flex-row h-screen">
-                <AdminNav />
-                <div className="container p-10 ml-96">
-                    <strong className="text-3xl">Schedule</strong>
-                    <div className="px-5 pt-10 h-full">
-                        <ScheduleEdit />
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <div className="flex h-screen flex-row">
+        <AdminNav />
+        <div className="container ml-96 p-10">
+          <strong className="text-3xl">Schedule</strong>
+          <div className="h-full px-5 pt-10">
+            <ScheduleEdit />
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default AppointmentDetails;

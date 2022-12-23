@@ -1,19 +1,19 @@
 import React from "react";
 
-import {AdminNav, ScheduleContent } from './../../components';
+import { AdminNav, ScheduleContent } from "./../../components";
 
 const Schedule = () => {
-    return(
-        <React.Fragment>
-            <AdminNav />
-            <div className="container p-10 pl-48 ml-[14rem] ">
-                <strong className="text-3xl">Schedule</strong>
-                <div className=" pt-10 space-y-10">
-                    <ScheduleContent />
-                </div>
-            </div>
-        </React.Fragment>
-    )
-}
+  return (
+    <React.Fragment>
+      <AdminNav />
+      <div className="container ml-[14rem] p-10 pl-48 ">
+        <strong className="text-3xl">Schedule</strong>
+        <div className=" space-y-10 pt-10">
+          <ScheduleContent />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default Schedule;

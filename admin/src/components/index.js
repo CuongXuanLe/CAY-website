@@ -23,6 +23,7 @@ import AddItem from "./GuideContent/AddItem";
 import ScheduleContent from "./ScheduleContent/CalendarTable/ScheduleContent";
 import ScheduleDetails from "./ScheduleContent/ScheduleDetails/ScheduleDetails";
 import ScheduleEdit from "./ScheduleContent/ScheduleDetails/ScheduleEdit";
+import ScheduleBooking from "./ScheduleContent/ScheduleBooking/ScheduleBooking";
 
 //Portfolio
 import PortfolioContent from "./PortfolioContent/PortfolioContent";
@@ -43,6 +44,7 @@ export {
     ScheduleContent,
     ScheduleDetails, 
     ScheduleEdit,
+    ScheduleBooking,
     PortfolioContent,
     AlertDel,
     CreateAlbum,
