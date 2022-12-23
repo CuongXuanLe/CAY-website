@@ -1,12 +1,11 @@
-
 import React from "react";
 
 const HeaderDay = ({ day, rowIdx }) => {
   return (
-    <div className=" border">
+    <div className="">
       <header className="flex  items-center ">
         {rowIdx === 0 && (
-          <p className="mt-1 text-sm ">{day.format("ddd").toUpperCase()}</p>
+          <p className="mt-1 text-sm font-thin">{day.format("ddd")}</p>
         )}
       </header>
     </div>
