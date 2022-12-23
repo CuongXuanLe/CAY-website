@@ -19,6 +19,11 @@ import GuideContent from "./GuideContent/GuideContent";
 import ListItems from "./GuideContent/ListItems";
 import AddItem from "./GuideContent/AddItem";
 
+//Schedule
+import ScheduleContent from "./ScheduleContent/CalendarTable/ScheduleContent";
+import ScheduleDetails from "./ScheduleContent/ScheduleDetails/ScheduleDetails";
+import ScheduleEdit from "./ScheduleContent/ScheduleDetails/ScheduleEdit";
+
 //Portfolio
 import PortfolioContent from "./PortfolioContent/PortfolioContent";
 import AlertDel from "./PortfolioContent/AlertDelete";
@@ -35,8 +40,12 @@ export {
     GuideContent,
     ListItems,
     AddItem,
+    ScheduleContent,
+    ScheduleDetails, 
+    ScheduleEdit,
     PortfolioContent,
     AlertDel,
     CreateAlbum,
     UpdateAlbum
 };
+

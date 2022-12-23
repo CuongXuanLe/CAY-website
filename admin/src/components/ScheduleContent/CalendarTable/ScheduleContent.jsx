@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import Month from "./Month";
-import { getMonth } from "../../util";
+import { getMonth } from "../util";
 import CalendarHeader from "./CalendarHeader";
-import GlobalContext from "../../context/GlobalContext";
+import GlobalContext from "../../../context/GlobalContext";
+import Confirm from "../ConfirmUpdate/Confirm";
 
 const Schedule = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -18,8 +19,16 @@ const Schedule = () => {
       </div>
 
       {/* Table of Calendar */}
-      <div className="w-full p-0">
+      <div className="px-24">
         <Month month={currentMonth} />
+      </div>
+
+      {/* Confirm */}
+      <div className="px-24">
+        <h4>Confirm</h4>
+        <div>
+          <Confirm />
+        </div>
       </div>
     </React.Fragment>
   );

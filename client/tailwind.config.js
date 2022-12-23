@@ -12,6 +12,9 @@ module.exports = {
       '2xl': '1546px'
     },
     extend: {
+      width: {
+        '104': '26rem',
+      },
       spacing: {
         '1.5': '0.375rem',
         '104': '26rem',

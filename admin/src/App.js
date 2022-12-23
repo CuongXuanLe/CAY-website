@@ -6,7 +6,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { AdminHome, AdminGuide, AdminFooter, ChangePassword, Login, Navigation, Schedule, Portfolio } from './page';
+import { AdminHome, AdminGuide, AdminFooter, ChangePassword, Login, Navigation, Schedule, AppointmentDetails, AppointmentEdit, Portfolio } from './page';
 
 const App = () => {
   function ScrollToTop() {
@@ -33,6 +33,8 @@ const App = () => {
         <Route path="/adminFooter" element={<AdminFooter/>}/>
         <Route path="/changePassword" element={<ChangePassword/>} />
         <Route path="/schedule" element={<Schedule/>} />
+        <Route path="/details" element={<AppointmentDetails/>} />
+        <Route path="/appointmentedit" element={<AppointmentEdit />} />
       </Routes>
     </Router>
   );
