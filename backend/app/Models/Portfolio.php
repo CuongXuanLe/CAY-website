@@ -11,12 +11,12 @@ class Portfolio extends Model
     use HasFactory;
 
     protected $table = 'portfolio';
-
     protected $fillable = [
         'name_album',
         'category',
-        'thumbnails'
+        'thumbnails',
     ];
+
     public function images()
     {
         return $this->hasMany(Image::class);

@@ -11,9 +11,12 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\GuideListController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AdminPortfolioController;
 use App\Models\Admin;
 use App\Models\Footer;
 use App\Models\Home;
+use App\Models\Image;
+use App\Models\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +80,12 @@ Route::get('/get-items/{id}', [GuideListController::class, 'show']);
 Route::post('/post-items', [GuideListController::class, 'store']);
 Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
 Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
+
+//------------------------------CRUD AdminPortfolio-----------------------------------
+Route::post('/post', [AdminPortfolioController::class, 'store']);
+Route::get('/get', [AdminPortfolioController::class, 'index']);
+Route::delete('/delete/{id}', [AdminPortfolioController::class, 'destroy']);
+Route::get('/edit/{id}', [AdminPortfolioController::class, 'edit']);
+Route::delete('/deleteimage/{id}', [AdminPortfolioController::class, 'deleteimage']);
+Route::delete('/deletecover/{id}', [AdminPortfolioController::class, 'deletecover']);
+Route::put('/update/{id}', [AdminPortfolioController::class, 'update']);
