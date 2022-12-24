@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     <ContextWrapper>
       <App />
-      </ContextWrapper>
+    </ContextWrapper>
   </React.StrictMode>
 );
 
