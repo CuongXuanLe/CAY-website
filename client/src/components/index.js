@@ -10,9 +10,14 @@ import GuideRental from "./Guide/GuideRental";
 import GuideFacility from "./Guide/GuideFacility";
 import GuideOption from "./Guide/GuideOption";
 
+//components of schedule
+import CalendarContent from "./Calendar/CalendarTable/CalendarContent";
+import SmallCalendar from "./Calendar/SmallCalendar/SmallCalendar";
+
 //components of portfolio
 import PortfolioContent from "./Portfolio/PortfolioContent"
 import PortfolioDetails from "./Portfolio/PortfolioDetails";
+import BookingSuccess from "./Calendar/BookingSuccess/BookingSuccess";
 
 export {
   Navbar,
@@ -24,6 +29,9 @@ export {
   GuideRental,
   GuideFacility,
   GuideOption,
+  CalendarContent,
+  SmallCalendar,
+  BookingSuccess,
   PortfolioContent,
   PortfolioDetails
 };

@@ -16,15 +16,12 @@ const CalendarHeader = () => {
   function handleNextMonth() {
     setMonthIndex(monthIndex + 1);
   }
-  function handleReset() {
-    setMonthIndex(monthIndex === dayjs().month() ? monthIndex + Math.random() : dayjs().month());
-  }
   return (
     <header className="flex justify-between ">
       <div className="flex items-center py-1">
-        <button className="rounded-full bg-[#a7705c] p-2 text-xl text-white hover:bg-[#8c5543] ease-in duration-150" onClick={handleReset}>
+        <div className="rounded-full bg-[#a7705c] p-2 text-xl text-white">
           <AiOutlineCalendar />
-        </button>
+        </div>
 
         <div className="ml-4 mt-3 flex h-9 w-24 items-end text-lg font-bold">
           {dayjs(new Date(dayjs().year(), monthIndex)).format("MMM. YYYY")}
