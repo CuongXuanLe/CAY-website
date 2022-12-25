@@ -32,10 +32,8 @@ const ScheduleBooking = () => {
                     </div>
                     <div className="w-[50%]">
                         {/* Small Calendar */}
-                        <div>
-                            <h3 className="font-bold">Ngày tháng</h3>
-                            <div className="bg-white w-[90%] mt-3 px-5 py-3"><SmallCalendar /></div>
-                        </div>
+                        <h3 className="mb-2 font-bold">Ngày tháng</h3>
+                        <SmallCalendar />
 
                         <div>
                             <h3 className="font-bold mt-3">Thời gian </h3>

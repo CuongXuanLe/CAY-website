@@ -1,34 +1,34 @@
-import React, { useState, useContext, useEffect } from "react";
-import Month from "./Month";
-import { getMonth } from "../util";
-import CalendarHeader from "./CalendarHeader";
-import GlobalContext from "../../../context/GlobalContext";
+import React from "react";
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import PopupInfo from "../PopupInfo/PopupInfo";
 import { Link } from "react-router-dom";
 
+
 const CalendarContent = () => {
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex } = useContext(GlobalContext);
-  useEffect(() => {
-    setCurrentMonth(getMonth(monthIndex));
-  }, [monthIndex]);
 
   return (
     <React.Fragment>
-      <div>
-        <CalendarHeader />
-      </div>
+      <div className="w-[85%] flex flex-col mx-auto ">
+      <FullCalendar 
+        plugins={[ dayGridPlugin ]}
+        initialView="dayGridMonth"
+        events={[
+          { title: 'event 1', date: '2022-12-20' },
+          { title: 'event 2', date: '2022-12-23' }
+        ]}
+      />
+      
+      {/* để đỡ chưa xử lí data  */}
+      <PopupInfo /> 
 
-      {/* Table of Calendar */}
-      <div className="px-24">
-        <Month month={currentMonth} />
-      </div>
-
-      <div className="my-10 flex justify-center items-center">
+      <div className="mx-auto">
         <Link to="/booking">
-          <button className=" h-14 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
+          <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
             Booking now
           </button>
         </Link>
+        </div>
       </div>
     </React.Fragment>
   );
