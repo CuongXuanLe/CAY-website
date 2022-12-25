@@ -1,8 +1,10 @@
-import React from "react";
-
+import React,{useEffect} from "react";
 import { AdminNav, ScheduleContent } from "./../../components";
 
 const Schedule = () => {
+  useEffect(() => {
+    document.title = "Schedule";
+  });
   return (
     <React.Fragment>
       <AdminNav />
