@@ -55,11 +55,11 @@ class Schedule extends Model
 
     public function getFormattedStartAttribute()
     {
-        return $this->start->format('H:i:s');
+        return $this->start->format('H:i');
     }
 
     public function getFormattedEndAttribute()
     {
-        return $this->end->format('H:i:s');
+        return $this->end->format('H:i');
     }
 }
