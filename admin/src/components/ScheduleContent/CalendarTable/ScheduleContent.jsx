@@ -1,11 +1,22 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import { Link } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
+import axios from "axios";
 
 const Schedule = () => {
-  
+  const [formDetails, getFormDetails] = useState([]);
+  const url = "http://127.0.0.1:8000/api/get-schedule";
+  const getListForm = async () => {
+    const res = await axios.get(url).then(({data}) => {
+      getFormDetails(data.data)
+    })
+  }
+  useEffect(() => {
+    getListForm()
+  }, [])
+
   return (
     <React.Fragment>
 
@@ -36,9 +47,23 @@ const Schedule = () => {
 
       {/* Confirm */}
       <div className="px-24">
-        <h4>Confirm</h4>
-        <div>
-          <Confirm />
+        <h3 className="font-semibold">Confirm:</h3>
+        <div className="mt-2">
+        {
+          formDetails.length > 0 &&
+          formDetails.map((formDetail) => (
+            <Confirm 
+              key={formDetail.id}
+              name={formDetail.name}
+              date={formDetail.formatted_created_at}
+              start={formDetail.formatted_start}
+              end={formDetail.formatted_end}
+              note={formDetail.note}
+              index={formDetail.id}
+            />
+          ))
+        }
+          
         </div>
       </div>
     </React.Fragment>
