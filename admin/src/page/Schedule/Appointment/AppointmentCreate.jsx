@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { AdminNav, ScheduleBooking } from "../../../components";
 
 const AppointmentCreate = () => {
+  useEffect(() => {
+    document.title = "Create Booking";
+  });
   return (
     <React.Fragment>
       <div className="flex h-screen flex-row">

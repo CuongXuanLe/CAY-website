@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import { Link } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
 
 const Schedule = () => {
-
+  
   return (
     <React.Fragment>
 
