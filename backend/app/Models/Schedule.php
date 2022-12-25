@@ -45,7 +45,7 @@ class Schedule extends Model
 
     public function getFormattedBirthdayAttribute()
     {
-        return $this->birthday->format('d-m-Y' || null);
+        return $this->birthday?->format('d-m-Y') ?? '';
     }
 
     public function getFormattedCreatedAtAttribute()
