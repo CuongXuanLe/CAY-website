@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\GuideListController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ScheduleController;
 use App\Models\Admin;
 use App\Models\Footer;
 use App\Models\Home;
@@ -78,3 +79,11 @@ Route::get('/get-items/{id}', [GuideListController::class, 'show']);
 Route::post('/post-items', [GuideListController::class, 'store']);
 Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
 Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
+
+
+//----------------------------Schedule-----------------------------------------
+Route::get('get-schedule', [ScheduleController::class, 'index']);
+Route::post('schedule', [ScheduleController::class, 'store']);
+Route::get('schedule/{id}', [ScheduleController::class, 'show']);
+Route::patch('schedule/{id}', [ScheduleController::class, 'update']);
+Route::delete('schedule/{id}', [ScheduleController::class, 'destroy']);
