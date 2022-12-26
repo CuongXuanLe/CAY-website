@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-const Confirm = ({ name, date, start, end, note, index }) => {
-  
+const Confirm = ({ name, date, start, end, email, birthDay, phone, note, index}) => {
+
   const deleteForm = async(id) => {
     const res = await axios.delete(`http://127.0.0.1:8000/api/schedule/${id}`)
     .then(({res}) => {
@@ -10,6 +10,28 @@ const Confirm = ({ name, date, start, end, note, index }) => {
     })
     .catch((err) => {
       console.log(err)
+    })
+    window.location.reload(false);
+  }
+
+  const updateForm = async(id) => {
+    const formData = {
+      name: name,
+      phone: phone,
+      birthday: birthDay,
+      email: email,
+      note: note,
+      created_at: date,
+      start: start,
+      end: end,
+      approval: 1,
+    };
+    const res = await axios.patch(`http://127.0.0.1:8000/api/schedule/${id}`, formData)
+    .then(({res}) => {
+      alert('Confirm success')
+    })
+    .catch((error) => {
+      console.log(error)
     })
     window.location.reload(false);
   }
@@ -39,7 +61,7 @@ const Confirm = ({ name, date, start, end, note, index }) => {
           <button onClick={() => deleteForm(index)} className="w-20  border rounded border-red-600 text-red-600 duration-150 ease-in hover:bg-red-600 hover:text-white">
             Delete
           </button>
-          <button className="ml-2 w-20 border rounded border-green-600 hover:bg-white hover:text-green-600 duration-150 ease-in bg-green-600 text-white">
+          <button onClick={() => updateForm(index)} className="ml-2 w-20 border rounded border-green-600 hover:bg-white hover:text-green-600 duration-150 ease-in bg-green-600 text-white">
             ✓Confirm
           </button>
         </div>
