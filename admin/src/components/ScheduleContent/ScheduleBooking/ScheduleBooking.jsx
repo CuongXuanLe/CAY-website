@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ScheduleBooking = () => {
-  const [name, setName] = useState();
+  const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
@@ -19,7 +19,7 @@ const ScheduleBooking = () => {
     
     const url = "http://127.0.0.1:8000/api/schedule";
     const formData = {
-      name: name,
+      title: title,
       phone: phone,
       birthday: birthday,
       email: email,
@@ -50,8 +50,8 @@ const ScheduleBooking = () => {
           <div className="mt-2 flex items-center">
             <span className="font-bold">Customer<span className="text-red-600">*</span>:</span>
             <input 
-              value={name || ''}
-              onChange={(event) => {setName(event.target.value)}}
+              value={title || ''}
+              onChange={(event) => {setTitle(event.target.value)}}
               placeholder={'e.g name customer'}
               className="ml-3 py-1 px-2 grow border rounded border-black"></input>
           </div>

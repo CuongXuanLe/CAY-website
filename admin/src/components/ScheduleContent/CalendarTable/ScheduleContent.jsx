@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
 import { Link } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
 import axios from "axios";
@@ -25,12 +27,21 @@ const Schedule = () => {
       <React.Fragment>
       <div className="w-[85%] flex flex-col mx-auto ">
       <FullCalendar 
-        plugins={[ dayGridPlugin ]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            headerToolbar={{
+              left: 'title',
+              right: 'prev,next today'
+            }}
+          
+        eventClick={
+          function (arg) {
+            alert (arg.event.title);
+          }
+        }
         initialView="dayGridMonth"
-        events={[
-          { title: 'event 1', date: '2022-12-20' },
-          { title: 'event 2', date: '2022-12-23' }
-        ]}
+        navLinks={true}
+        selectable={true}
+        events={formDetails}
       />
       
 
