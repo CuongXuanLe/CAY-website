@@ -51,15 +51,19 @@ const Schedule = () => {
         <div className="mt-2">
         {
           formDetails.length > 0 &&
-          formDetails.map((formDetail) => (
+          formDetails.filter(formDetail => formDetail.approval === 0).map( filterForm => (
             <Confirm 
-              key={formDetail.id}
-              name={formDetail.name}
-              date={formDetail.formatted_created_at}
-              start={formDetail.formatted_start}
-              end={formDetail.formatted_end}
-              note={formDetail.note}
-              index={formDetail.id}
+              key={filterForm.id}
+              name={filterForm.name}
+              date={filterForm.formatted_created_at}
+              start={filterForm.formatted_start}
+              end={filterForm.formatted_end}
+              email={filterForm.email}
+              birthDay={filterForm.formatted_birthday}
+              phone={filterForm.phone}
+              note={filterForm.note}
+              approved={filterForm.approval}
+              index={filterForm.id}
             />
           ))
         }
