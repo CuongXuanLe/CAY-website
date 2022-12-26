@@ -1,6 +1,7 @@
 import React from "react";
 
 const UpdateModel = () => {
+  
   return (
     <>
       <div className="h-auto w-[26rem] border-[1px] border-black px-2 py-3 ">
