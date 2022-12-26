@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const Confirm = ({ name, date, start, end, email, birthDay, phone, note, index}) => {
+const Confirm = ({ title, date, start, end, email, birthDay, phone, note, index}) => {
 
   const deleteForm = async(id) => {
     const res = await axios.delete(`http://127.0.0.1:8000/api/schedule/${id}`)
@@ -16,7 +16,7 @@ const Confirm = ({ name, date, start, end, email, birthDay, phone, note, index})
 
   const updateForm = async(id) => {
     const formData = {
-      name: name,
+      title: title,
       phone: phone,
       birthday: birthDay,
       email: email,
@@ -41,7 +41,7 @@ const Confirm = ({ name, date, start, end, email, birthDay, phone, note, index})
       <div className="h-auto w-full border rounded border-black px-3 py-2 mb-3">
         <div className="flex justify-between">
           <div className="w-1/3">
-            <span className="font-bold">Customer: </span>{name}
+            <span className="font-bold">Customer: </span>{title}
           </div>
           <div className="w-1/3">
             <span className="font-bold text-red-600">Appointment Date: </span>

@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('phone');
             $table->date('birthday')->nullable();
             $table->string('email')->nullable();
             $table->longText('note')->nullable();
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->time('start');
+            $table->time('end');
             $table->date('created_at');
             $table->boolean('approval')->default(false);
         });

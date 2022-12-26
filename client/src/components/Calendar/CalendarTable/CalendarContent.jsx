@@ -18,15 +18,16 @@ const CalendarContent = () => {
 
   //getAPI 
   const [schedules, setSchedules] = useState([]);
-  const scheduleApi = "https://jsonplaceholder.typicode.com/posts"
+  const scheduleApi = "http://127.0.0.1:8000/api/get-schedule"
   useEffect(() => {
     async function getScheduleData () {
       const res = await axios.get(scheduleApi);
-      setSchedules(res.data);
-      // console.log(res.data);
+      setSchedules(res.data.data);
     }
     getScheduleData();
   },[]);
+
+  
 
 
   return (
@@ -47,10 +48,7 @@ const CalendarContent = () => {
         initialView="dayGridMonth"
         navLinks={true}
         selectable={true}
-        events={[
-          { title: 'iven', start: '2022-12-20T16:30:00', end: '2022-12-20T17:30:00' },
-          { title: 'event 2', start: '2022-12-20T16:30:00', end: '2022-12-20T17:30:00' }
-        ]}
+        events={schedules}
       />
 
         <Tippy content={<div className="bg-slate-200 p-2 rounded-xl shadow-xl"><h2>Khach hang vjp</h2>

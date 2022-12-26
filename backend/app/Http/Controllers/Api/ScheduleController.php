@@ -24,7 +24,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $schedule = new Schedule();
-        $schedule->name = $request->input('name');
+        $schedule->title = $request->input('title');
         $schedule->phone = $request->input('phone');
         $schedule->birthday = $request->input('birthday');
         $schedule->email = $request->input('email');
@@ -50,7 +50,7 @@ class ScheduleController extends Controller
         //     ]
         // );
         $schedule = Schedule::find($id);
-        $schedule->name = $request->name;
+        $schedule->title = $request->title;
         $schedule->phone = $request->phone;
         $schedule->birthday = $request->birthday;
         $schedule->email = $request->email;

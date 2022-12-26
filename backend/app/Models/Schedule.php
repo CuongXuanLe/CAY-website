@@ -14,7 +14,7 @@ class Schedule extends Model
     protected $table = 'schedule';
 
     protected $fillable = [
-        'name',
+        'title',
         'phone',
         'birthday',
         'email',
