@@ -6,6 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { Link } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
 import axios from "axios";
+//import tippy
+import { tippy, } from "@tippyjs/react";
+import 'tippy.js/themes/light.css';
 
 const Schedule = () => {
   const [formDetails, getFormDetails] = useState([]);
@@ -33,11 +36,21 @@ const Schedule = () => {
               right: 'prev,next today'
             }}
           
-        eventClick={
-          function (arg) {
-            alert (arg.event.title);
-          }
-        }
+        eventMouseEnter={
+          (arg) => {
+            tippy(arg.el, {
+              content: `<div>${arg.event.title}</div>
+                        <div>${arg.event.start}</div>
+              <a href="http://localhost:3000/details"><button><strong>Edit</strong><button></a>`,
+              trigger: 'click',
+              allowHTML: true,
+              interactive: true,
+              interactiveBorder: 30,
+              theme: 'light',
+              maxWidth: 500,
+            })
+          }}
+        timeZone="none"
         initialView="dayGridMonth"
         navLinks={true}
         selectable={true}
