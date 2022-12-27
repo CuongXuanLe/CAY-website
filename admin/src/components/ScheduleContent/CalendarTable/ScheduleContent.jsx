@@ -78,7 +78,7 @@ const Schedule = () => {
           formDetails.filter(formDetail => formDetail.approval === 0).map( filterForm => (
             <Confirm 
               key={filterForm.id}
-              name={filterForm.name}
+              title={filterForm.title}
               date={filterForm.formatted_created_at}
               start={filterForm.formatted_start}
               end={filterForm.formatted_end}
