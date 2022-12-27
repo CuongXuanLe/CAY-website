@@ -42,10 +42,7 @@ const PortfolioContent = () => {
             >
               <img
                 className="w-2/5 object-cover"
-                src={
-                  "../../../../backend/storage/app/public/" +
-                  portfolioDetail.thumbnails
-                }
+                src={portfolioDetail.thumbnails}
                 alt="pic_1"
               />
               <div className="relative w-3/5 p-3">
@@ -58,7 +55,9 @@ const PortfolioContent = () => {
                 </p>
                 <p>Category: {portfolioDetail.category}</p>
                 <div className="text-md absolute bottom-2 right-2">
-                  <Link to="/adminPortfolio/updateAlbum">
+                  <Link
+                    to={`/adminPortfolio/updateAlbum/${portfolioDetail.id}`}
+                  >
                     <button className="rounded border border-black py-1 px-5 hover:bg-black hover:text-white">
                       Update
                     </button>

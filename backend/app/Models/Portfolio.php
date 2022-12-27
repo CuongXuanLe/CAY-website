@@ -17,16 +17,9 @@ class Portfolio extends Model
         'thumbnails',
     ];
 
-    protected $appends = [
-        'formatted_created_at',
-    ];
 
     public function images()
     {
         return $this->hasMany(Image::class);
-    }
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->format('d-m-Y');
     }
 }

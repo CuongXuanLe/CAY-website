@@ -21,7 +21,7 @@ const Portfolio = () => {
           <Routes>
             <Route exact path="/" element={<PortfolioContent />} />
             <Route path="/createAlbum" element={<CreateAlbum />} />
-            <Route path="/updateAlbum" element={<UpdateAlbum />} />
+            <Route path="/updateAlbum/:id" element={<UpdateAlbum />} />
           </Routes>
         </div>
       </div>

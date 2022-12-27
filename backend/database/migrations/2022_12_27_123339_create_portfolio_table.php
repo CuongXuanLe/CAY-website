@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name_album');
             $table->string('category');
             $table->text('thumbnails');
-            $table->create_at();
+            $table->timestamps();
         });
     }
 
