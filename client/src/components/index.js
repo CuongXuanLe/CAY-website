@@ -13,7 +13,6 @@ import GuideOption from "./Guide/GuideOption";
 //components of schedule
 import CalendarContent from "./Calendar/CalendarTable/CalendarContent";
 import SmallCalendar from "./Calendar/SmallCalendar/SmallCalendar";
-import PopupInfo from "./Calendar/PopupInfo/PopupInfo";
 
 //components of portfolio
 import PortfolioContent from "./Portfolio/PortfolioContent"
@@ -30,7 +29,6 @@ export {
   GuideRental,
   GuideFacility,
   GuideOption,
-  PopupInfo,
   CalendarContent,
   SmallCalendar,
   BookingSuccess,

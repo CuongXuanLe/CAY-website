@@ -4,10 +4,10 @@ import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import PopupInfo from "../PopupInfo/PopupInfo";
 import { Link } from "react-router-dom";
-import Tippy from "@tippyjs/react";
-import { FaLeaf } from "react-icons/fa";
+//import Tippy
+import { tippy } from "@tippyjs/react";
+import 'tippy.js/themes/light.css';
 
 
 const CalendarContent = () => {
@@ -40,21 +40,27 @@ const CalendarContent = () => {
               right: 'prev,next today'
             }}
           
-        eventClick={
-          function (arg) {
-            alert (arg.event.title);
-          }
-        }
+        eventMouseEnter={
+          (arg) => {
+            tippy(arg.el, {
+              content: `<div>${arg.event.title}</div>
+                      <div>${arg.event.start}</div>`,
+              trigger: 'click',
+              allowHTML: true,
+              interactive: true,
+              interactiveBorder: 30,
+              theme: 'light',
+              maxWidth: 500,
+              zIndex: 9999,
+            })
+          }}
+        timeZone="none"
         initialView="dayGridMonth"
         navLinks={true}
         selectable={true}
         events={schedules}
       />
 
-        <Tippy content={<div className="bg-slate-200 p-2 rounded-xl shadow-xl"><h2>Khach hang vjp</h2>
-          <p>12/2/22, 9:30 AM - 12/2/22, 11:30 AM</p></div>} visible={visible} onClickOutside={hide}>
-          <button onClick={visible ? hide : show}>Reference</button>
-        </Tippy>
 
       
       
