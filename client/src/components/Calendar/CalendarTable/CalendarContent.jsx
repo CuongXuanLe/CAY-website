@@ -60,18 +60,11 @@ const CalendarContent = () => {
         selectable={true}
         events={schedules}
       />
-
-
-      
-      
-      
-      
-
       <div className="mx-auto">
         <Link to="/booking">
-          {/* <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
+          <button className="w-15 h-12 rounded-3xl border mt-4 bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
             Booking now
-          </button> */}
+          </button>
         </Link>
         </div>
       </div>

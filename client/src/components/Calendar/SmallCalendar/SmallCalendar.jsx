@@ -3,17 +3,15 @@ import "flatpickr/dist/flatpickr.css";
 import Flatpickr from "react-flatpickr";
 
 
-export default function SmallCalendar() {
+export default function SmallCalendar( ) {
     // state lưu trữ ngày tháng hiện tại
     const [date, setDate] = useState(new Date());
-
     return(
         <div>
             <Flatpickr
-                value={date} // giá trị ngày tháng
-                // các option thêm cho thư viện
+                value={date}
                 options={{
-                    dateFormat: "d-m-Y" // format ngày giờ
+                    dateFormat: "d-m-Y"
                 }}
                 // event
                 onChange={(dateSelect) => setDate(dateSelect)}
