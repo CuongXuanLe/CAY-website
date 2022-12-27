@@ -43,52 +43,88 @@ class AdminPortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Image $image)
     {
+        // $validator = Validator::make($request->all(), [
+        //     'name_album' => ['string'],
+        //     'category' => ['string'],
+        //     'thumbnails' => 'required',
+        //     'image' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     return response()->json($validator->messages(), 400);
+        // } else {
+        //     if ($request->hasFile("thumbnails")) {
+        //         $file = $request->file("thumbnails");
+        //         $imageName = time() . '.' . $file->getClientOriginalName();
+        //         $file->move(\public_path("cover/"), $imageName);
+
+        //         // Create a new Portfolio object and save it to the database
+        //         $portfolio = new Portfolio([
+        //             "name_album" => $request->name_album,
+        //             "category" => $request->category,
+        //             "thumbnails" => $request->imageName,
+        //         ]);
+        //         $portfolio->save();
+        //     }
+
+        //     if ($request->hasFile("image")) {
+        //         $files = $request->file("image");
+        //         $imageNames = [];
+        //         foreach ($files as $file) {
+        //             $imageName1 = time() . '.' . $file->getClientOriginalExtension();
+        //             $request['portfolio_id'] = $portfolio->id;
+        //             $file->move(\public_path("/images"), $imageName1);
+        //             $imageNames[] = $imageName1;
+        //         }
+        //     }
+
+        //     DB::beginTransaction();
+        //     try {
+        //         foreach ($imageNames as $imageName) {
+        //             $data1 = [
+        //                 "image" => $imageName,
+        //                 "portfolio_id" => $portfolio->id,
+        //             ];
+        //             Image::create($data1);
+        //         }
+        //         DB::commit();
+        //     } catch (\Exception $e) {
+        //         DB::rollBack();
+        //     }
+        //     return response()->json([
+        //         'status' => true,
+        //         'message' => 'Successed',
+        //         'data' => [
+        //             "name_album" => $request->name_album,
+        //             "category" => $request->category,
+        //             "thumbnails" => $request->imageName,
+        //             "image" => [$imageNames],
+        //         ]
+        //     ]);
+        // }
         $validator = Validator::make($request->all(), [
             'name_album' => ['string'],
             'category' => ['string'],
-            'thumbnails' => 'required|string',
-            'image' => 'required|string',
+            'thumbnails' => ['string'],
+            'image' => ['string'],
+            'portfolio_id' => 'nullable'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
-            if ($request->hasFile("thumbnails")) {
-                $file = $request->file("thumbnails");
-                $imageName = time() . '.' . $file->getClientOriginalName();
-                $fileModel = new File;
-                $fileModel->location = 'storage/' . $imageName;
-
-                // Create a new Portfolio object and save it to the database
-                $portfolio = new Portfolio([
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                    "thumbnails" => $fileModel->location,
-                ]);
-                $portfolio->save();
-            }
-
-            if ($request->hasFile("image")) {
-                $files = $request->file("image");
-                $imageNames = [];
-                foreach ($files as $file) {
-                    $imageName1 = time() . '.' . $file->getClientOriginalExtension();
-                    $request['portfolio_id'] = $portfolio->id;
-                    $file->move(\public_path("/images"), $imageName1);
-                    $imageNames[] = $imageName1;
-                }
-            }
-
+            $data = [
+                "name_album" => $request->name_album,
+                "category" => $request->category,
+                "thumbnails" => $request->thumbnails,
+            ];
+            $portfolio = Portfolio::create($data);
+            $image =  Image::create([
+                'image' => $request->image,
+                "portfolio_id" => $portfolio->id,
+            ]);
             DB::beginTransaction();
             try {
-                foreach ($imageNames as $imageName) {
-                    $data1 = [
-                        "image" => $imageName,
-                        "portfolio_id" => $portfolio->id,
-                    ];
-                    Image::create($data1);
-                }
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -97,10 +133,11 @@ class AdminPortfolioController extends Controller
                 'status' => true,
                 'message' => 'Successed',
                 'data' => [
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                    "thumbnails" => $request->imageName,
-                    "image" => $request->imageNames,
+                    'name_album' => $request->name_album,
+                    'category' => $request->category,
+                    'thumbnails' => $request->thumbnails,
+                    'image' => $request->image,
+                    "portfolio_id" => $portfolio->id,
                 ]
             ]);
         }
@@ -142,48 +179,88 @@ class AdminPortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $portfolio = Portfolio::findOrFail($id);
+        // $validator = Validator::make($request->all(), [
+        //     'name_album' => ['string'],
+        //     'category' => ['string'],
+        //     'thumbnails' => 'required',
+        //     'image' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     return response()->json($validator->messages(), 400);
+        // } else {
+        //     if ($request->hasFile("thumbnails")) {
+        //         $file = $request->file("thumbnails");
+        //         $portfolio->thumbnails = time() . '.' . $file->getClientOriginalName();
+        //         $file->move(\public_path("cover/"), $portfolio->thumbnails);
+        //         $request['thumbnails'] = $portfolio->thumbnails;
+        //     }
+        //     $portfolio->update([
+        //         'name_album' => $request->name_album,
+        //         'category' => $request->category,
+        //         'thumbnails' =>  $portfolio->thumbnails,
+        //     ]);
+
+        //     if ($request->hasFile("image")) {
+        //         $files = $request->file("image");
+        //         $imageNames = [];
+        //         foreach ($files as $file) {
+        //             $imageName1 = time() . '.' . $file->getClientOriginalExtension();
+        //             $request['portfolio_id'] = $id;
+        //             $file->move(\public_path("/images"), $imageName1);
+        //             $imageNames[] = $imageName1;
+        //         }
+        //     }
+
+        //     DB::beginTransaction();
+        //     try {
+        //         foreach ($imageNames as $imageName) {
+        //             $data1 = [
+        //                 "image" => $imageName,
+        //                 "portfolio_id" => $portfolio->id,
+        //             ];
+        //             Image::create($data1);
+        //         }
+        //         DB::commit();
+        //     } catch (\Exception $e) {
+        //         DB::rollBack();
+        //     }
+        //     return response()->json([
+        //         'status' => true,
+        //         'message' => 'Successed',
+        //         'data' => [
+        //             "name_album" => $request->name_album,
+        //             "category" => $request->category,
+        //             "thumnails" => $request->thumbnails,
+        //             "image"  => []
+        //         ]
+        //     ]);
+        // }
         $portfolio = Portfolio::findOrFail($id);
         $validator = Validator::make($request->all(), [
             'name_album' => ['string'],
             'category' => ['string'],
-            'thumbnails' => 'required',
-            'image' => 'required',
+            'thumbnails' => ['string'],
+            'image' => ['string'],
+            'portfolio_id' => 'nullable'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
-            if ($request->hasFile("thumbnails")) {
-                $file = $request->file("thumbnails");
-                $portfolio->thumbnails = time() . '.' . $file->getClientOriginalName();
-                $file->move(\public_path("cover/"), $portfolio->thumbnails);
-                $request['thumbnails'] = $portfolio->thumbnails;
-            }
+
             $portfolio->update([
                 'name_album' => $request->name_album,
                 'category' => $request->category,
-                'thumbnails' =>  $portfolio->thumbnails,
+                'thumbnails' => $request->thumbnails,
             ]);
-
-            if ($request->hasFile("image")) {
-                $files = $request->file("image");
-                $imageNames = [];
-                foreach ($files as $file) {
-                    $imageName1 = time() . '.' . $file->getClientOriginalExtension();
-                    $request['portfolio_id'] = $id;
-                    $file->move(\public_path("/images"), $imageName1);
-                    $imageNames[] = $imageName1;
-                }
-            }
 
             DB::beginTransaction();
             try {
-                foreach ($imageNames as $imageName) {
-                    $data1 = [
-                        "image" => $imageName,
-                        "portfolio_id" => $portfolio->id,
-                    ];
-                    Image::create($data1);
-                }
+                $data1 = [
+                    "image" => $request->image,
+                    "portfolio_id" => $portfolio->id,
+                ];
+                Image::create($data1);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -195,7 +272,8 @@ class AdminPortfolioController extends Controller
                     "name_album" => $request->name_album,
                     "category" => $request->category,
                     "thumnails" => $request->thumbnails,
-                    "image"  => []
+                    "image"  =>  $request->image,
+                    "portfolio_id" => $portfolio->id,
                 ]
             ]);
         }
