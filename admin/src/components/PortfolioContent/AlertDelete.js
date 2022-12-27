@@ -1,3 +1,4 @@
+import axios from "axios";
 import { BsTrash } from "react-icons/bs";
 const AlertDel = ({ visible, onClose }) => {
   const handleOnClose = (e) => {
@@ -11,10 +12,7 @@ const AlertDel = ({ visible, onClose }) => {
       onClick={handleOnClose}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm"
     >
-      <form
-        method="POST"
-        className="flex h-60 w-1/3 flex-col justify-center rounded-lg bg-white px-4 py-4 text-lg"
-      >
+      <form className="flex h-60 w-1/3 flex-col justify-center rounded-lg bg-white px-4 py-4 text-lg">
         <div className="text-center text-2xl font-bold">
           Do you want to delete this album ?
         </div>
@@ -25,7 +23,10 @@ const AlertDel = ({ visible, onClose }) => {
           >
             Cancel
           </button>
-          <button className="ml-5 flex items-center rounded bg-red-600 px-5 py-2 text-white hover:bg-red-400">
+          <button
+            // onClick={() => deletePortfolios()}
+            className="ml-5 flex items-center rounded bg-red-600 px-5 py-2 text-white hover:bg-red-400"
+          >
             {" "}
             <BsTrash className="mr-2" /> Delete{" "}
           </button>
