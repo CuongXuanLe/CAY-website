@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { BookingSuccess, SmallCalendar } from "../../components";
+import { BookingSuccess } from "../../components";
 import "flatpickr/dist/flatpickr.css";
 import Flatpickr from "react-flatpickr";
 
@@ -10,13 +10,14 @@ const ScheduleBooking = () => {
     const [phone, getPhone] = useState();
     const [email, getEmail] = useState();
     const [note, getNote] = useState();
-    const [date, getDate] = useState();
+    const [date, getDate] = useState(new Date());
     const [startTime, getTimeStart] = useState();
     const [endTime, getTimeEnd] = useState();
+    const [success, setSuccess] = useState();
 
     const CreateBooking = async (e) => {
         e.preventDefault();
-
+        setSuccess(false);
         const url = "http://127.0.0.1:8000/api/schedule";
         const formData = {
             title: title,
@@ -31,7 +32,7 @@ const ScheduleBooking = () => {
         await axios
             .post(url, formData)
             .then((res) => {
-                console.log(res)
+                setSuccess(true);
             })
             .catch((err) => {
                 console.log(err)
@@ -94,26 +95,22 @@ const ScheduleBooking = () => {
                         {/* <SmallCalendar value={date} onChange={(event) => {getDate(event.target.value)}} /> */}
                         <Flatpickr
                             value={date}
-                            options={{
-                                dateFormat: "d-m-Y"
-                            }}
-                            // event
-                            onChange={(dateSelect) => getDate(dateSelect)}
+                            onChange={(selectedDates) => {getDate(selectedDates[0])}}
                         />
                     <div>
                             <h3 className="font-bold mt-3">Time <span className="text-red-600">*</span> </h3>
                             <div className="flex justify-between w-[30%]">
                                 <input
-                                placeholder="Enter full name"
+                                placeholder="8:30"
                                 value={startTime || ''}
                                 onChange={(event) => {getTimeStart(event.target.value)}}
-                                className="text w-16 rounded"></input>
-                                <p className="mx-2">to</p>
+                                className="text w-16 px-2 rounded"></input>
+                                <p className="mx-1">to</p>
                                 <input
-                                placeholder="Enter full name"
+                                placeholder="9:30"
                                 value={endTime || ''}
                                 onChange={(event) => {getTimeEnd(event.target.value)}}
-                                className="text w-16 rounded"></input>
+                                className="text w-16 px-2 rounded"></input>
                             </div>
                         </div>
                     </div>
@@ -122,10 +119,10 @@ const ScheduleBooking = () => {
                     <button className="text-[#CD9F9F] text-2xl rounded-2xl border-2 border-[#CD9F9F] w-[20vh] h-auto py-2 hover:bg-[#CD9F9F] hover:text-white  duration-150 ease-in">Cancel</button>
                     <button type="submit" onClick={(event) => CreateBooking(event)} className="text-[#CD9F9F] text-2xl rounded-2xl border-2 border-[#CD9F9F] w-[20vh] h-auto py-2 hover:bg-[#CD9F9F] hover:text-white  duration-150 ease-in ml-10">Book</button>
                 </div>
-
-                {/* <div className="w-full flex items-center justify-center">
+                {success && <div className="w-full flex items-center justify-center">
                     <BookingSuccess />
-                </div> */}
+                </div>}
+                
             </div>
         </React.Fragment>
     );
