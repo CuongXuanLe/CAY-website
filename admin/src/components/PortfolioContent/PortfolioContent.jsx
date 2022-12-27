@@ -11,7 +11,17 @@ const PortfolioContent = () => {
   const handleDelItem = () => {
     setDelItem(!delItem);
   };
-
+  const deletePortfolios = async (id) => {
+    await axios
+      .delete(`http://127.0.0.1:8000/api/delete/${id}`)
+      .then((res) => {
+        alert("success");
+      })
+      .catch((err) => {
+        alert("service error");
+        console.log(err);
+      });
+  };
   const [portfolioDetails, getPortfolioDetails] = useState([]);
   const URL = "http://127.0.0.1:8000/api/get-portfolio";
   const getAllPortfolios = async () => {
@@ -63,7 +73,8 @@ const PortfolioContent = () => {
                     </button>
                   </Link>
                   <button
-                    onClick={() => setDelItem(true)}
+                    // onClick={() => setDelItem(true)}
+                    onClick={() => deletePortfolios(portfolioDetail.id)}
                     className="ml-2 rounded border border-red-600 py-1 px-5 text-red-600 hover:bg-red-600 hover:text-white"
                   >
                     Delete
