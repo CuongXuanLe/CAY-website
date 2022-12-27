@@ -19,12 +19,11 @@ class AdminPortfolioController extends Controller
      */
     public function index()
     {
-        $image = Image::all();
         $porfolio = Portfolio::all();
         return response()->json([
             'status' => true,
             'message' => 'get',
-            'data' => $image, $porfolio,
+            'data' => $porfolio,
         ]);
     }
 
@@ -49,8 +48,8 @@ class AdminPortfolioController extends Controller
         $validator = Validator::make($request->all(), [
             'name_album' => ['string'],
             'category' => ['string'],
-            'thumbnails' => 'required',
-            'image' => 'required',
+            'thumbnails' => 'required|string',
+            'image' => 'required|string',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
@@ -58,13 +57,14 @@ class AdminPortfolioController extends Controller
             if ($request->hasFile("thumbnails")) {
                 $file = $request->file("thumbnails");
                 $imageName = time() . '.' . $file->getClientOriginalName();
-                $file->move(\public_path("cover/"), $imageName);
+                $fileModel = new File;
+                $fileModel->location = 'storage/' . $imageName;
 
                 // Create a new Portfolio object and save it to the database
                 $portfolio = new Portfolio([
                     "name_album" => $request->name_album,
                     "category" => $request->category,
-                    "thumbnails" => $imageName,
+                    "thumbnails" => $fileModel->location,
                 ]);
                 $portfolio->save();
             }
@@ -99,8 +99,8 @@ class AdminPortfolioController extends Controller
                 'data' => [
                     "name_album" => $request->name_album,
                     "category" => $request->category,
-                    "thumbnails" => $imageName,
-                    "image" => json_encode($imageNames),
+                    "thumbnails" => $request->imageName,
+                    "image" => $request->imageNames,
                 ]
             ]);
         }
@@ -146,40 +146,58 @@ class AdminPortfolioController extends Controller
         $validator = Validator::make($request->all(), [
             'name_album' => ['string'],
             'category' => ['string'],
-            'thumbnails' => 'nullable',
-            'image' => 'nullable',
+            'thumbnails' => 'required',
+            'image' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
             if ($request->hasFile("thumbnails")) {
-                if (File::exists("cover/" . $portfolio->thumbnails)) {
-                    File::delete("cover/" . $portfolio->thumbnails);
-                }
                 $file = $request->file("thumbnails");
-                $portfolio->thumbnails = time() . "_" . $file->getClientOriginalName();
-                $file->move(\public_path("/cover"), $portfolio->thumbnails);
+                $portfolio->thumbnails = time() . '.' . $file->getClientOriginalName();
+                $file->move(\public_path("cover/"), $portfolio->thumbnails);
                 $request['thumbnails'] = $portfolio->thumbnails;
             }
-
-            if ($request->has('name_album')) {
-                $portfolio->update([
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                ]);
-            }
-            $portfolio->save();
+            $portfolio->update([
+                'name_album' => $request->name_album,
+                'category' => $request->category,
+                'thumbnails' =>  $portfolio->thumbnails,
+            ]);
 
             if ($request->hasFile("image")) {
                 $files = $request->file("image");
+                $imageNames = [];
                 foreach ($files as $file) {
-                    $imageName = time() . '_' . $file->getClientOriginalName();
-                    $request["portfolio_id"] = $id;
-                    $request["image"] = $imageName;
-                    $file->move(\public_path("images"), $imageName);
-                    Image::create($request->all());
+                    $imageName1 = time() . '.' . $file->getClientOriginalExtension();
+                    $request['portfolio_id'] = $id;
+                    $file->move(\public_path("/images"), $imageName1);
+                    $imageNames[] = $imageName1;
                 }
             }
+
+            DB::beginTransaction();
+            try {
+                foreach ($imageNames as $imageName) {
+                    $data1 = [
+                        "image" => $imageName,
+                        "portfolio_id" => $portfolio->id,
+                    ];
+                    Image::create($data1);
+                }
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+            }
+            return response()->json([
+                'status' => true,
+                'message' => 'Successed',
+                'data' => [
+                    "name_album" => $request->name_album,
+                    "category" => $request->category,
+                    "thumnails" => $request->thumbnails,
+                    "image"  => []
+                ]
+            ]);
         }
     }
 

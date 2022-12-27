@@ -82,8 +82,8 @@ Route::patch('/patch-items/{id}', [GuideListController::class, 'update']);
 Route::delete('/delete-items/{id}', [GuideListController::class, 'destroy']);
 
 //------------------------------CRUD AdminPortfolio-----------------------------------
-Route::post('/post', [AdminPortfolioController::class, 'store']);
-Route::get('/get', [AdminPortfolioController::class, 'index']);
+Route::post('/post-portfolio', [AdminPortfolioController::class, 'store']);
+Route::get('/get-portfolio', [AdminPortfolioController::class, 'index']);
 Route::delete('/delete/{id}', [AdminPortfolioController::class, 'destroy']);
 Route::get('/edit/{id}', [AdminPortfolioController::class, 'edit']);
 Route::delete('/deleteimage/{id}', [AdminPortfolioController::class, 'deleteimage']);
