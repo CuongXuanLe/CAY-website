@@ -25,7 +25,29 @@ const Schedule = () => {
   const [tooltipContent, setTooltipContent] = useState("");
   const [isShowing, setIsShowing] = useState(false);
   const handleEventClick = (event) => {
-    setTooltipContent(`${event.event.title}: ${event.event.start} - ${event.event.end}`);
+    const start = event.event.extendedProps.formatted_start
+    const end = event.event.extendedProps.formatted_start
+    const date = event.event.extendedProps.formatted_created_at
+    const note = event.event.extendedProps.note
+    // console.log(event.event)
+
+    setTooltipContent(
+      <div className="w-full font-medium">
+        <div className="flex justify-between">
+          <div>
+            <span className="font-bold">Customer:</span> {event.event.title}
+          </div>
+          <div>
+            <p><span className="text-red-500 font-bold">Appointment Date: </span>{date}</p>
+            <p><span className="text-red-500 font-bold">Time:</span> {start} <span className="text-red-500 font-bold">to</span> {end}</p>
+          </div> 
+        </div>
+        <div>
+          <span className="font-bold">Note:</span>
+          {note}
+        </div>
+      </div>
+      );
     setIsShowing(!isShowing);
   };
 
@@ -33,6 +55,7 @@ const Schedule = () => {
     setIsShowing(false);
   };
 
+  // console.log(formDetails)
   return (
     <React.Fragment>
 
@@ -54,19 +77,18 @@ const Schedule = () => {
         eventClick={handleEventClick}
       />
 
-{isShowing && 
-      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] right-[20%] z-50 w-[30%] bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
-        {tooltipContent}
-        <br />
-        <Link to="/details"><button className="w-20 bg-[#a7705c] rounded-xl">Update</button></Link>
-        <br />
-        <button variant="danger" onClick={handleCloseButtonClick}>
-            Close
-        </button>
-      </Tooltip>
+      {isShowing &&
+            <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute w-2/5 top-[50%] right-[20%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+              {tooltipContent}      
+              <br />
+              <div className="flex justify-end ">
+                <Link to="/details"><button className="w-20 border font-medium bg-[#a7705c] hover:bg-white hover:text-[#a7705c] hover:border-[#a7705c] text-white rounded">Update</button></Link>
+                <button className="border border-red-600 px-3 ml-3 rounded text-red-600 hover:bg-red-600 hover:text-white" variant="danger" onClick={handleCloseButtonClick}>
+                    Close
+                </button>
+              </div>
+            </Tooltip>
       }
-      
-
       <div className="mx-auto mt-5">
         <Link to="/appointmentcreate">
           <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">

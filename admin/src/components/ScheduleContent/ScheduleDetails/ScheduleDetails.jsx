@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ScheduleDetails = () => {
+
   return (
     <React.Fragment>
       <div className="relative h-full w-full">
