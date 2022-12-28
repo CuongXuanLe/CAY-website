@@ -92,7 +92,6 @@ const ScheduleBooking = () => {
                     <div className="w-[50%]">
                         {/* Small Calendar */}
                         <h3 className="mb-2 font-bold">Date<span className="text-red-600">*</span></h3>
-                        {/* <SmallCalendar value={date} onChange={(event) => {getDate(event.target.value)}} /> */}
                         <Flatpickr
                             value={date}
                             onChange={(selectedDates) => {getDate(selectedDates[0])}}

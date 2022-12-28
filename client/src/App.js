@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Footer, Sidebar } from "./components";
-import { Home, Guide, Contact, Portfolio, ScheduleTable, ScheduleBooking } from "./page";
+import { Home, Guide, Contact, Portfolio, ScheduleTable, ScheduleBooking,  } from "./page";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

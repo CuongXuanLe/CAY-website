@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 import { Tooltip } from 'react-tooltip'
 
 const CalendarContent = () => {
-
   //getAPI 
   const [schedules, setSchedules] = useState([]);
   const scheduleApi = "http://127.0.0.1:8000/api/get-schedule"
@@ -16,14 +15,25 @@ const CalendarContent = () => {
     async function getScheduleData () {
       const res = await axios.get(scheduleApi);
       setSchedules(res.data.data);
+      console.log(res.data.data)
     }
     getScheduleData();
   },[]);
 
-  const [tooltipContent, setTooltipContent] = useState("");
+  const [tooltipContent, setTooltipContent] = useState();
   const [isShowing, setIsShowing] = useState(false);
   const handleEventClick = (event) => {
-    setTooltipContent(`${event.event.title}: ${event.event.start} - ${event.event.end}`);
+    const start = event.event.start.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: 'Europe/London'
+    });
+    const end = event.event.end.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: 'Europe/London'
+    });
+    setTooltipContent(`Customer: ${event.event.title} Time: ${start} to ${end}`);
     setIsShowing(!isShowing);
   };
 
@@ -32,9 +42,9 @@ const CalendarContent = () => {
   };
 
   return (
-    <React.Fragment>
-    <div className="relative">
-      <div className="w-[85%] flex flex-col mx-auto ">
+    <>
+    <div >
+      <div className="w-[85%] relative flex flex-col mx-auto ">
         <FullCalendar 
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
@@ -44,30 +54,35 @@ const CalendarContent = () => {
         timeZone="none"
         initialView="dayGridMonth"
         navLinks={true}
-        selectable={true}
+        // selectable={true}
         events={schedules}
         eventClick={handleEventClick}
       />
       {isShowing && 
-      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] left-[20%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] left-[50%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
         {tooltipContent}
+        {schedules.map((schedule) => {
+          <div>
+          Customer: {schedule.title}
+        </div>
+        })}
+        
         <br />
-        <button variant="danger" onClick={handleCloseButtonClick}>
+        <button className="text-red-500" variant="danger" onClick={handleCloseButtonClick}>
             Close
         </button>
       </Tooltip>
       }
-
       <div className="mx-auto">
         <Link to="/booking">
-          <button className="w-15 h-12 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
+          <button className="w-15 h-12 mt-4 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
             Booking now
           </button>
         </Link>
         </div>
       </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
