@@ -5,6 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { Link } from "react-router-dom"
+import { Tooltip } from 'react-tooltip'
 
 const CalendarContent = () => {
 
@@ -19,11 +20,20 @@ const CalendarContent = () => {
     getScheduleData();
   },[]);
 
-  
+  const [tooltipContent, setTooltipContent] = useState("");
+  const [isShowing, setIsShowing] = useState(false);
+  const handleEventClick = (event) => {
+    setTooltipContent(`${event.event.title}: ${event.event.start} - ${event.event.end}`);
+    setIsShowing(!isShowing);
+  };
 
+  const handleCloseButtonClick = () => {
+    setIsShowing(false);
+  };
 
   return (
     <React.Fragment>
+    <div className="relative">
       <div className="w-[85%] flex flex-col mx-auto ">
         <FullCalendar 
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -36,7 +46,17 @@ const CalendarContent = () => {
         navLinks={true}
         selectable={true}
         events={schedules}
+        eventClick={handleEventClick}
       />
+      {isShowing && 
+      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] left-[20%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+        {tooltipContent}
+        <br />
+        <button variant="danger" onClick={handleCloseButtonClick}>
+            Close
+        </button>
+      </Tooltip>
+      }
 
       <div className="mx-auto">
         <Link to="/booking">
@@ -45,6 +65,7 @@ const CalendarContent = () => {
           </button>
         </Link>
         </div>
+      </div>
       </div>
     </React.Fragment>
   );

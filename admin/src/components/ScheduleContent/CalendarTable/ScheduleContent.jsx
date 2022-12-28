@@ -6,9 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { Link } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
 import axios from "axios";
-//import tippy
-import { tippy, } from "@tippyjs/react";
-import 'tippy.js/themes/light.css';
+import { Tooltip } from 'react-tooltip'
+
+
 
 const Schedule = () => {
   const [formDetails, getFormDetails] = useState([]);
@@ -20,7 +20,18 @@ const Schedule = () => {
   }
   useEffect(() => {
     getListForm()
-  }, [])
+  }, []);
+
+  const [tooltipContent, setTooltipContent] = useState("");
+  const [isShowing, setIsShowing] = useState(false);
+  const handleEventClick = (event) => {
+    setTooltipContent(`${event.event.title}: ${event.event.start} - ${event.event.end}`);
+    setIsShowing(!isShowing);
+  };
+
+  const handleCloseButtonClick = () => {
+    setIsShowing(false);
+  };
 
   return (
     <React.Fragment>
@@ -35,27 +46,25 @@ const Schedule = () => {
               left: 'title',
               right: 'prev,next today'
             }}
-          
-        eventMouseEnter={
-          (arg) => {
-            tippy(arg.el, {
-              content: `<div>${arg.event.title}</div>
-                        <div>${arg.event.start}</div>
-              <a href="http://localhost:3000/details"><button><strong>Edit</strong><button></a>`,
-              trigger: 'click',
-              allowHTML: true,
-              interactive: true,
-              interactiveBorder: 30,
-              theme: 'light',
-              maxWidth: 500,
-            })
-          }}
         timeZone="none"
         initialView="dayGridMonth"
         navLinks={true}
         selectable={true}
         events={formDetails}
+        eventClick={handleEventClick}
       />
+
+{isShowing && 
+      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] right-[20%] z-50 w-[30%] bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+        {tooltipContent}
+        <br />
+        <Link to="/details"><button className="w-20 bg-[#a7705c] rounded-xl">Update</button></Link>
+        <br />
+        <button variant="danger" onClick={handleCloseButtonClick}>
+            Close
+        </button>
+      </Tooltip>
+      }
       
 
       <div className="mx-auto mt-5">
