@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ScheduleDetails = () => {
+
+  const [appointmentDetails, getAppointmentDetails] = useState([]);
+  // const url = `http://127.0.0.1:8000/api/schedule/1`;
+  useEffect(() => {
+    const getBookData = async (id) => {
+      const res = await axios.get(`http://127.0.0.1:8000/api/schedule/1`);
+      getAppointmentDetails(res.data);
+      console.log(res.data)
+    }
+    getBookData();
+  }, []);
 
   return (
     <React.Fragment>
@@ -9,37 +21,28 @@ const ScheduleDetails = () => {
         <h3>Appointment Details</h3>
         <div className="px-10 py-5 ">
           <p className="mt-2">
-            <span className="font-bold">Customer:</span>
-            Hailey
+            <span className="font-bold">Customer: </span>
+            {appointmentDetails.title}
           </p>
           <p className="mt-2">
-            <span className="font-bold text-red-600">Appointment Date:</span>{" "}
-            10/12/2022{" "}
-            <span className="ml-4 font-bold text-red-600">Time:</span> 9h30 to
-            11h30
+            <span className="font-bold text-red-600">Appointment Date: </span>
+            {appointmentDetails.formatted_created_at}
+            <span className="ml-4 font-bold text-red-600">Time: </span>{appointmentDetails.formatted_start} to {appointmentDetails.formatted_end}
           </p>
           <p className="mt-2">
-            <span className="font-bold">Date of Birth: </span>02/10/1999
+            <span className="font-bold">Date of Birth: </span>{appointmentDetails.birthday}
           </p>
           <p className="mt-2">
-            <span className="font-bold">Phone: </span>0999 999 999
+            <span className="font-bold">Phone: </span>{appointmentDetails.phone}
           </p>
           <p className="mt-2">
             <span className="font-bold">Email: </span>
-            hailey.melbourne@gmail.com
+            {appointmentDetails.email}
           </p>
           <p className="mt-2">
             <span className="font-bold">Note: </span>
             <br />
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            {appointmentDetails.note}
           </p>
         </div>
         <div className="absolute right-1 bottom-5">
