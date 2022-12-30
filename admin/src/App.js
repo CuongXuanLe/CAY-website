@@ -33,8 +33,8 @@ const App = () => {
         <Route path="/adminFooter" element={<AdminFooter/>}/>
         <Route path="/changePassword" element={<ChangePassword/>} />
         <Route path="/schedule" element={<Schedule/>} />
-        <Route path="/details/:id" element={<AppointmentDetails/>} />
-        <Route path="/appointmentedit" element={<AppointmentEdit />} />
+        <Route exact path="/details/:id" element={<AppointmentDetails/>} />
+        <Route path="/appointmentedit/:id" element={<AppointmentEdit />} />
         <Route path="/appointmentcreate" element={<AppointmentCreate />} />
       </Routes>
     </Router>

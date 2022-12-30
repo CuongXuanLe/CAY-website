@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 const ScheduleEdit = () => {
@@ -12,15 +13,6 @@ const ScheduleEdit = () => {
   const [birthday, setBirthday] = useState();
   const navigate = useNavigate()
 
-  const [dataInfo, getData] = useState();
-  // useEffect(() => {
-  //   async function getDataDetails() {
-  //     const res = await axios.get("http://127.0.0.1:8000/api/schedule/1")
-  //     getData(res.data)
-  //   }
-  //   getDataDetails()
-  // },[])
-  // console.log(dataInfo)
   const updateDetails = async (e) => {
     e.preventDefault();
     //call api
@@ -61,6 +53,19 @@ const ScheduleEdit = () => {
     // window.location.reload(false);
 }
 
+  //getAPI
+  const {id} = useParams();
+  const [infoUsers,setInfoUsers] = useState([]);
+  const infoAPI = `http://127.0.0.1:8000/api/schedule/${id}`;
+  useEffect(() => {
+    async function getInfo () {
+      const res = await axios.get(infoAPI);
+      setInfoUsers(res.data)
+      console.log(res.data);
+    }
+    getInfo();
+  },[])
+
   return (
     <>
       <div className="relative h-full w-full">
@@ -71,7 +76,7 @@ const ScheduleEdit = () => {
             <input 
               value={title || ''}
               onChange={(event) => {setTitle(event.target.value)}}
-              // placeholder={dataInfo.title}
+              placeholder={infoUsers.title}
               className="ml-3 py-1 px-2 grow border rounded border-black"></input>
           </div>
           <div className="mt-2 flex justify-between">
@@ -80,7 +85,7 @@ const ScheduleEdit = () => {
               <input
                 value={date || ''}
                 onChange={(event) => {setDate(event.target.value)}}
-                // placeholder={dataInfo.formatted_created_at}
+                placeholder={infoUsers.formatted_created_at}
                 className="grow ml-3 py-1 px-2 rounded mr-4 border border-black"></input>
             </div>
             <div className="flex w-2/5 items-center">
@@ -88,13 +93,13 @@ const ScheduleEdit = () => {
               <input
                 value={startTime || ''}
                 onChange={(event) => {setStartTime(event.target.value)}}
-                // placeholder={dataInfo.formatted_start} 
+                placeholder={infoUsers.formatted_start} 
                 className="ml-3 py-1 px-2 rounded w-full border border-black"></input>
               <span className="font-bold text-red-600 ml-2">to</span>
               <input
                 value={endTime || ''}
                 onChange={(event) => {setEndTime(event.target.value)}}
-                // placeholder={dataInfo.formatted_end}
+                placeholder={infoUsers.formatted_end}
                 className="ml-3 py-1 px-2 rounded w-full border-[1px] border-black"></input>
             </div>
           </div>
@@ -103,7 +108,7 @@ const ScheduleEdit = () => {
             <input
               value={birthday || ''}
               onChange={(event) => {setBirthday(event.target.value)}}
-              // placeholder={dataInfo.formatted_birthday}
+              placeholder={infoUsers.formatted_birthday}
               className="grow px-2 py-1 ml-3 border rounded border-black"></input>
           </div>
           <div className="mt-2 flex items-center">
@@ -113,7 +118,7 @@ const ScheduleEdit = () => {
               value={phone || ''}
               maxLength={15}
               onChange={(event) => {setPhone(event.target.value)}}
-              // placeholder={dataInfo.phone}
+              placeholder={infoUsers.phone}
               className="grow ml-3 py-1 px-2 rounded border border-black"></input>
           </div>
           <div className="mt-2 flex items-center">
@@ -122,7 +127,7 @@ const ScheduleEdit = () => {
               type='email'
               value={email || ''}
               onChange={(event) => {setEmail(event.target.value)}}
-              // placeholder={dataInfo.email}
+              placeholder={infoUsers.email}
               className="ml-3 py-1 px-2 rounded grow border border-black"></input>
           </div>
           <div className="mt-2 flex  flex-col">
@@ -131,7 +136,7 @@ const ScheduleEdit = () => {
               value={note || ''}
               maxLength={225}
               onChange={(event) => {setNote(event.target.value)}}
-              // placeholder={dataInfo.note}
+              placeholder={infoUsers.note}
               className="w-full border rounded border-black"></textarea>
           </div>
         </div>

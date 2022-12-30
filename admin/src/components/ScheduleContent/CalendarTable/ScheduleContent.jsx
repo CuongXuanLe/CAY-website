@@ -29,7 +29,9 @@ const Schedule = () => {
     const end = event.event.extendedProps.formatted_end
     const date = event.event.extendedProps.formatted_created_at
     const note = event.event.extendedProps.note
-    console.log(event.event)
+    const id = event.event.id
+    // console.log(id);
+
     setTooltipContent(
       <div className="w-full font-medium">
         <div className="flex justify-between">
@@ -45,14 +47,13 @@ const Schedule = () => {
           <span className="font-bold">Note:</span>
           {note}
         </div>
-        <div className="flex justify-end ">
-        <Link to={`/details/${index}`}>
-          <button className="w-20 border font-medium bg-[#a7705c] hover:bg-white hover:text-[#a7705c] hover:border-[#a7705c] text-white rounded">Update</button>
-        </Link>
-          <button className="border border-red-600 px-3 ml-3 rounded text-red-600 hover:bg-red-600 hover:text-white" variant="danger" onClick={handleCloseButtonClick}>
-              Close
-          </button>
-        </div>
+        <br />
+          <div className="flex justify-end ">
+            <Link to={`/details/${id}`}><button className="w-20 border font-medium bg-[#a7705c] hover:bg-white hover:text-[#a7705c] hover:border-[#a7705c] text-white rounded">Update</button></Link>
+            <button className="border border-red-600 px-3 ml-3 rounded text-red-600 hover:bg-red-600 hover:text-white" variant="danger" onClick={handleCloseButtonClick}>
+                Close
+            </button>
+          </div>
       </div>
       );
     setIsShowing(!isShowing);
