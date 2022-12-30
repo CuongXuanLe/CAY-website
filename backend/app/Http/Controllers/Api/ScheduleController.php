@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+// App\Http\Controllers\DateTime()
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -28,10 +30,11 @@ class ScheduleController extends Controller
         $schedule->phone = $request->input('phone');
         $schedule->birthday = $request->input('birthday');
         $schedule->email = $request->input('email');
-        $schedule->note = $request->input('note');
-        $schedule->start = $request->input('start');
-        $schedule->end = $request->input('end');
         $schedule->created_at = $request->input('created_at');
+        $schedule->note = $request->input('note');
+        // $schedule->start = Carbon::createFromFormat('d-m-Y H:i',$schedule->getFormattedCreatedAtAttribute()." ".$request->input('start'));
+        $schedule->start = $schedule->getFormattedCreatedAtAttribute()." ".$request->input('start');
+        $schedule->end = Carbon::createFromFormat('d-m-Y H:i', $schedule->getFormattedCreatedAtAttribute()." ".$request->input('end'));
         $schedule->approval = $request->has('approval') ? $request->input('approval') : false;
         $schedule->save();
     }
@@ -44,38 +47,17 @@ class ScheduleController extends Controller
 
     public function update(Request $request , $id)
     {
-        // $validator = $request->validate(
-        //     [
-        //         'item'=>['string'],
-        //     ]
-        // );
         $schedule = Schedule::find($id);
         $schedule->title = $request->title;
         $schedule->phone = $request->phone;
         $schedule->birthday = $request->birthday;
         $schedule->email = $request->email;
         $schedule->note = $request->note;
-        $schedule->start = $request->start;
-        $schedule->end = $request->end;
+        $schedule->start = $request->created_at." ".$request->start;
+        $schedule->end = $request->created_at." ".$request->end;
         $schedule->created_at = $request->created_at;
         $schedule->approval = $request->has('approval') ? $request->approval : false;
         $schedule->save();
-
-        // if ($schedule) {
-        //     $schedule->update($validator);
-
-        //     return response()->json([
-        //         'status' => true,
-        //         'message' => 'item found.',
-        //         'data' => $schedule,
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'status' => true,
-        //         'message' => 'item not found.',
-        //         'data' => null,
-        //     ], 404);
-        // }
     }
 
 

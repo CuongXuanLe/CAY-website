@@ -20,9 +20,9 @@ return new class extends Migration
             $table->date('birthday')->nullable();
             $table->string('email')->nullable();
             $table->longText('note')->nullable();
-            $table->time('start');
-            $table->time('end');
-            $table->date('created_at');
+            $table->datetime('start');
+            $table->datetime('end');
+            $table->datetime('created_at');
             $table->boolean('approval')->default(false);
         });
     }

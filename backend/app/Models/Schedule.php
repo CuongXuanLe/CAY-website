@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
-use Carbon\Carbon;
+
 
 class Schedule extends Model
 {
@@ -55,11 +55,11 @@ class Schedule extends Model
 
     public function getFormattedStartAttribute()
     {
-        return $this->start->format('H:i');
+        return $this->start->format('d-m-Y H:i');
     }
 
     public function getFormattedEndAttribute()
     {
-        return $this->end->format('H:i');
+        return $this->end->format('d-m-Y H:i');
     }
 }
