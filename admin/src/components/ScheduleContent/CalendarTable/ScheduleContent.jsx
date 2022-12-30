@@ -11,56 +11,85 @@ import { Tooltip } from 'react-tooltip'
 
 
 const Schedule = () => {
+  const [events, setEvents] = useState([]);
   const [formDetails, getFormDetails] = useState([]);
   const url = "http://127.0.0.1:8000/api/get-schedule";
   const getListForm = async () => {
-    const res = await axios.get(url).then(({data}) => {
+    const res = await axios.get(url)
+    .then(({data}) => {
       getFormDetails(data.data)
     })
   }
   useEffect(() => {
     getListForm()
+    fetchEvents();
   }, []);
   // const navigate = useNavigate();
   const [tooltipContent, setTooltipContent] = useState("");
   const [isShowing, setIsShowing] = useState(false);
-  const handleEventClick = (event, index) => {
-    const start = event.event.extendedProps.formatted_start
-    const end = event.event.extendedProps.formatted_end
-    const date = event.event.extendedProps.formatted_created_at
-    const note = event.event.extendedProps.note
-    console.log(event.event)
-    setTooltipContent(
-      <div className="w-full font-medium">
-        <div className="flex justify-between">
-          <div>
-            <span className="font-bold">Customer:</span> {event.event.title}
-          </div>
-          <div>
-            <p><span className="text-red-500 font-bold">Appointment Date: </span> {date}</p>
-            <p><span className="text-red-500 font-bold">Time:</span> {start} <span className="text-red-500 font-bold">to</span> {end}</p>
-          </div> 
-        </div>
-        <div>
-          <span className="font-bold">Note:</span>
-          {note}
-        </div>
-        <div className="flex justify-end ">
-        <Link to={`/details/${index}`}>
-          <button className="w-20 border font-medium bg-[#a7705c] hover:bg-white hover:text-[#a7705c] hover:border-[#a7705c] text-white rounded">Update</button>
-        </Link>
-          <button className="border border-red-600 px-3 ml-3 rounded text-red-600 hover:bg-red-600 hover:text-white" variant="danger" onClick={handleCloseButtonClick}>
-              Close
-          </button>
-        </div>
-      </div>
-      );
-    setIsShowing(!isShowing);
-  };
+  // const handleEventClick = (event, index) => {
+  //   const start = event.event.extendedProps.formatted_start
+  //   const end = event.event.extendedProps.formatted_end
+  //   const date = event.event.extendedProps.formatted_created_at
+  //   const note = event.event.extendedProps.note
+  //   console.log(event.event)
+  //   setTooltipContent(
+  //     <div className="w-full font-medium">
+  //       <div className="flex justify-between">
+  //         <div>
+  //           <span className="font-bold">Customer:</span> {event.event.title}
+  //         </div>
+  //         <div>
+  //           <p><span className="text-red-500 font-bold">Appointment Date: </span> {date}</p>
+  //           <p><span className="text-red-500 font-bold">Time:</span> {start} <span className="text-red-500 font-bold">to</span> {end}</p>
+  //         </div> 
+  //       </div>
+  //       <div>
+  //         <span className="font-bold">Note:</span>
+  //         {note}
+  //       </div>
+  //       <div className="flex justify-end ">
+  //       <Link to={`/details/${index}`}>
+  //         <button className="w-20 border font-medium bg-[#a7705c] hover:bg-white hover:text-[#a7705c] hover:border-[#a7705c] text-white rounded">Update</button>
+  //       </Link>
+  //         <button className="border border-red-600 px-3 ml-3 rounded text-red-600 hover:bg-red-600 hover:text-white" variant="danger" onClick={handleCloseButtonClick}>
+  //             Close
+  //         </button>
+  //       </div>
+  //     </div>
+  //     );
+  //   setIsShowing(!isShowing);
+  // };
 
   const handleCloseButtonClick = () => {
     setIsShowing(false);
   };
+
+  const fetchEvents = async () => {
+    const response = await axios.get('http://127.0.0.1:8000/api/get-schedule');
+    let modifiedEvents;
+    if (Array.isArray(response.data)) {
+      modifiedEvents = response.data.data.map(event => {
+        return {
+          title: event.title,
+          start: event.formatted_start,
+          end: event.formatted_end,
+          // other event properties
+        }
+      });
+    } else {
+      modifiedEvents = [{
+        title: response.data.title,
+        start: response.data.formatted_start,
+        end: response.data.formatted_end,
+        // other event properties
+      }];
+     }
+     console.log(response.data.data)
+  setEvents(modifiedEvents);
+  }
+  
+
 
   return (
     <React.Fragment>
@@ -79,8 +108,8 @@ const Schedule = () => {
         initialView="dayGridMonth"
         navLinks={true}
         selectable={true}
-        events={formDetails}
-        eventClick={handleEventClick}
+        events={events}
+        // eventClick={handleEventClick}
       />
 
       {isShowing &&

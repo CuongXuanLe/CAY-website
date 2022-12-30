@@ -13,14 +13,7 @@ const ScheduleEdit = () => {
   const navigate = useNavigate()
 
   const [dataInfo, getData] = useState();
-  // useEffect(() => {
-  //   async function getDataDetails() {
-  //     const res = await axios.get("http://127.0.0.1:8000/api/schedule/1")
-  //     getData(res.data)
-  //   }
-  //   getDataDetails()
-  // },[])
-  // console.log(dataInfo)
+
   const updateDetails = async (e) => {
     e.preventDefault();
     //call api
