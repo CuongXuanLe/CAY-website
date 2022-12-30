@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
+import  Logo  from "../../assets/Logo.jpg";
 
 const PortfolioContent = () => {
   const [delItem, setDelItem] = useState(false);
@@ -52,7 +53,8 @@ const PortfolioContent = () => {
             >
               <img
                 className="w-2/5 object-cover"
-                src={portfolioDetail.thumbnails}
+                // src={portfolioDetail.thumbnails}
+                 src={Logo}
                 alt="pic_1"
               />
               <div className="relative w-3/5 p-3">

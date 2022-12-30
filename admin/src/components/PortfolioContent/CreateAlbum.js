@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BiUpload, BiCheck } from "react-icons/bi";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 const CreateAlbum = () => {
   const [name_album, setNameAlbum] = useState();
   const [category, setCategory] = useState();
@@ -12,37 +11,37 @@ const CreateAlbum = () => {
   // const [nameThumb, setNameThumb] = useState();
   const [listImg, setListImg] = useState([]);
 
-  // const handlePreviewImageThumb = (e) => {
-  //   const file = e.target.files[0];
-  //   file.preview = URL.createObjectURL(file);
-  //   setThumbnails(file);
-  //   console.log(file);
-  // };
+  const handlePreviewImageThumb = (e) => {
+    const file = e.target.files[0];
+    file.preview = URL.createObjectURL(file);
+    setThumbnails(file);
+    console.log(file);
+  };
 
-  // const handlePreviewListImg = (e) => {
-  //   // const file = e.target.files[0];
-  //   // file.preview = URL.createObjectURL(file);
-  //   // setListImg(file);
-  //   // console.log(file);
-  //   // console.log(e.target.files)
-  //   if (e.target.files) {
-  //     const fileArray = Array.from(e.target.files).map((file) =>
-  //       URL.createObjectURL(file)
-  //     );
-  //     console.log(fileArray);
-  //     setListImg((prevImages) => prevImages.concat(fileArray));
-  //     Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-  //   }
-  // };
+  const handlePreviewListImg = (e) => {
+    // const file = e.target.files[0];
+    // file.preview = URL.createObjectURL(file);
+    // setListImg(file);
+    // console.log(file);
+    // console.log(e.target.files)
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+      console.log(fileArray);
+      setListImg((prevImages) => prevImages.concat(fileArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
 
-  // const renderPhotos = (source) => {
-  //   console.log("source: ", source);
-  //   return source.map((photo) => {
-  //     return (
-  //       <img src={photo} key={photo} width="50%" className="mr-2" alt="" />
-  //     );
-  //   });
-  // };
+  const renderPhotos = (source) => {
+    console.log("source: ", source);
+    return source.map((photo) => {
+      return (
+        <img src={photo} key={photo} width="50%" className="mr-2" alt="" />
+      );
+    });
+  };
 
   useEffect(() => {
     document.title = "Create album";
@@ -111,7 +110,7 @@ const CreateAlbum = () => {
             </button>
           </div>
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <p className="mb-3">Thumbnails</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
@@ -126,8 +125,8 @@ const CreateAlbum = () => {
               <BsPencil />
             </button>
           </div>
-        </div>
-        <div className="mb-3">
+        </div> */}
+        {/* <div className="mb-3">
           <p className="mb-3">List Image:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
@@ -142,8 +141,8 @@ const CreateAlbum = () => {
               <BsPencil />
             </button>
           </div>
-        </div>
-        {/* <div className="mb-3">
+        </div> */}
+        <div className="mb-3">
           <p className="mb-3">Thumbnail:</p>
           <div className="h-auto w-full rounded border-2 border-black p-5">
             {thumbnails && (
@@ -154,7 +153,7 @@ const CreateAlbum = () => {
                 value={thumbnails || ""}
                 onChange={(event) => setThumbnails(event.target.value)}
               />
-            )} */}
+            )}
         {/* <img
               value={thumbnails || ""}
               onChange={(event) => getImgQR(event.target.value)}
@@ -162,8 +161,8 @@ const CreateAlbum = () => {
               alt="QR_img"
               width="50%"
             /> */}
-        {/* </div> */}
-        {/* <div className="flex justify-end">
+        </div>
+        <div className="flex justify-end">
             <button className="relative mt-2 flex w-32 items-center overflow-hidden rounded border-2 border-black px-3 py-1 hover:bg-black hover:text-white">
               <BiUpload className="mr-3" /> Upload
               <input
@@ -171,12 +170,12 @@ const CreateAlbum = () => {
                 className="-z-1 absolute bottom-0 left-0 opacity-0"
                 onChange={handlePreviewImageThumb}
               />
-            </button> */}
+            </button>
         {/* <button onClick={handleApi} className="w-32 flex items-center justify-center text-white bg-[#a7705c] mt-2 rounded ml-5 hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Save </button> */}
-        {/* </div> */}
-        {/* </div> */}
+        </div>
+        </div>
         <div className="mb-3">
-          {/* <p className="mb-3">List Images:</p>
+          <p className="mb-3">List Images:</p>
           <div className="h-auto w-full overflow-y-auto rounded border-2 border-black p-5">
             {listImg && (
               <img
@@ -187,7 +186,7 @@ const CreateAlbum = () => {
                 onChange={(event) => setListImg(event.target.value)}
               />
             )}
-            <div className="flex snap-center">{renderPhotos(listImg)}</div> */}
+            <div className="flex snap-center">{renderPhotos(listImg)}</div>
           {/* <img
               value={thumbImg || ""}
               onChange={(event) => getImgQR(event.target.value)}
@@ -195,8 +194,8 @@ const CreateAlbum = () => {
               alt="QR_img"
               width="50%"
             /> */}
-          {/* </div> */}
-          {/* <div className="flex justify-end">
+          </div>
+          <div className="flex justify-end">
             <button className="relative mt-2 flex w-32 items-center overflow-hidden rounded border-2 border-black px-3 py-1 hover:bg-black hover:text-white">
               <BiUpload className="mr-3" /> Upload
               <input
@@ -206,7 +205,7 @@ const CreateAlbum = () => {
                 onChange={handlePreviewListImg}
               />
             </button>
-          </div> */}
+          </div>
           {/* <button onClick={handleApi} className="flex items-center float-right px-10 py-2 justify-center text-white bg-[#a7705c] mt-6 rounded hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Save </button> */}
           <div className="mt-10 flex flex-row justify-end">
             <Link to="/AdminPortfolio">
