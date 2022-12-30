@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { BookingSuccess } from "../../components";
 import "flatpickr/dist/flatpickr.css";
 import Flatpickr from "react-flatpickr";
-
+import moment from 'moment'
 import axios from "axios";
 const ScheduleBooking = () => {
     const [title, getTitle] = useState();
@@ -14,7 +14,7 @@ const ScheduleBooking = () => {
     const [startTime, getTimeStart] = useState();
     const [endTime, getTimeEnd] = useState();
     const [success, setSuccess] = useState();
-
+    const newDate = moment(date).format('DD-MM-YYYY')
     const CreateBooking = async (e) => {
         e.preventDefault();
         setSuccess(false);
@@ -25,7 +25,7 @@ const ScheduleBooking = () => {
             birthday: birthday,
             email: email,
             note: note,
-            created_at: date,
+            created_at: newDate,
             start: startTime,
             end: endTime,
         }
@@ -33,6 +33,7 @@ const ScheduleBooking = () => {
             .post(url, formData)
             .then((res) => {
                 setSuccess(true);
+                console.log(formData)
             })
             .catch((err) => {
                 console.log(err)
@@ -95,6 +96,7 @@ const ScheduleBooking = () => {
                         <Flatpickr
                             value={date}
                             onChange={(selectedDates) => {getDate(selectedDates[0])}}
+                            onClick={console.log(date)}
                         />
                     <div>
                             <h3 className="font-bold mt-3">Time <span className="text-red-600">*</span> </h3>
