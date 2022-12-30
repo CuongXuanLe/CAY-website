@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import moment from 'moment';
 
 const Confirm = ({ title, date, start, end, email, birthDay, phone, note, index}) => {
 
@@ -13,6 +14,10 @@ const Confirm = ({ title, date, start, end, email, birthDay, phone, note, index}
     })
     window.location.reload(false);
   }
+  const newStart = moment(start, 'DD-MM-YYYY HH:mm');
+  const timeStart = newStart.format('HH:mm');
+  const newEnd = moment(end, 'DD-MM-YYYY HH:mm');
+  const timeEnd = newEnd.format('HH:mm');
 
   const updateForm = async(id) => {
     const formData = {
@@ -22,8 +27,8 @@ const Confirm = ({ title, date, start, end, email, birthDay, phone, note, index}
       email: email,
       note: note,
       created_at: date,
-      start: start,
-      end: end,
+      start: timeStart,
+      end: timeEnd,
       approval: 1,
     };
     const res = await axios.patch(`http://127.0.0.1:8000/api/schedule/${id}`, formData)
@@ -48,7 +53,7 @@ const Confirm = ({ title, date, start, end, email, birthDay, phone, note, index}
             {date}
           </div>
           <div className="w-1/3">
-            <span className="font-bold text-red-600">Time:</span> {start} to {end}
+            <span className="font-bold text-red-600">Time:</span> {timeStart} to {timeEnd}
           </div>
         </div>
         <div>

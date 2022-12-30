@@ -7,8 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Confirm from "../ConfirmUpdate/Confirm";
 import axios from "axios";
 import { Tooltip } from 'react-tooltip'
-
-
+import moment from 'moment';
 
 const Schedule = () => {
   const [formDetails, getFormDetails] = useState([]);
@@ -30,8 +29,12 @@ const Schedule = () => {
     const date = event.event.extendedProps.formatted_created_at
     const note = event.event.extendedProps.note
     const id = event.event.id
-    // console.log(id);
-
+    // const newStart = start.toLocaleTimeString();
+    const newStart = moment(start, 'DD-MM-YYYY HH:mm');
+    const timeStart = newStart.format('HH:mm');
+    const newEnd = moment(end, 'DD-MM-YYYY HH:mm');
+    const timeEnd = newEnd.format('HH:mm');
+    // console.log(timeStart)
     setTooltipContent(
       <div className="w-full font-medium">
         <div className="flex justify-between">
@@ -40,7 +43,7 @@ const Schedule = () => {
           </div>
           <div>
             <p><span className="text-red-500 font-bold">Appointment Date: </span> {date}</p>
-            <p><span className="text-red-500 font-bold">Time:</span> {start} <span className="text-red-500 font-bold">to</span> {end}</p>
+            <p><span className="text-red-500 font-bold">Time:</span> {timeStart} <span className="text-red-500 font-bold">to</span> {timeEnd}</p>
           </div> 
         </div>
         <div>

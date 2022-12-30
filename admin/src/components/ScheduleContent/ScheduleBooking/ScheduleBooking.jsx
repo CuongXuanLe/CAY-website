@@ -32,9 +32,9 @@ const ScheduleBooking = () => {
     await axios
       .post(url, formData)
       .then((res) => {
-        console.log(res.data)
         alert("success");
         navigate("/schedule")
+        console.log(formData)
       })
       .catch((err) => {
         // console.log(err)
