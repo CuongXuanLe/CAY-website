@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ScheduleDetails = () => {
 
-  const [appointmentDetails, getAppointmentDetails] = useState([]);
-  // const url = `http://127.0.0.1:8000/api/schedule/1`;
+  //getAPI
+  const {id} = useParams();
+  const [infoUsers,setInfoUsers] = useState([]);
+  const infoAPI = `http://127.0.0.1:8000/api/schedule/${id}`;
   useEffect(() => {
-    const getBookData = async (id) => {
-      const res = await axios.get(`http://127.0.0.1:8000/api/schedule/1`);
-      getAppointmentDetails(res.data);
-      console.log(res.data)
+    async function getInfo () {
+      const res = await axios.get(infoAPI);
+      setInfoUsers(res.data)
+      console.log(res.data);
     }
-    getBookData();
-  }, []);
+    getInfo();
+  },[])
 
   return (
     <React.Fragment>
@@ -22,31 +24,32 @@ const ScheduleDetails = () => {
         <div className="px-10 py-5 ">
           <p className="mt-2">
             <span className="font-bold">Customer: </span>
-            {appointmentDetails.title}
+            {infoUsers.title}
           </p>
           <p className="mt-2">
-            <span className="font-bold text-red-600">Appointment Date: </span>
-            {appointmentDetails.formatted_created_at}
-            <span className="ml-4 font-bold text-red-600">Time: </span>{appointmentDetails.formatted_start} to {appointmentDetails.formatted_end}
+            <span className="font-bold text-red-600">Appointment Date: </span>{" "}
+            {infoUsers.formatted_created_at}{" "}
+            <span className="ml-4 font-bold text-red-600">Time:</span> {infoUsers.formatted_start} to 
+            {" "}{infoUsers.formatted_end}
           </p>
           <p className="mt-2">
-            <span className="font-bold">Date of Birth: </span>{appointmentDetails.birthday}
+            <span className="font-bold">Date of Birth: </span>{infoUsers.formatted_birthday}
           </p>
           <p className="mt-2">
-            <span className="font-bold">Phone: </span>{appointmentDetails.phone}
+            <span className="font-bold">Phone: </span>{infoUsers.phone}
           </p>
           <p className="mt-2">
             <span className="font-bold">Email: </span>
-            {appointmentDetails.email}
+            {infoUsers.mail}
           </p>
           <p className="mt-2">
             <span className="font-bold">Note: </span>
             <br />
-            {appointmentDetails.note}
+            {infoUsers.note}
           </p>
         </div>
         <div className="absolute right-1 bottom-5">
-          <Link to="/appointmentedit">
+          <Link to={`/appointmentedit/${id}`}>
             <button className="w-20 border-[1px] border-black  duration-150 ease-in hover:bg-black hover:text-white">
               Update
             </button>
