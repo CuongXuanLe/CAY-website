@@ -36,7 +36,7 @@ const Schedule = () => {
     const timeEnd = newEnd.format('HH:mm');
     // console.log(timeStart)
     setTooltipContent(
-      <div className="w-full font-medium">
+      <div className="w-1/2 font-medium bg-white p-5 rounded">
         <div className="flex justify-between">
           <div>
             <span className="font-bold">Customer:</span> {event.event.title}
@@ -47,7 +47,7 @@ const Schedule = () => {
           </div> 
         </div>
         <div>
-          <span className="font-bold">Note:</span>
+          <span className="font-bold">Note: </span>
           {note}
         </div>
         <br />
@@ -72,8 +72,10 @@ const Schedule = () => {
       {/* Table of Calendar */}
       <div className="px-24">
       <React.Fragment>
-      <div className="w-[85%] flex flex-col mx-auto ">
+      <div className="w-[85%] flex flex-col mx-auto">
       <FullCalendar 
+        // className="z-20"
+        zIndex={0}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
               left: 'title',
@@ -82,13 +84,16 @@ const Schedule = () => {
         timeZone="none"
         initialView="dayGridMonth"
         navLinks={true}
-        selectable={true}
+        // selectable={true}
         events={formDetails}
         eventClick={handleEventClick}
       />
 
       {isShowing &&
-            <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute w-1/4 top-[50%] right-[20%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+            <Tooltip id="event-tooltip" effect="solid" place="top" 
+              // className="absolute w-1/2 z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md"
+              className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50"
+            >
               {tooltipContent}                    
             </Tooltip>
       }
