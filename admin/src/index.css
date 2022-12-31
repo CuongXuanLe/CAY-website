@@ -30,5 +30,8 @@ code {
   color: white;
   cursor: pointer;
 }
+.fc, .fc-event {
+  position: relative;
+}
 
 
