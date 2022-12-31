@@ -55,3 +55,7 @@ a {
 input{
   border: none!important;
 }
+
+.event-relative{
+  position: relative;
+}

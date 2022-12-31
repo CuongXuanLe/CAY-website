@@ -43,35 +43,30 @@ const CalendarContent = () => {
 
   return (
     <>
-    <div >
+    <div>
       <div className="w-[85%] relative flex flex-col mx-auto ">
         <FullCalendar 
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'title',
-              right: 'prev,next today'
-            }}
-        timeZone="none"
-        initialView="dayGridMonth"
-        navLinks={true}
-        // selectable={true}
-        events={schedules}
-        eventClick={handleEventClick}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              headerToolbar={{
+                left: 'title',
+                right: 'prev,next today'
+              }}
+          timeZone="none"
+          initialView="dayGridMonth"
+          navLinks={true}
+          // selectable={true}
+          events={schedules}
+          eventClick={handleEventClick}
+          eventClassNames={'event-relative'}
       />
       {isShowing && 
-      <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute top-[50%] left-[50%] z-50 bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
-        {tooltipContent}
-        {schedules.map((schedule) => {
-          <div>
-          Customer: {schedule.title}
-        </div>
-        })}
-        
-        <br />
-        <button className="text-red-500" variant="danger" onClick={handleCloseButtonClick}>
-            Close
-        </button>
-      </Tooltip>
+        <Tooltip id="event-tooltip" effect="solid" place="top" className="absolute z-50 top-[50%] left-[50%] bg-white text-black font-bold px-3 py-2 rounded-md shadow-md">
+          {tooltipContent}
+          <br />
+          <button className="text-red-500" variant="danger" onClick={handleCloseButtonClick}>
+              Close
+          </button>
+        </Tooltip>
       }
       <div className="mx-auto">
         <Link to="/booking">
