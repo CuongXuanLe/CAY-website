@@ -1,8 +1,8 @@
 import { BsPencil } from "react-icons/bs";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import { BiUpload, BiCheck } from "react-icons/bi";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreateAlbum = () => {
   const [name_album, setNameAlbum] = useState();
@@ -11,7 +11,7 @@ const CreateAlbum = () => {
   // const [thumbImg, setThumbImg] = useState();
   // const [nameThumb, setNameThumb] = useState();
   const [listImg, setListImg] = useState([]);
-
+  const navigate = useNavigate();
   // const handlePreviewImageThumb = (e) => {
   //   const file = e.target.files[0];
   //   file.preview = URL.createObjectURL(file);
@@ -68,6 +68,7 @@ const CreateAlbum = () => {
       .then((res) => {
         console.log(res.data);
         alert("success");
+        navigate("/AdminPortfolio")
       })
       .catch((err) => {
         alert("service error");
