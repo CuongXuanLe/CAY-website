@@ -32,7 +32,6 @@ class ScheduleController extends Controller
         $schedule->email = $request->input('email');
         $schedule->created_at = $request->input('created_at');
         $schedule->note = $request->input('note');
-        // $schedule->start = Carbon::createFromFormat('d-m-Y H:i',$schedule->getFormattedCreatedAtAttribute()." ".$request->input('start'));
         $schedule->start = $schedule->getFormattedCreatedAtAttribute()." ".$request->input('start');
         $schedule->end = Carbon::createFromFormat('d-m-Y H:i', $schedule->getFormattedCreatedAtAttribute()." ".$request->input('end'));
         $schedule->approval = $request->has('approval') ? $request->input('approval') : false;
