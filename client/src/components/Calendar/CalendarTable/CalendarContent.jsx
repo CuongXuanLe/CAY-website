@@ -8,18 +8,17 @@ import { Link } from "react-router-dom"
 import { Tooltip } from 'react-tooltip'
 
 const CalendarContent = () => {
-  //getAPI 
   const [schedules, setSchedules] = useState([]);
   const scheduleApi = "http://127.0.0.1:8000/api/get-schedule"
   useEffect(() => {
     async function getScheduleData () {
       const res = await axios.get(scheduleApi);
       setSchedules(res.data.data);
-      console.log(res.data.data)
     }
     getScheduleData();
+    document.title = "Schedule";
   },[]);
-
+  const approvalBooking = schedules.filter(schedule => schedule.approval === 1)
   const [tooltipContent, setTooltipContent] = useState();
   const [isShowing, setIsShowing] = useState(false);
   const handleEventClick = (event) => {
@@ -55,7 +54,7 @@ const CalendarContent = () => {
           initialView="dayGridMonth"
           navLinks={true}
           // selectable={true}
-          events={schedules}
+          events={approvalBooking}
           eventClick={handleEventClick}
           eventClassNames={'event-relative'}
       />
@@ -70,7 +69,7 @@ const CalendarContent = () => {
       }
       <div className="mx-auto">
         <Link to="/booking">
-          <button className="w-15 h-12 mt-4 rounded-3xl border-[1px] bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
+          <button className="w-56 h-12 mt-4 rounded-3xl border bg-[#a7705c] py-3 px-5 font-bold text-white duration-300 ease-in hover:border-[#a7705c] hover:bg-white hover:text-[#a7705c]">
             Booking now
           </button>
         </Link>

@@ -10,8 +10,8 @@ const Home = () => {
     async function getDataHome() {
       const res = await axios.get(apiHome);
       setContents(res.data.data);
-      // console.log(res.data.data);
     }
+    document.title = 'Welcome to CAY Studio'
     getDataHome();
   }, []);
 

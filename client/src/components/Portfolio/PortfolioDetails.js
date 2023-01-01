@@ -1,15 +1,15 @@
 import { data_list } from "../../contants";
 // import { Link } from "react-router-dom"
-import React from "react";
+import React, {useEffect} from "react";
 // import axios from "axios";
 
 const PortfolioDetails = () => {
     // const [getAlbums, setGetAlbums] = useState([]);
     // // const url = `http://127.0.0.1:8000/api/edit/${id}`;
-    // useEffect(() => {
-    //     document.title = "Portfolio";
-    //     getPortfolios();
-    // }, []);
+    useEffect(() => {
+        document.title = "Portfolio Details";
+        // getPortfolios();
+    }, []);
 
     // const getPortfolios = async (id) => {
     //     await axios.get(`http://127.0.0.1:8000/api/edit/${id}`).then(({ data }) => {

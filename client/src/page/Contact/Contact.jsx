@@ -12,8 +12,8 @@ const Contact = () => {
     async function getContactData() {
       const res = await axios.get(contactApi);
       setContacts(res.data.data);
-      console.log(res.data.data);
     }
+    document.title = "Contact"
     getContactData();
   }, []);
 
@@ -63,12 +63,12 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Map  */}
-        <div className="mt-6">
+        <div className="mt-6 flex justify-center">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8764301686892!2d108.17777941468424!3d16.071900888879373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219ba558af929%3A0x1c7ba47c463bc9ab!2sCAY%20Studio!5e0!3m2!1svi!2s!4v1671527713454!5m2!1svi!2s"
             width="1410"
             height="450"
+            title="Address CAY studio"
           ></iframe>
         </div>
 

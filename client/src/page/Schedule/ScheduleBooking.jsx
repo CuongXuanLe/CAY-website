@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { BookingSuccess } from "../../components";
+import { Link } from 'react-router-dom';
 import "flatpickr/dist/flatpickr.css";
 import Flatpickr from "react-flatpickr";
 import moment from 'moment'
@@ -33,17 +34,19 @@ const ScheduleBooking = () => {
             .post(url, formData)
             .then((res) => {
                 setSuccess(true);
-                console.log(formData)
             })
             .catch((err) => {
                 console.log(err)
+                alert('Fill full information, please')
             })
     }
+    useEffect(() => {
+        document.title = "Booking";
+    })
 
     return(
         <React.Fragment>
             <div className="h-auto w-full px-14 pt-28 flex justify-center items-center flex-col">
-                {/* Enter Info */}
                 <div className="bg-[#CD9F9F] w-[80%] h-auto p-10 pt-5 rounded-2xl flex ">
                     <div className="w-[50%] leading-8">
                         <h3 className="mb-3 font-bold">Infomation</h3>
@@ -91,7 +94,6 @@ const ScheduleBooking = () => {
                         </div>
                     </div>
                     <div className="w-[50%]">
-                        {/* Small Calendar */}
                         <h3 className="mb-2 font-bold">Date<span className="text-red-600">*</span></h3>
                         <Flatpickr
                             value={date}
@@ -117,7 +119,9 @@ const ScheduleBooking = () => {
                     </div>
                 </div>
                 <div className="my-5">
-                    <button className="text-[#CD9F9F] text-2xl rounded-2xl border-2 border-[#CD9F9F] w-[20vh] h-auto py-2 hover:bg-[#CD9F9F] hover:text-white  duration-150 ease-in">Cancel</button>
+                    <Link to="/schedule" >
+                        <button className="text-[#CD9F9F] text-2xl rounded-2xl border-2 border-[#CD9F9F] w-[20vh] h-auto py-2 hover:bg-[#CD9F9F] hover:text-white  duration-150 ease-in">Cancel</button>
+                    </Link>
                     <button type="submit" onClick={(event) => CreateBooking(event)} className="text-[#CD9F9F] text-2xl rounded-2xl border-2 border-[#CD9F9F] w-[20vh] h-auto py-2 hover:bg-[#CD9F9F] hover:text-white  duration-150 ease-in ml-10">Book</button>
                 </div>
                 {success && <div className="w-full flex items-center justify-center">

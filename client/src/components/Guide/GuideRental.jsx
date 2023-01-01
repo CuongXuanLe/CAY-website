@@ -8,7 +8,7 @@ const GuideRental = ({ cost, deposit, depositInfo, qrImg, link }) => {
   return (
     <>
       <p className="mb-16 text-center text-2xl">
-        <strong>Services Information at Cay Stu.</strong>
+        <strong>Services Information at Cay Studio</strong>
       </p>
       <div>
         <p className="mb-3 font-bold">[Giá thuê studio] --- {cost}/giờ</p>
