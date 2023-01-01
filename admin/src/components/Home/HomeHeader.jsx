@@ -128,7 +128,7 @@ const HomeContent = () => {
             {homedatas.map((homedata) => (
               <input
                 key={homedata.id}
-                className="h-auto w-full py-1 outline-none border-none"
+                className="h-auto w-full py-1 outline-none border-none border-none"
                 value={background1}
                 onChange={(event) => {
                   setBackground1(event.target.value);
