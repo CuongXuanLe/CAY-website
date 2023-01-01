@@ -99,7 +99,7 @@ const GuideContent = () => {
                 <p className="mb-3">Rent cost:</p>
                 <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
                   <input
-                    className="h-auto w-full py-1 outline-none"
+                    className="h-auto w-full py-1 outline-none border-none"
                     placeholder={guideDetail.rent_cost}
                     type="text"
                     value={rentCost || ""}
@@ -115,7 +115,7 @@ const GuideContent = () => {
                 <p className="mb-3">Deposit price:</p>
                 <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
                   <input
-                    className="h-auto w-full py-1 outline-none"
+                    className="h-auto w-full py-1 outline-none border-none"
                     value={depositCost || ""}
                     onChange={(event) => getDepositCost(event.target.value)}
                     placeholder={guideDetail.deposit_cost}
@@ -131,7 +131,7 @@ const GuideContent = () => {
                 <p className="mb-3">Deposit information:</p>
                 <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
                   <input
-                    className="h-auto w-full py-1 outline-none"
+                    className="h-auto w-full py-1 outline-none border-none"
                     value={depositInfo || ""}
                     onChange={(event) => getDepositInfo(event.target.value)}
                     placeholder={guideDetail.deposit_information}
@@ -175,7 +175,7 @@ const GuideContent = () => {
                   <p className="mr-5">FanPage: </p>
                   <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
                     <input
-                      className="h-auto w-full py-1 outline-none"
+                      className="h-auto w-full py-1 outline-none border-none"
                       value={link || ""}
                       onChange={(event) => getLink(event.target.value)}
                       placeholder={guideDetail.link_fb}

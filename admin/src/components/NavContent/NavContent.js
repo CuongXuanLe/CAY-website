@@ -53,7 +53,7 @@ const NavContent = () => {
           <p className="mb-3">Name Image:</p>
           <div className="h-auto w-full rounded border-2 px-2 border-black">
             <input
-              className="h-auto w-full outline-none"
+              className="h-auto w-full border-none outline-none"
               placeholder="Enter logo name"
               value={nameLogo}
               onChange={(event) => {

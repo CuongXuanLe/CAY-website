@@ -49,11 +49,14 @@ const ScheduleBooking = () => {
         <div className="px-10 py-5 ">
           <div className="mt-2 flex items-center">
             <span className="font-bold">Customer<span className="text-red-600">*</span>:</span>
+            <div>
+              
+            </div>
             <input 
               value={title || ''}
               onChange={(event) => {setTitle(event.target.value)}}
               placeholder={'e.g name customer'}
-              className="ml-3 py-1 px-2 grow border rounded border-black"></input>
+              className="ml-3 py-1 px-2 grow !border rounded border-black"></input>
           </div>
           <div className="mt-2 flex justify-between">
             <div className="flex items-center w-3/5">

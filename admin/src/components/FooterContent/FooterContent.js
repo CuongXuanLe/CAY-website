@@ -59,7 +59,7 @@ const FooterContent = () => {
         <p className="mb-3">Name studio: </p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.name}
             value={nameStudio || ''}
             onChange={(event) => {
@@ -77,7 +77,7 @@ const FooterContent = () => {
         <p className="mb-3">Address: </p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.address}
             value={address || ''}
             onChange={(event) => {
@@ -95,7 +95,7 @@ const FooterContent = () => {
         <p className="mb-3">Phone number:</p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.phone_number}
             value={phone || ''}
             onChange={(event) => {
@@ -113,7 +113,7 @@ const FooterContent = () => {
         <p className="mb-3">Email:</p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.email}
             value={addressEmail || ''}
             onChange={(event) => {
@@ -133,7 +133,7 @@ const FooterContent = () => {
         <p className="mb-3">Facebook:</p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.facebook}
             value={facebook || ''}
             onChange={(event) => {
@@ -153,7 +153,7 @@ const FooterContent = () => {
         <p className="mb-3">Instagram:</p>
         <div className="flex flex-row items-center justify-between border-2 border-black w-full px-2 py-1 rounded">
           <input
-            className="h-auto py-1 w-full outline-none"
+            className="h-auto py-1 w-full outline-none border-none"
             placeholder={posts.instagram}
             value={instagram || ''}
             onChange={(event) => {
