@@ -17,9 +17,8 @@ const GuidePage = () => {
     getGuideDetails();
   }, []);
   const getGuideDetails = async () => {
-    const res = await axios.get(url).then(({ data }) => {
+    await axios.get(url).then(({ data }) => {
       setGuideData(data.data);
-      // console.log(data)
     });
   };
   return (

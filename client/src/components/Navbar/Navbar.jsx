@@ -5,7 +5,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
 
 const Navbar = () => {
-  //setting mobile nav
   const [open, setOpen] = useState(false);
 
   //change nav color when scrolling
@@ -66,7 +65,7 @@ const Navbar = () => {
           >
             <li className="sm:my-5 md:mx-2 md:my-auto md:text-sm lg:mx-6 lg:text-base">
               <NavLink
-                to="/home"
+                to="/"
                 className={({ isActive }) => (isActive ? activeLink : "")}
               >
                 <span className="pl-1 duration-100 ease-in hover:border-b-2 hover:border-[#B1816F]">

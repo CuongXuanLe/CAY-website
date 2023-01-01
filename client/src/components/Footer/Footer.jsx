@@ -61,7 +61,9 @@ const Footer = () => {
               </a>
             </div>
             <div className="group mx-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-[1px] border-black duration-500 ease-in-out hover:bg-black">
-              <SiGmail className="duration-500 ease-in-out group-hover:text-white" />
+              <a href="mailto:caystudio.contact@gmail.com?subject=Me&body=Hello!">
+                <SiGmail className="duration-500 ease-in-out group-hover:text-white" />
+              </a>
             </div>
           </div>
         </div>
