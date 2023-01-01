@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import moment from 'moment'
+//Datepicker
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/flatpickr.css";
 
 const ScheduleBooking = () => {
   const [title, setTitle] = useState();
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
   const [note, setNote] = useState();
-  const [birthday, setBirthday] = useState();
+  const [birthday, setBirthday] = useState(new Date());
+  const newDate = moment(date).format('DD-MM-YYYY');
+  const newBirthday = moment(birthday).format('DD-MM-YYYY');
 
   const navigate = useNavigate();
 
@@ -21,10 +27,10 @@ const ScheduleBooking = () => {
     const formData = {
       title: title,
       phone: phone,
-      birthday: birthday,
+      birthday: newBirthday,
       email: email,
       note: note,
-      created_at: date,
+      created_at: newDate,
       start: startTime,
       end: endTime,
     };
@@ -61,11 +67,12 @@ const ScheduleBooking = () => {
           <div className="mt-2 flex justify-between">
             <div className="flex items-center w-3/5">
               <span className="font-bold text-red-600 ">Appointment Date*:</span>
-              <input
-                value={date || ''}
-                onChange={(event) => {setDate(event.target.value)}}
-                placeholder={'e.g 25-12-2022'} 
-                className="grow ml-3 py-1 px-2 rounded mr-4 border border-black"></input>
+              <Flatpickr
+                value={date}
+                onChange={(selectedDates) => { setDate(selectedDates[0]) }}
+                className="grow ml-3 py-1 px-2 rounded mr-4 border border-black"
+                // onClick={console.log(date)}
+              />
             </div>
             <div className="flex w-2/5 items-center">
               <span className="font-bold text-red-600 ">Time*:</span>
@@ -84,11 +91,11 @@ const ScheduleBooking = () => {
           </div>
           <div className="mt-2 flex items-center">
             <p className="font-bold">Date of birth (optional):</p>
-            <input
-              value={birthday || ''}
-              onChange={(event) => {setBirthday(event.target.value)}}
-              placeholder={'e.g 25-12-2002'}  
-              className="grow px-2 py-1 ml-3 border rounded border-black"></input>
+              <Flatpickr
+                value={birthday}
+                onChange={(selectedDates) => { setBirthday(selectedDates[0]) }}
+                className="grow px-2 py-1 ml-3 border rounded border-black"
+              />
           </div>
           <div className="mt-2 flex items-center">
             <span className="font-bold">Phone:<span className="text-red-600">*</span></span>
