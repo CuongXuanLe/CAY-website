@@ -44,7 +44,7 @@ const ScheduleEdit = () => {
   const deleteAppointment = async(id) => {
     const res = await axios.delete(`http://127.0.0.1:8000/api/schedule/${id}`)
     .then(({result})=> {
-        console.log('success')
+        // console.log('success')
         alert('delete success')
     })
     .catch((error) => {

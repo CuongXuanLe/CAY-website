@@ -32,10 +32,7 @@ code {
 }
 
 input{
-  border:none;
-  padding-right: 0!important;
-  padding-left: 0!important;
-  outline: none;
+  padding-left: 0;
 }
 
 input:focus{
