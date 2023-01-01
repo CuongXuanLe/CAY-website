@@ -128,7 +128,7 @@ const HomeContent = () => {
             {homedatas.map((homedata) => (
               <input
                 key={homedata.id}
-                className="h-auto w-full py-1 outline-none"
+                className="h-auto w-full py-1 outline-none border-none"
                 value={background1}
                 onChange={(event) => {
                   setBackground1(event.target.value);
@@ -249,11 +249,11 @@ const HomeContent = () => {
             </button>
           </div>
           <p className="mb-3">Description2 </p>
-          <div className="my-2 flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
+          <div>
             {homedatas.map((homedata) => (
               <textarea
                 key={homedata.id}
-                className="h-auto w-full py-1 outline-none"
+                className="w-full rounded border-2 border-black p-2"
                 value={description2}
                 onChange={(event) => {
                   setDescription2(event.target.value);

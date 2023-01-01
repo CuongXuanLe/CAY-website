@@ -50,21 +50,24 @@ const NavContent = () => {
       <p>Navbar: </p>
       <div className="mt-2 px-10">
         <div className="mb-2">
+          <p className="mb-3">Name Image:</p>
+          <div className="h-auto w-full rounded border-2 px-2 border-black">
+            <input
+              className="h-auto w-full outline-none"
+              placeholder="Enter logo name"
+              value={nameLogo}
+              onChange={(event) => {
+                setNameLogo(event.target.value);
+              }}
+              type="text"
+              maxLength={100}
+            />
+          </div>
           <p className="mb-3">Logo Image:</p>
           <div className="h-auto w-full rounded border-2 border-black p-5">
             {imageLogo && <img src={imageLogo.preview} alt="" width="50%" />}
           </div>
-          <p className="mb-3">Name Image:</p>
-          <input
-            className="h-auto w-full py-1 outline-none"
-            placeholder=" "
-            value={nameLogo}
-            onChange={(event) => {
-              setNameLogo(event.target.value);
-            }}
-            type="text"
-            maxLength={100}
-          />
+          
           <div className="flex justify-end">
             <button className="relative mt-2 flex w-32 items-center overflow-hidden rounded border-2 border-black px-3 py-1 hover:bg-black hover:text-white">
               <BiUpload className="mr-3" /> Upload

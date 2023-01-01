@@ -23,18 +23,19 @@ const Schedule = () => {
   // const navigate = useNavigate();
   const [tooltipContent, setTooltipContent] = useState("");
   const [isShowing, setIsShowing] = useState(false);
+  const approvalBooking = formDetails.filter(schedule => schedule.approval === 1)
   const handleEventClick = (event, index) => {
     const start = event.event.extendedProps.formatted_start
     const end = event.event.extendedProps.formatted_end
     const date = event.event.extendedProps.formatted_created_at
     const note = event.event.extendedProps.note
     const id = event.event.id
-    // const newStart = start.toLocaleTimeString();
+
     const newStart = moment(start, 'DD-MM-YYYY HH:mm');
     const timeStart = newStart.format('HH:mm');
     const newEnd = moment(end, 'DD-MM-YYYY HH:mm');
     const timeEnd = newEnd.format('HH:mm');
-    // console.log(timeStart)
+
     setTooltipContent(
       <div className="w-1/2 font-medium bg-white p-5 rounded">
         <div className="flex justify-between">
@@ -85,7 +86,7 @@ const Schedule = () => {
         initialView="dayGridMonth"
         navLinks={true}
         // selectable={true}
-        events={formDetails}
+        events={approvalBooking}
         eventClick={handleEventClick}
       />
 
