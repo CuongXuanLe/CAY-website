@@ -42,7 +42,7 @@ const ChangePwd = () => {
           <p className="mb-3">Current password </p>
           <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
             <input
-              className="h-auto w-full py-1"
+              className="h-auto w-full py-1 border-none"
               placeholder="Current password"
               value={oldPassword || ""}
               onChange={(event) => {
@@ -57,7 +57,7 @@ const ChangePwd = () => {
           <p className="mb-3">Enter new password </p>
           <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
           <input
-            className="h-auto w-full py-1 "
+            className="h-auto w-full py-1 border-none "
             placeholder="Enter new password"
             value={password || ""}
             onChange={(event) => {
@@ -72,7 +72,7 @@ const ChangePwd = () => {
           <p className="mb-3">Confirm password </p>
           <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
             <input
-              className="h-auto w-full py-1"
+              className="h-auto w-full py-1 border-none"
               placeholder="Confirm password"
               value={confirmPassword || ""}
               onChange={(event) => {

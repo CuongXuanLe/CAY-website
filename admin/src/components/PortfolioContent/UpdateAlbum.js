@@ -93,7 +93,7 @@ const UpdateAlbum = () => {
           <p className="mb-3">Name album:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full py-1 outline-none border-none"
               placeholder="The first name of the album"
               type="text"
               value={name_album || ""}
@@ -111,7 +111,7 @@ const UpdateAlbum = () => {
           <p className="mb-3">Category:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full py-1 outline-none border-none"
               placeholder="Flower"
               type="text"
               value={category || ""}
@@ -127,7 +127,7 @@ const UpdateAlbum = () => {
           <p className="mb-3">Thumbnails</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full py-1 outline-none border-none"
               placeholder="Thumbnails"
               type="text"
               value={thumbnails || ""}
@@ -143,7 +143,7 @@ const UpdateAlbum = () => {
           <p className="mb-3">List Image:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full py-1 outline-none border-none"
               placeholder="List Image"
               type="text"
               value={listImg || ""}
