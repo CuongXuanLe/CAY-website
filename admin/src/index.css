@@ -30,8 +30,16 @@ code {
   color: white;
   cursor: pointer;
 }
-.fc, .fc-event {
-  position: relative;
+
+input{
+  border:none;
+  padding-right: 0!important;
+  padding-left: 0!important;
+  outline: none;
 }
 
+input:focus{
+  border: none;
+  box-shadow: transparent
+}
 

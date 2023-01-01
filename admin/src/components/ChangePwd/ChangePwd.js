@@ -40,21 +40,24 @@ const ChangePwd = () => {
       <div className="mt-2 px-10">
         <div className="mb-3">
           <p className="mb-3">Current password </p>
-          <input
-            className="h-auto w-full rounded border-2 border-black py-1 px-2"
-            placeholder="Current password"
-            value={oldPassword || ""}
-            onChange={(event) => {
-              setOldPassword(event.target.value);
-            }}
-            type="password"
-            maxLength={200}
-          />
+          <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
+            <input
+              className="h-auto w-full py-1"
+              placeholder="Current password"
+              value={oldPassword || ""}
+              onChange={(event) => {
+                setOldPassword(event.target.value);
+              }}
+              type="password"
+              maxLength={200}
+            />
+          </div>
         </div>
         <div className="mb-3">
           <p className="mb-3">Enter new password </p>
+          <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
           <input
-            className="h-auto w-full rounded border-2 border-black py-1 px-2"
+            className="h-auto w-full py-1 "
             placeholder="Enter new password"
             value={password || ""}
             onChange={(event) => {
@@ -63,19 +66,22 @@ const ChangePwd = () => {
             type="password"
             maxLength={200}
           />
+          </div>
         </div>
         <div className="mb-3">
           <p className="mb-3">Confirm password </p>
-          <input
-            className="h-auto w-full rounded border-2 border-black py-1 px-2"
-            placeholder="Confirm password"
-            value={confirmPassword || ""}
-            onChange={(event) => {
-              setConfirmPassword(event.target.value);
-            }}
-            type="password"
-            maxLength={200}
-          />
+          <div className="h-auto w-full rounded border-2 border-black py-1 px-2">
+            <input
+              className="h-auto w-full py-1"
+              placeholder="Confirm password"
+              value={confirmPassword || ""}
+              onChange={(event) => {
+                setConfirmPassword(event.target.value);
+              }}
+              type="password"
+              maxLength={200}
+            />
+          </div>
         </div>
 
         <div className="flex flex-row justify-end">

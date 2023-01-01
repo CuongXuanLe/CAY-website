@@ -58,9 +58,9 @@ const AdminNav = () => {
                         </li>
                     </NavLink>
                     <NavLink to="/AdminFooter">
-                        <li className="flex items-center h-10 space-x-5 hover:border-b-2 border-[#a7705c] transition ease-in-out delay-50 hover:translate-x-2 hover:scale-110 duration-300 cursor-pointer">
+                        <li className="flex items-start h-auto space-x-5 hover:border-b-2 border-[#a7705c] transition ease-in-out delay-50 hover:translate-x-2 hover:scale-110 duration-300 cursor-pointer">
                             <BsSignpostSplit/>
-                            <p>Footer</p>
+                            <p>Footer & Contact</p>
                         </li>
                     </NavLink>
                 </ul>
