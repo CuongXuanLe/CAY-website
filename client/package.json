@@ -12,9 +12,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@tippyjs/react": "^4.2.6",
+    "antd": "^5.1.2",
     "axios": "^1.2.0",
     "dayjs": "^1.11.7",
     "flatpickr": "^4.6.13",
+    "formik": "^2.2.9",
     "moment": "^2.29.4",
     "query-string": "^7.1.1",
     "react": "^18.2.0",
@@ -23,9 +25,9 @@
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.4",
     "react-scripts": "^5.0.1",
-    "react-time-picker": "^5.1.0",
     "react-tooltip": "^5.3.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
