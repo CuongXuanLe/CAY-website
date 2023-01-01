@@ -17,8 +17,8 @@ class vp_header extends Seeder
     {
         DB::table('header')->insert([
             [
-                "logo_img"=>"http://thietkelogosaigon.com/wp-content/uploads/2020/01/attachment_91976356-e1539290932445.png",
-                "logo_name"=>"CAYYY STUDIO"
+                "logo_img"=>"https://f20-zpc.zdn.vn/8091633100929075728/fb8664ebd91a0144580b.jpg",
+                "logo_name"=>"CAY STUDIO"
             ],
         ]);
     }
