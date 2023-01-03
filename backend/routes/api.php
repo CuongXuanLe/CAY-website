@@ -95,6 +95,7 @@ Route::delete('schedule/{id}', [ScheduleController::class, 'destroy']);
 //------------------------------CRUD AdminPortfolio-----------------------------------
 Route::post('/post-portfolio', [AdminPortfolioController::class, 'store']);
 Route::get('/get-portfolio', [AdminPortfolioController::class, 'index']);
+Route::get('/get-image/{id}', [AdminPortfolioController::class, 'showImage']);
 Route::delete('/delete/{id}', [AdminPortfolioController::class, 'destroy']);
 Route::get('/edit/{id}', [AdminPortfolioController::class, 'edit']);
 Route::delete('/deleteimage/{id}', [AdminPortfolioController::class, 'deleteimage']);

@@ -2,22 +2,26 @@ import { BsPencil } from "react-icons/bs";
 import React, { useState, useEffect } from "react";
 import { BiUpload, BiCheck } from "react-icons/bi";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const CreateAlbum = () => {
   const [name_album, setNameAlbum] = useState();
   const [category, setCategory] = useState();
-  const [thumbnails, setThumbnails] = useState();
+  const [thumbnails, setThumbnails] = useState("");
   // const [thumbImg, setThumbImg] = useState();
   // const [nameThumb, setNameThumb] = useState();
   const [listImg, setListImg] = useState([]);
-
+  const navigate = useNavigate();
+  // const handlePreviewImageThumb = (e) => {
+  //   const file = e.target.files[0];
+  //   file.preview = URL.createObjectURL(file);
+  //   setThumbnails(file);
+  //   console.log(file);
+  // };
   const handlePreviewImageThumb = (e) => {
-    const file = e.target.files[0];
-    file.preview = URL.createObjectURL(file);
-    setThumbnails(file);
-    console.log(file);
+    console.log(e.target.files);
+    setThumbnails(e.target.file[0]);
   };
-
   const handlePreviewListImg = (e) => {
     // const file = e.target.files[0];
     // file.preview = URL.createObjectURL(file);
@@ -34,14 +38,14 @@ const CreateAlbum = () => {
     }
   };
 
-  const renderPhotos = (source) => {
-    console.log("source: ", source);
-    return source.map((photo) => {
-      return (
-        <img src={photo} key={photo} width="50%" className="mr-2" alt="" />
-      );
-    });
-  };
+  // const renderPhotos = (source) => {
+  //   console.log("source: ", source);
+  //   return source.map((photo) => {
+  //     return (
+  //       <img src={photo} key={photo} width="50%" className="mr-2" alt="" />
+  //     );
+  //   });
+  // };
 
   useEffect(() => {
     document.title = "Create album";
@@ -56,17 +60,19 @@ const CreateAlbum = () => {
     //call api
     const url = "http://127.0.0.1:8000/api/post-portfolio";
     const formData = {
-      name_album: name_album,
-      category: category,
+      //   name_album: name_album,
+      //   category: category,
       thumbnails: thumbnails,
-      image: listImg,
+      //   image: listImg,
     };
+
     console.log(formData);
     axios
       .post(url, formData)
       .then((res) => {
         console.log(res.data);
         alert("success");
+        navigate("/adminPortfolio");
       })
       .catch((err) => {
         alert("service error");
@@ -81,7 +87,7 @@ const CreateAlbum = () => {
           <p className="mb-3">Name album:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full border-none py-1 outline-none"
               placeholder="Name album"
               type="text"
               value={name_album || ""}
@@ -98,7 +104,7 @@ const CreateAlbum = () => {
           <p className="mb-3">Category:</p>
           <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
             <input
-              className="h-auto w-full py-1 outline-none"
+              className="h-auto w-full border-none py-1 outline-none"
               placeholder="Category"
               type="text"
               value={category || ""}
@@ -110,59 +116,28 @@ const CreateAlbum = () => {
             </button>
           </div>
         </div>
-        {/* <div className="mb-3">
-          <p className="mb-3">Thumbnails</p>
-          <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-            <input
-              className="h-auto w-full py-1 outline-none"
-              placeholder="Thumbnails"
-              type="text"
-              value={thumbnails || ""}
-              onChange={(event) => setThumbnails(event.target.value)}
-              maxLength={200}
-            />
-            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
-              <BsPencil />
-            </button>
-          </div>
-        </div> */}
-        {/* <div className="mb-3">
-          <p className="mb-3">List Image:</p>
-          <div className="flex w-full flex-row items-center justify-between rounded border-2 border-black px-2 py-1">
-            <input
-              className="h-auto w-full py-1 outline-none"
-              placeholder="List Image"
-              type="text"
-              value={listImg || ""}
-              onChange={(event) => setListImg(event.target.value)}
-              maxLength={200}
-            />
-            <button className="rounded p-2 hover:bg-[#a7705c] hover:text-white">
-              <BsPencil />
-            </button>
-          </div>
-        </div> */}
+
         <div className="mb-3">
           <p className="mb-3">Thumbnail:</p>
           <div className="h-auto w-full rounded border-2 border-black p-5">
             {thumbnails && (
               <img
-                src={thumbnails.preview}
-                alt={thumbnails.name}
+                src={thumbnails}
+                alt=""
                 width="50%"
                 value={thumbnails || ""}
-                onChange={(event) => setThumbnails(event.target.value)}
+                onChange={handlePreviewImageThumb}
               />
             )}
-        {/* <img
+            {/* <img
               value={thumbnails || ""}
               onChange={(event) => getImgQR(event.target.value)}
               src={guideDetail.qr_image}
               alt="QR_img"
               width="50%"
             /> */}
-        </div>
-        <div className="flex justify-end">
+          </div>
+          <div className="flex justify-end">
             <button className="relative mt-2 flex w-32 items-center overflow-hidden rounded border-2 border-black px-3 py-1 hover:bg-black hover:text-white">
               <BiUpload className="mr-3" /> Upload
               <input
@@ -171,8 +146,8 @@ const CreateAlbum = () => {
                 onChange={handlePreviewImageThumb}
               />
             </button>
-        {/* <button onClick={handleApi} className="w-32 flex items-center justify-center text-white bg-[#a7705c] mt-2 rounded ml-5 hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Save </button> */}
-        </div>
+            {/* <button onClick={handleApi} className="w-32 flex items-center justify-center text-white bg-[#a7705c] mt-2 rounded ml-5 hover:bg-white hover:text-[#a7705c] hover:border-2 border-[#a7705c] "><BiCheck className="mr-1 text-2xl"/> Save </button> */}
+          </div>
         </div>
         <div className="mb-3">
           <p className="mb-3">List Images:</p>
@@ -186,8 +161,8 @@ const CreateAlbum = () => {
                 onChange={(event) => setListImg(event.target.value)}
               />
             )}
-            <div className="flex snap-center">{renderPhotos(listImg)}</div>
-          {/* <img
+            {/* <div className="flex snap-center">{renderPhotos(listImg)}</div> */}
+            {/* <img
               value={thumbImg || ""}
               onChange={(event) => getImgQR(event.target.value)}
               src={guideDetail.qr_image}

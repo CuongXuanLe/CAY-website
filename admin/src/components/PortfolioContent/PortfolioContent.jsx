@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import  Logo  from "../../assets/Logo.jpg";
 
 const PortfolioContent = () => {
   const [delItem, setDelItem] = useState(false);
@@ -14,7 +13,7 @@ const PortfolioContent = () => {
   };
   const deletePortfolios = async (id) => {
     await axios
-      .delete(`http://127.0.0.1:8000/api/delete/${id}`)
+      .get(`http://127.0.0.1:8000/api/delete/${id}`)
       .then((res) => {
         alert("success");
       })
@@ -53,8 +52,7 @@ const PortfolioContent = () => {
             >
               <img
                 className="w-2/5 object-cover"
-                // src={portfolioDetail.thumbnails}
-                 src={Logo}
+                src={portfolioDetail.thumbnails}
                 alt="pic_1"
               />
               <div className="relative w-3/5 p-3">

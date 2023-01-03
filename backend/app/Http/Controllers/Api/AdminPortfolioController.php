@@ -9,6 +9,7 @@ use App\Models\Portfolio;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class AdminPortfolioController extends Controller
 {
@@ -24,6 +25,16 @@ class AdminPortfolioController extends Controller
             'status' => true,
             'message' => 'get',
             'data' => $porfolio,
+        ]);
+    }
+
+    public function showImage($id)
+    {
+        $images = Image::where('portfolio_id', $id)->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'get',
+            'data' => $images,
         ]);
     }
 
@@ -49,103 +60,72 @@ class AdminPortfolioController extends Controller
             'name_album' => ['string'],
             'category' => ['string'],
             'thumbnails' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
             if ($request->hasFile("thumbnails")) {
                 $file = $request->file("thumbnails");
-                $filename = time() . $file->getClientOriginalName();
-                $file->move(public_path("/thumbnails"), $filename);
-                // Create a new Portfolio object and save it to the database
-                $data = [
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                    "thumbnails" =>  $request->filename,
-                ];
-                $portfolio = Portfolio::create($data);
-            }
+                $imageName = time() . '.' . $file->getClientOriginalName();
+                $file->move(\public_path("cover/"), $imageName);
 
-            if ($request->hasFile("image")) {
-                $files = $request->file("image");
-                $imageNames = [];
-                foreach ($files as $file) {
-                    $imageName1 = time() . '.' . $file->getClientOriginalExtension();
-                    $request['portfolio_id'] = $portfolio->id;
-                    $file->move(\public_path("/images"), $imageName1);
-                    $imageNames[] = $imageName1;
-                }
+                // Create a new Portfolio object and save it to the database
+
             }
+            $data = [
+                "name_album" => $request->name_album,
+                "category" => $request->category,
+                "thumbnails" => $imageName,
+            ];
+            // return response()->json([
+            //     'status' => true,
+            //     'message' => 'Successed',
+            //     'data' => [
+            //         "name_album" => $request->name_album,
+            //         "category" => $request->category,
+            //         // "thumbnails" => $imageName,
+            //         // "image" => [$imageNames],
+            //     ]
+            // ]);
+
+            // if ($request->hasFile("image")) {
+            //     $files = $request->file("image");
+            //     $imageNames = [];
+            //     foreach ($files as $file) {
+            //         $imageName1 = time() . '.' . $file->getClientOriginalExtension();
+            //         $request['portfolio_id'] = $portfolio->id;
+            //         $file->move(\public_path("/images"), $imageName1);
+            //         $imageNames[] = $imageName1;
+            //     }
+            // }
 
             DB::beginTransaction();
             try {
-                foreach ($imageNames as $imageName) {
-                    $data1 = [
-                        "image" => $imageName,
-                        "portfolio_id" => $portfolio->id,
-                    ];
-                    Image::create($data1);
-                }
+                // foreach ($imageNames as $imageName) {
+                //     $data1 = [
+                //         "image" => $imageName,
+                //         "portfolio_id" => $portfolio->id,
+                //     ];
+                //     Image::create($data1);
+                // }
+                Portfolio::create($data);
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
             }
-            return response()->json([
-                'status' => true,
-                'message' => 'Successed',
-                'data' => [
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                    "thumbnails" =>  $request->filename,
-                    "image" => $request->imageNames,
-                ]
-            ]);
+            // return response()->json([
+            //     'status' => true,
+            //     'message' => 'Successed',
+            //     'data' => [
+            //         "name_album" => $request->name_album,
+            //         "category" => $request->category,
+            //         "thumbnails" => $imageName,
+            //         // "image" => [$imageNames],
+            //     ]
+            // ]);
         }
-        // $validator = Validator::make($request->all(), [
-        //     'name_album' => ['string'],
-        //     'category' => ['string'],
-        //     'thumbnails' => ['string'],
-        //     'image' => ['string'],
-        //     'portfolio_id' => 'nullable'
-        // ]);
-        // if ($validator->fails()) {
-        //     return response()->json($validator->messages(), 400);
-        // } else {
-        //     $data = [
-        //         "name_album" => $request->name_album,
-        //         "category" => $request->category,
-        //         "thumbnails" => $request->thumbnails,
-        //     ];
-        //     $portfolio = Portfolio::create($data);
-        //     $imageNames = [];
-        //     foreach ($imageNames as $imageName) {
-        //         $image =  Image::create([
-        //             'image' => $imageName,
-        //             "portfolio_id" => $portfolio->id,
-        //         ]);
-        //     }
-
-        //     DB::beginTransaction();
-        //     try {
-        //         DB::commit();
-        //     } catch (\Exception $e) {
-        //         DB::rollBack();
-        //     }
-        //     return response()->json([
-        //         'status' => true,
-        //         'message' => 'Successed',
-        //         'data' => [
-        //             'name_album' => $request->name_album,
-        //             'category' => $request->category,
-        //             'thumbnails' => $request->thumbnails,
-        //             'image' => $request->image,
-        //             "portfolio_id" => $portfolio->id,
-        //         ]
-        //     ]);
-        // }
     }
-
     /**
      * Display the specified resource.
      *
