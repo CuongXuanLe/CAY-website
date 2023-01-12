@@ -16,7 +16,6 @@ const PortfolioContent = () => {
       .delete(`http://127.0.0.1:8000/api/delete/${id}`)
       .then((res) => {
         alert("success");
-        window.location.reload(false);
       })
       .catch((err) => {
         alert("service error");

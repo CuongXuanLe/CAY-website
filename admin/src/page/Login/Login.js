@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 import { Logo } from "../../constants/images";
 import { useState, useEffect } from "react";
@@ -7,6 +7,7 @@ import axios from "axios";
 const Login = () => {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Login";
@@ -37,6 +38,7 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
         alert("Login failed");
+        navigate("/login");
       });
   };
 
