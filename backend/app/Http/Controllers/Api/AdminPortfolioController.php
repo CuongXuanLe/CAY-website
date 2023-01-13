@@ -43,7 +43,7 @@ class AdminPortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Image $image)
     {
         // $validator = Validator::make($request->all(), [
         //     'name_album' => ['string'],
@@ -103,118 +103,43 @@ class AdminPortfolioController extends Controller
         //         ]
         //     ]);
         // }
-        //     $validator = Validator::make($request->all(), [
-        //         'name_album' => ['string'],
-        //         'category' => ['string'],
-        //         'thumbnails' => ['string'],
-        //         'image' => ['string'],
-        //         'portfolio_id' => 'nullable'
-        //     ]);
-        //     if ($validator->fails()) {
-        //         return response()->json($validator->messages(), 400);
-        //     } else {
-        //         $data = [
-        //             "name_album" => $request->name_album,
-        //             "category" => $request->category,
-        //             "thumbnails" => $request->thumbnails,
-        //         ];
-        //         $portfolio = Portfolio::create($data);
-        //         $image =  Image::create([
-        //             'image' => $request->image,
-        //             "portfolio_id" => $portfolio->id,
-        //         ]);
-        //         DB::beginTransaction();
-        //         try {
-        //             DB::commit();
-        //         } catch (\Exception $e) {
-        //             DB::rollBack();
-        //         }
-        //         return response()->json([
-        //             'status' => true,
-        //             'message' => 'Successed',
-        //             'data' => [
-        //                 'name_album' => $request->name_album,
-        //                 'category' => $request->category,
-        //                 'thumbnails' => $request->thumbnails,
-        //                 'image' => $request->image,
-        //                 "portfolio_id" => $portfolio->id,
-        //             ]
-        //         ]);
-        //     }
-        // }
         $validator = Validator::make($request->all(), [
             'name_album' => ['string'],
             'category' => ['string'],
-            'thumbnails' => 'required|max:1024',
-            'image' => '',
+            'thumbnails' => ['string'],
+            'image' => ['string'],
+            'portfolio_id' => 'nullable'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 400);
         } else {
-            if ($request->hasFile("thumbnails")) {
-                $file = $request->file("thumbnails");
-                $imageName = time() . '.' . $file->getClientOriginalName();
-                $file->move(\public_path("cover/"), $imageName);
-
-                // Create a new Portfolio object and save it to the database
-                $portfolio = new Portfolio([
-                    "name_album" => $request->name_album,
-                    "category" => $request->category,
-                    "thumbnails" => $imageName,
-                ]);
-                $portfolio->save();
-            }
-            // $data = [
-            //     "name_album" => $request->name_album,
-            //     "category" => $request->category,
-            //     "thumbnails" => $imageName,
-            // ];
-            // return response()->json([
-            //     'status' => true,
-            //     'message' => 'Successed',
-            //     'data' => [
-            //         "name_album" => $request->name_album,
-            //         "category" => $request->category,
-            //         // "thumbnails" => $imageName,
-            //         // "image" => [$imageNames],
-            //     ]
-            // ]);
-
-            if ($request->hasFile("image")) {
-                $files = $request->file("image");
-                $imageNames = [];
-                foreach ($files as $file) {
-                    $imageName1 = time() . '.' . $file->getClientOriginalExtension();
-                    $request['portfolio_id'] = $portfolio->id;
-                    $file->move(\public_path("/images"), $imageName1);
-                    $imageNames[] = $imageName1;
-                }
-            }
-
+            $data = [
+                "name_album" => $request->name_album,
+                "category" => $request->category,
+                "thumbnails" => $request->thumbnails,
+            ];
+            $portfolio = Portfolio::create($data);
+            $image =  Image::create([
+                'image' => $request->image,
+                "portfolio_id" => $portfolio->id,
+            ]);
             DB::beginTransaction();
             try {
-                foreach ($imageNames as $imageName) {
-                    $data1 = [
-                        "image" => $imageName,
-                        "portfolio_id" => $portfolio->id,
-                    ];
-                    Image::create($data1);
-                }
-
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
             }
-            // return response()->json([
-            //     'status' => true,
-            //     'message' => 'Successed',
-            //     'data' => [
-            //         "name_album" => $request->name_album,
-            //         "category" => $request->category,
-            //         "thumbnails" => $imageName,
-            //         // "image" => $imageNames,
-            //     ]
-            // ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Successed',
+                'data' => [
+                    'name_album' => $request->name_album,
+                    'category' => $request->category,
+                    'thumbnails' => $request->thumbnails,
+                    'image' => $request->image,
+                    "portfolio_id" => $portfolio->id,
+                ]
+            ]);
         }
     }
 

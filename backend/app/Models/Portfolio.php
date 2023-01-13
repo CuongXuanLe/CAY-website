@@ -17,12 +17,12 @@ class Portfolio extends Model
         'category',
         'thumbnails',
     ];
-    protected function thumbnails(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => url('cover/' . $value),
-        );
-    }
+    // protected function thumbnails(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => url('cover/' . $value),
+    //     );
+    // }
 
     public function images()
     {
