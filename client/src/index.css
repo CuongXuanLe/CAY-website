@@ -21,6 +21,41 @@ a {
   text-decoration: none;
 }
 
-/*
-  Other effect you want to add
-*/
+.main_page{
+  padding:16px;
+ -moz-column-width: 18em;
+ -webkit-column-width:13em;
+}
+
+.post_box{
+ position: relative;
+ padding: 0.25rem;
+ width: 100%; 
+}
+
+.post_box:hover > .appear__text{
+  display: block!important;
+}
+
+.Album__Details{
+  padding: 16px;
+ /* -moz-column-width: 18em; */
+  -webkit-column-width: 32em;
+}
+
+
+.Album__Details-photo{
+  position: relative;
+  padding: 0.5rem 0;
+  width: 100%; 
+  /* object-fit: cover; */
+ }
+
+
+input{
+  border: none!important;
+}
+
+.event-relative{
+  position: relative;
+}

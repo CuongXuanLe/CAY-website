@@ -31,4 +31,16 @@ code {
   cursor: pointer;
 }
 
+input{
+  padding-left: 0;
+}
+
+input{
+  padding-left: 0;
+}
+
+input:focus{
+  border: none;
+  box-shadow: transparent
+}
 
