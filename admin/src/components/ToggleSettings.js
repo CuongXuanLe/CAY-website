@@ -7,7 +7,7 @@ export default function ToggleSettings() {
   return (
     <div className="absolute bottom-0 2xl:ml-96 xl:ml-96 lg:ml-80 bg-white w-64 rounded-lg border-2 border-black overflow-hidden">
       <div className="capitalize">
-          <p className="px-4 pt-1">Over Time to die</p>
+          <p className="px-4 pt-1">CAY studio</p>
           <p className="px-4 text-gray-400">Admin</p>
           <NavLink to="/changePassword">
             <div className="flex items-center px-4 py-1 hover__primary">

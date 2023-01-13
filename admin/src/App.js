@@ -5,7 +5,8 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { AdminHome, AdminGuide, AdminFooter, ChangePassword, Login, Navigation } from './page';
+
+import { AdminHome, AdminGuide, AdminFooter, ChangePassword, Login, Navigation, Schedule, AppointmentDetails, AppointmentEdit, AppointmentCreate, Portfolio } from './page';
 
 const App = () => {
   function ScrollToTop() {
@@ -28,8 +29,13 @@ const App = () => {
         <Route path="/" element={<AdminHome/>}/>
         <Route path="/adminGuide" element={<AdminGuide/>}/>
         <Route path="/navigation" element={<Navigation/>} />
+        <Route path="/adminPortfolio/*" element={<Portfolio/>} />
         <Route path="/adminFooter" element={<AdminFooter/>}/>
         <Route path="/changePassword" element={<ChangePassword/>} />
+        <Route path="/schedule" element={<Schedule/>} />
+        <Route exact path="/details/:id" element={<AppointmentDetails/>} />
+        <Route path="/appointmentedit/:id" element={<AppointmentEdit />} />
+        <Route path="/appointmentcreate" element={<AppointmentCreate />} />
       </Routes>
     </Router>
   );

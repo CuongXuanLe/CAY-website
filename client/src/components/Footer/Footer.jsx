@@ -1,0 +1,75 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaFacebookF } from "react-icons/fa";
+import { SiInstagram } from "react-icons/si";
+import { SiGmail } from "react-icons/si";
+
+const Footer = () => {
+  //getAPI
+  const [footercontents, setFootercontents] = useState([]);
+  const apiFooter = "http://127.0.0.1:8000/api/get-footer";
+  useEffect(() => {
+    async function getFooterData() {
+      const res = await axios.get(apiFooter);
+      setFootercontents(res.data.data);
+      console.log(res.data.data);
+    }
+    getFooterData();
+  }, []);
+
+  return (
+    <>
+      <div className="mt-4 w-full border-t-[2px] border-[#E0E0E0] p-7">
+        <div className="grid h-24 grid-cols-4 items-center">
+          <div className="mx-auto w-[60%]">
+            {footercontents &&
+              footercontents.map((footercontent) => (
+                <h2 className="ml-2 font-lato font-bold">
+                  {footercontent.name}
+                </h2>
+              ))}
+          </div>
+          <div className="mx-auto w-[60%]">
+            {footercontents &&
+              footercontents.map((footercontent) => (
+                <p
+                  key={footercontent.id}
+                  className="w-[16rem] text-sm font-normal"
+                >
+                  {footercontent.address}
+                </p>
+              ))}
+          </div>
+          <div className="mx-auto w-[60%]">
+            {footercontents &&
+              footercontents.map((footercontent) => (
+                <p key={footercontent.id} className="text-sm font-normal">
+                  {footercontent.phone_number} <br />
+                  {footercontent.email}
+                </p>
+              ))}
+          </div>
+          <div className="mx-auto flex w-[60%]">
+            <div className="group mx-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-[1px] border-black duration-500 ease-in-out hover:bg-black">
+              <a href="https://www.facebook.com/CAYYYYYYYY.studio">
+                <FaFacebookF className="duration-500 ease-in-out group-hover:text-white" />
+              </a>
+            </div>
+            <div className="group mx-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-[1px] border-black duration-500 ease-in-out hover:bg-black">
+              <a href="https://www.instagram.com/cay.stu/">
+                <SiInstagram className="duration-500 ease-in-out group-hover:text-white" />
+              </a>
+            </div>
+            <div className="group mx-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-[1px] border-black duration-500 ease-in-out hover:bg-black">
+              <a href="mailto:caystudio.contact@gmail.com?subject=Me&body=Hello!">
+                <SiGmail className="duration-500 ease-in-out group-hover:text-white" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Footer;

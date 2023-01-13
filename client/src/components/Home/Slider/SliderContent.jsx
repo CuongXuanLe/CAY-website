@@ -5,7 +5,11 @@ const SliderContent = ({ activeIndex, imageSlider }) => {
     <div>
       {imageSlider.map((slide, index) => (
         <div key={index} className={index === activeIndex ? "" : "hidden"}>
-          <img className="h-72 w-full" src={slide.imgUrl} alt=""></img>
+          <img
+            className="h-72 w-full object-cover"
+            src={slide.imgUrl}
+            alt=""
+          ></img>
         </div>
       ))}
     </div>

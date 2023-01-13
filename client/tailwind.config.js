@@ -12,14 +12,20 @@ module.exports = {
       '2xl': '1546px'
     },
     extend: {
+      width: {
+        '104': '26rem',
+      },
       spacing: {
         '1.5': '0.375rem',
         '104': '26rem',
+        '112': '28rem',
+        '120': '30rem',
         '128': '32rem',
-        '232': '58rem'
+        '232': '58rem',
       },
       colors: {
         'blur': 'rgba(20,20,20, 0.4)',
+        'blurwhite': 'rgba(255,255,255,0.9)',
       },
       fontFamily: {
         'lato': 'Lato, sans-serif',
@@ -27,5 +33,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+
+  ],
 }

@@ -14,6 +14,9 @@ module.exports = {
       colors: {
         'blur': 'rgba(20,20,20, 0.4)',
         'transparent': 'rgba(255,255,255, 0)',
+      },
+      gridTemplateColumns: {
+        "1/5": "1fr 5fr" 
       }
     },
     screens: {
@@ -24,5 +27,7 @@ module.exports = {
       '2xl': '1546px'
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
