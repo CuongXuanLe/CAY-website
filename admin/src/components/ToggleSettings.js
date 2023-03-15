@@ -1,8 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsBoxArrowLeft, BsGear } from "react-icons/bs"
 
 export default function ToggleSettings() {
-  
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    navigate("/")
+    localStorage.clear();
+  }  
 
   return (
     <div className="absolute bottom-0 2xl:ml-96 xl:ml-96 lg:ml-80 bg-white w-64 rounded-lg border-2 border-black overflow-hidden">
@@ -17,12 +21,12 @@ export default function ToggleSettings() {
           </NavLink> 
       </div>
       <hr className="border-black py"/>
-      <NavLink to="/Login">
-          <div className="flex justify-start items-center text-[#E93D3D] px-4 py-1 hover__primary">  
+      {/* <NavLink to="/"> */}
+          <div onClick={handleLogout} className="flex justify-start items-center text-[#E93D3D] px-4 py-1 hover__primary">  
               <BsBoxArrowLeft />
               <p className="ml-3">Log out</p>
           </div>
-      </NavLink>
+      {/* </NavLink> */}
     </div>
   );
 }

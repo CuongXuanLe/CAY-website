@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 import { Logo } from "../../constants/images";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import axios from "axios";
 const Login = () => {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
-
+  const navigate = useNavigate()
   useEffect(() => {
     document.title = "Login";
   });
@@ -33,6 +33,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         alert("Login successful");
+        navigate("/home")
       })
       .catch((err) => {
         console.log(err);
@@ -87,13 +88,11 @@ const Login = () => {
             </div>
           </div>
           <div className="text-center">
-            <Link to="/">
               <input
                 type="submit"
                 className="text-md inline-block w-full rounded bg-black px-7 py-3 font-bold uppercase leading-snug tracking-wide shadow-md hover:bg-white hover:text-black focus:outline-none"
                 onClick={handleSubmit}
               />
-            </Link>
           </div>
         </form>
       </section>

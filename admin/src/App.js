@@ -25,8 +25,8 @@ const App = () => {
     <Router>
       <ScrollToTop/>
       <Routes>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/" element={<AdminHome/>}/>
+        <Route path="/" element={<Login/>} />
+        <Route path="/home" element={<AdminHome/>}/>
         <Route path="/adminGuide" element={<AdminGuide/>}/>
         <Route path="/navigation" element={<Navigation/>} />
         <Route path="/adminPortfolio/*" element={<Portfolio/>} />

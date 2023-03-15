@@ -27,7 +27,7 @@ const AdminNav = () => {
                     <p className="ml-6 font-medium tracking-[.2em]">CAY <br/> STUDIO</p>
                 </div>
                 <ul className="flex flex-col w-44 justify-around mx-auto text-lg space-y-2">
-                    <NavLink to="/">
+                    <NavLink to="/home">
                         <li className="flex items-center h-10 space-x-5 hover:border-b-2 border-[#a7705c] transition ease-in-out delay-50 hover:translate-x-2 hover:scale-110 duration-300 cursor-pointer">
                             <BsHouseDoor/>
                             <p>Home</p>
